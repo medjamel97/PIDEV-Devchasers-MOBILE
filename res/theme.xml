@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<resource majorVersion="1" minorVersion="11" useXmlUI="false">
+    <image name="buttonSuccess.borderBottom_1.png" type="multi"  />
+    <image name="buttonSuccess.borderBottomL_1.png" type="multi"  />
+    <image name="buttonSuccess.borderBottomR_1.png" type="multi"  />
+    <image name="buttonSuccess.borderCenter_1.png" type="multi"  />
+    <image name="buttonSuccess.borderLeft_1.png" type="multi"  />
+    <image name="buttonSuccess.borderRight_1.png" type="multi"  />
+    <image name="buttonSuccess.borderTop_1.png" type="multi"  />
+    <image name="buttonSuccess.borderTopL_1.png" type="multi"  />
+    <image name="buttonSuccess.borderTopR_1.png" type="multi"  />
+    <image name="star-outline.png" type="multi"  />
+    <image name="star.png" type="multi"  />
+    <theme name="Theme">
+        <val key="@includeNativeBool" value="true" />
+        <val key="buttonSuccess.align" value="4" />
+        <border key="buttonSuccess.border" type="image" i1="buttonSuccess.borderTop_1.png" i2="buttonSuccess.borderBottom_1.png" i3="buttonSuccess.borderLeft_1.png" i4="buttonSuccess.borderRight_1.png" i5="buttonSuccess.borderTopL_1.png" i6="buttonSuccess.borderTopR_1.png" i7="buttonSuccess.borderBottomL_1.png" i8="buttonSuccess.borderBottomR_1.png" i9="buttonSuccess.borderCenter_1.png" />
+        <val key="buttonSuccess.fgColor" value="ffffff" />
+        <val key="buttonSuccess.marUnit" value="0,1,0,1" />
+        <val key="buttonSuccess.margin" value="25.0,25.0,30.0,30.0" />
+        <val key="buttonSuccess.padding" value="25.0,25.0,25.0,25.0" />
+        <val key="buttonSuccess.press#align" value="4" />
+        <border key="buttonSuccess.press#border" type="image" i1="buttonSuccess.borderTop_1.png" i2="buttonSuccess.borderBottom_1.png" i3="buttonSuccess.borderLeft_1.png" i4="buttonSuccess.borderRight_1.png" i5="buttonSuccess.borderTopL_1.png" i6="buttonSuccess.borderTopR_1.png" i7="buttonSuccess.borderBottomL_1.png" i8="buttonSuccess.borderBottomR_1.png" i9="buttonSuccess.borderCenter_1.png" />
+        <val key="buttonSuccess.press#fgColor" value="ffffff" />
+        <val key="buttonSuccess.press#marUnit" value="0,1,0,1" />
+        <val key="buttonSuccess.press#margin" value="25.0,25.0,30.0,30.0" />
+        <val key="buttonSuccess.press#padding" value="25.0,25.0,25.0,25.0" />
+        <val key="buttonSuccess.sel#align" value="4" />
+        <border key="buttonSuccess.sel#border" type="image" i1="buttonSuccess.borderTop_1.png" i2="buttonSuccess.borderBottom_1.png" i3="buttonSuccess.borderLeft_1.png" i4="buttonSuccess.borderRight_1.png" i5="buttonSuccess.borderTopL_1.png" i6="buttonSuccess.borderTopR_1.png" i7="buttonSuccess.borderBottomL_1.png" i8="buttonSuccess.borderBottomR_1.png" i9="buttonSuccess.borderCenter_1.png" />
+        <val key="buttonSuccess.sel#fgColor" value="ffffff" />
+        <val key="buttonSuccess.sel#marUnit" value="0,1,0,1" />
+        <val key="buttonSuccess.sel#margin" value="25.0,25.0,30.0,30.0" />
+        <val key="buttonSuccess.sel#padding" value="25.0,25.0,25.0,25.0" />
+        <font key="defaultLabel.font" type="system" face="0" style="1" size="0" />
+        <val key="description.fgColor" value="666666" />
+        <border key="revueContainer.border" type="roundRect" strokeColor="10066329" strokeOpacity="255" strokeThickness="1.5" strokeMM="false" shadowSpread="10.0" shadowOpacity="0" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" topOnlyMode="false" bottomOnlyMode="false" cornerRadius="2.0" bezierCorners="false" />
+        <val key="revueContainer.marUnit" value="1,1,1,1" />
+        <val key="revueContainer.margin" value="2.0,2.0,2.0,2.0" />
+        <val key="revueContainer.padUnit" value="1,1,1,1" />
+        <val key="revueContainer.padding" value="2.0,2.0,2.0,2.0" />
+        <val key="starButton.margin" value="0.0,0.0,0.0,0.0" />
+        <val key="starButton.padding" value="0.0,0.0,0.0,0.0" />
+    </theme>
+</resource>
