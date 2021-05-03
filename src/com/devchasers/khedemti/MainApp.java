@@ -1,6 +1,6 @@
 package com.devchasers.khedemti;
 
-import app.forms.RevueAfficherTout;
+import app.forms.MainContainer;
 import static com.codename1.ui.CN.*;
 import com.codename1.ui.Form;
 import com.codename1.ui.Dialog;
@@ -46,7 +46,7 @@ public class MainApp {
             current.show();
             return;
         }
-        new RevueAfficherTout().show();
+        new MainContainer().show();
     }
 
     public void stop() {

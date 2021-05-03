@@ -8,6 +8,7 @@ package app.forms;
 import com.codename1.io.ConnectionRequest;
 import com.codename1.io.NetworkManager;
 import com.codename1.ui.Button;
+import com.codename1.ui.ComboBox;
 import com.codename1.ui.Command;
 import com.codename1.ui.Container;
 import com.codename1.ui.Dialog;
@@ -26,20 +27,19 @@ import java.io.InputStreamReader;
  *
  * @author Grim
  */
-public class RevueManipuler extends Form {
+public class InterviewManipuler extends Form {
 
     Resources theme = UIManager.initFirstTheme("/theme");
 
-    Button[] stars = {new Button(), new Button(), new Button(), new Button(), new Button()};
-
-    long nbEtoiles = 0;
     TextField tfObjet;
     TextArea tfDescription;
+    ComboBox<String> cbDefficulte;
+    String[] difficulte = {"trés facile", "facile", "moyen", "difficile", "trés difficile"};
 
-    public RevueManipuler() {
+    public InterviewManipuler() {
 
         super(
-                RevueAfficherTout.revueActuelleMap == null ? "Nouvelle revue" : "Modifier ma revue",
+                InterviewAfficherTout.interviewActuelleMap == null ? "Nouvelle interview" : "Modifier ma interview",
                 new BoxLayout(BoxLayout.Y_AXIS)
         );
         addGUIs();
@@ -49,23 +49,19 @@ public class RevueManipuler extends Form {
         Container topBarContainer = new Container(new BoxLayout(BoxLayout.X_AXIS));
         Button btnRetour = new Button("<- Retour");
         btnRetour.addActionListener(action -> {
-            new RevueAfficherTout().show();
+            new InterviewAfficherTout().show();
         });
         topBarContainer.add(btnRetour);
 
-        Label labelNbEtoiles = new Label("Note : ");
-        labelNbEtoiles.setUIID("defaultLabel");
-        Container starsContainer = new Container();
-        starsContainer.add(labelNbEtoiles);
-        for (int indexEtoile = 0; indexEtoile < 5; indexEtoile++) {
-            int i = indexEtoile;
-            stars[i].addActionListener(action -> {
-                setStars(i + 1);
-            });
-            stars[i].setUIID("starButton");
-            stars[i].setFocusable(false);
-            starsContainer.add(stars[i]);
-        }
+        Label labelDifficulte = new Label("Difficulte : ");
+        labelDifficulte.setUIID("defaultLabel");
+
+        cbDefficulte = new ComboBox<>();
+        cbDefficulte.addItem(difficulte[0]);
+        cbDefficulte.addItem(difficulte[1]);
+        cbDefficulte.addItem(difficulte[2]);
+        cbDefficulte.addItem(difficulte[3]);
+        cbDefficulte.addItem(difficulte[4]);
 
         Label labelObjet = new Label("Objet :");
         labelObjet.setUIID("defaultLabel");
@@ -77,47 +73,78 @@ public class RevueManipuler extends Form {
 
         Button btnManipuler;
 
-        if (RevueAfficherTout.revueActuelleMap == null) {
-            setStars(0);
+        if (InterviewAfficherTout.interviewActuelleMap == null) {
+            cbDefficulte.setSelectedIndex(0);
             btnManipuler = new Button("Ajouter");
             btnManipuler.addActionListener(action -> {
-                manipulerRevue(0);
+                manipulerInterview(0);
             });
         } else {
-            setStars(Math.round((double) RevueAfficherTout.revueActuelleMap.get("nbEtoiles")));
-            tfObjet.setText((String) RevueAfficherTout.revueActuelleMap.get("objet"));
-            tfDescription.setText((String) RevueAfficherTout.revueActuelleMap.get("description"));
+            long i = Math.round((double) InterviewAfficherTout.interviewActuelleMap.get("difficulte"));
+
+            if (i == 0) {
+                cbDefficulte.setSelectedIndex(0);
+            } else if (i == 1) {
+                cbDefficulte.setSelectedIndex(1);
+            } else if (i == 2) {
+                cbDefficulte.setSelectedIndex(2);
+            } else if (i == 3) {
+                cbDefficulte.setSelectedIndex(3);
+            } else if (i == 4) {
+                cbDefficulte.setSelectedIndex(4);
+            }
+
+            tfObjet.setText((String) InterviewAfficherTout.interviewActuelleMap.get("objet"));
+            tfDescription.setText((String) InterviewAfficherTout.interviewActuelleMap.get("description"));
 
             btnManipuler = new Button("Modifier");
             btnManipuler.addActionListener(action -> {
-                manipulerRevue(Math.round((double) RevueAfficherTout.revueActuelleMap.get("id")));
+                manipulerInterview(Math.round((double) InterviewAfficherTout.interviewActuelleMap.get("id")));
             });
         }
         btnManipuler.setUIID("buttonSuccess");
 
         Container container = new Container(new BoxLayout(BoxLayout.Y_AXIS));
-        container.setUIID("revueContainer");
-        container.addAll(starsContainer, labelObjet, tfObjet, labelDescription, tfDescription, btnManipuler);
+        container.setUIID("interviewContainer");
+        container.addAll(cbDefficulte, labelObjet, tfObjet, labelDescription, tfDescription, btnManipuler);
 
-        this.addAll(topBarContainer, container);
+        this.addAll(topBarContainer,container);
     }
 
-    private void manipulerRevue(long idRevue) {
+    private void manipulerInterview(long idInterview) {
         try {
             String manipulation1 = "ajouté";
             String manipulation2 = "d'ajout";
 
             ConnectionRequest cr = new ConnectionRequest();
-            if (idRevue != 0) {
-                cr.addArgument("idRevue", String.valueOf(idRevue));
+            if (idInterview != 0) {
+                cr.addArgument("idInterview", String.valueOf(idInterview));
                 manipulation1 = "modifié";
                 manipulation2 = "de modification";
             }
             cr.addArgument("candidatureOffre", "2");
-            cr.addArgument("nbEtoiles", String.valueOf(nbEtoiles));
+            String difficulteInt = "";
+            switch (cbDefficulte.getSelectedItem()) {
+                case "trés facile":
+                    difficulteInt = "0";
+                    break;
+                case "facile":
+                    difficulteInt = "1";
+                    break;
+                case "moyen":
+                    difficulteInt = "2";
+                    break;
+                case "difficile":
+                    difficulteInt = "3";
+                    break;
+                case "trés difficile":
+                    difficulteInt = "4";
+                    break;
+            }
+            cr.addArgument("difficulte", difficulteInt);
             cr.addArgument("objet", tfObjet.getText());
             cr.addArgument("description", tfDescription.getText());
-            cr.setUrl("http://127.0.0.1:8000/mobile/manipuler_revue");
+            cr.setUrl("http://127.0.0.1:8000/mobile/manipuler_interview");
             NetworkManager.getInstance().addToQueueAndWait(cr);
 
             char[] state = new char[1];
@@ -128,9 +155,9 @@ public class RevueManipuler extends Form {
                     Dialog.show("Veuillez remplir les champs", "", new Command("Ok"));
                     break;
                 case 0:
-                    Dialog.show("Revue " + manipulation1, "", new Command("Ok"));
-                    RevueAfficherTout.revueActuelleMap = null;
-                    new RevueAfficherTout().show();
+                    Dialog.show("Interview " + manipulation1, "", new Command("Ok"));
+                    InterviewAfficherTout.interviewActuelleMap = null;
+                    new InterviewAfficherTout().show();
                     break;
                 case 1:
                     Dialog.show("Erreur " + manipulation2, "", new Command("Ok"));
@@ -143,16 +170,5 @@ public class RevueManipuler extends Form {
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
-    }
-
-    private void setStars(long nb) {
-        for (int i = 0; i < 5; i++) {
-            if (i < nb) {
-                stars[i].setIcon(theme.getImage("star.png"));
-            } else {
-                stars[i].setIcon(theme.getImage("star-outline.png"));
-            }
-        }
-        nbEtoiles = nb;
     }
 }
