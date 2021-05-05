@@ -16,6 +16,12 @@
     <image name="star.png" type="multi"  />
     <theme name="Theme">
         <val key="@includeNativeBool" value="true" />
+        <val key="Tab.padding" value="1.0,1.0,1.0,1.0" />
+        <val key="TabsContainer.bgColor" value="000000" />
+        <gradient key="TabsContainer.bgGradient" color1="16777215" color2="16777215" posX="0.5" posY="0.5" radius="1.0" />
+        <val key="TabsContainer.bgType" value="8" />
+        <val key="TabsContainer.fgColor" value="000000" />
+        <val key="TabsContainer.transparency" value="0" />
         <val key="actionButton.align" value="4" />
         <border key="actionButton.border" type="roundRect" strokeColor="3355443" strokeOpacity="255" strokeThickness="1.0" strokeMM="false" shadowSpread="10.0" shadowOpacity="0" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" topOnlyMode="false" bottomOnlyMode="false" cornerRadius="2.0" bezierCorners="false" />
         <val key="actionButton.margin" value="25.0,25.0,25.0,25.0" />
@@ -28,6 +34,30 @@
         <border key="actionButton.sel#border" type="roundRect" strokeColor="3355443" strokeOpacity="255" strokeThickness="1.0" strokeMM="false" shadowSpread="10.0" shadowOpacity="0" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" topOnlyMode="false" bottomOnlyMode="false" cornerRadius="2.0" bezierCorners="false" />
         <val key="actionButton.sel#margin" value="25.0,25.0,25.0,25.0" />
         <val key="actionButton.sel#padding" value="0.0,0.0,0.0,0.0" />
+        <val key="btnDanger.align" value="4" />
+        <gradient key="btnDanger.bgGradient" color1="14942465" color2="14942465" posX="0.5" posY="0.5" radius="1.0" />
+        <val key="btnDanger.bgType" value="8" />
+        <border key="btnDanger.border" type="rounded" thickness="0.0" arcW="50" arcH="50" color="10066329" />
+        <val key="btnDanger.fgColor" value="ffffff" />
+        <font key="btnDanger.font" type="system" face="0" style="0" size="16" />
+        <val key="btnDanger.margin" value="30.0,30.0,0.0,0.0" />
+        <val key="btnDanger.padding" value="40.0,40.0,40.0,40.0" />
+        <val key="btnDanger.press#align" value="4" />
+        <gradient key="btnDanger.press#bgGradient" color1="14942465" color2="14942465" posX="0.5" posY="0.5" radius="1.0" />
+        <val key="btnDanger.press#bgType" value="8" />
+        <border key="btnDanger.press#border" type="rounded" thickness="0.0" arcW="50" arcH="50" color="10066329" />
+        <val key="btnDanger.press#fgColor" value="ffffff" />
+        <font key="btnDanger.press#font" type="system" face="0" style="0" size="16" />
+        <val key="btnDanger.press#margin" value="30.0,30.0,0.0,0.0" />
+        <val key="btnDanger.press#padding" value="40.0,40.0,40.0,40.0" />
+        <val key="btnDanger.sel#align" value="4" />
+        <gradient key="btnDanger.sel#bgGradient" color1="14942465" color2="14942465" posX="0.5" posY="0.5" radius="1.0" />
+        <val key="btnDanger.sel#bgType" value="8" />
+        <border key="btnDanger.sel#border" type="rounded" thickness="0.0" arcW="50" arcH="50" color="10066329" />
+        <val key="btnDanger.sel#fgColor" value="ffffff" />
+        <font key="btnDanger.sel#font" type="system" face="0" style="0" size="16" />
+        <val key="btnDanger.sel#margin" value="30.0,30.0,0.0,0.0" />
+        <val key="btnDanger.sel#padding" value="40.0,40.0,40.0,40.0" />
         <val key="buttonSuccess.align" value="4" />
         <border key="buttonSuccess.border" type="image" i1="buttonSuccess.borderTop_1.png" i2="buttonSuccess.borderBottom_1.png" i3="buttonSuccess.borderLeft_1.png" i4="buttonSuccess.borderRight_1.png" i5="buttonSuccess.borderTopL_1.png" i6="buttonSuccess.borderTopR_1.png" i7="buttonSuccess.borderBottomL_1.png" i8="buttonSuccess.borderBottomR_1.png" i9="buttonSuccess.borderCenter_1.png" />
         <val key="buttonSuccess.fgColor" value="ffffff" />
@@ -50,12 +80,25 @@
         <val key="buttonsContainer.margin" value="25.0,25.0,25.0,25.0" />
         <border key="candidatImage.border" type="line" millimeters="false" thickness="1.0" color="10066329" />
         <val key="candidatImage.margin" value="30.0,30.0,30.0,50.0" />
+        <border key="candidatImage.press#border" type="line" millimeters="false" thickness="1.0" color="10066329" />
+        <val key="candidatImage.press#margin" value="30.0,30.0,30.0,50.0" />
+        <border key="candidatImage.sel#border" type="line" millimeters="false" thickness="1.0" color="10066329" />
+        <val key="candidatImage.sel#margin" value="30.0,30.0,30.0,50.0" />
         <val key="centerLabel.align" value="4" />
+        <val key="centerLabel.margin" value="30.0,30.0,30.0,30.0" />
         <val key="centerLabel.press#align" value="4" />
         <val key="centerLabel.sel#align" value="4" />
         <val key="dateLabel.align" value="3" />
         <font key="defaultLabel.font" type="system" face="0" style="1" size="0" />
         <val key="description.fgColor" value="666666" />
+        <val key="dialogChoixOffre.bgColor" value="000000" />
+        <gradient key="dialogChoixOffre.bgGradient" color1="0" color2="0" posX="0.5" posY="0.5" radius="1.0" />
+        <val key="dialogChoixOffre.bgType" value="8" />
+        <val key="dialogChoixOffre.fgColor" value="000000" />
+        <val key="dialogChoixOffre.transparency" value="0" />
+        <gradient key="dialogChoixOffreInside.bgGradient" color1="16777215" color2="16777215" posX="0.5" posY="0.5" radius="1.0" />
+        <val key="dialogChoixOffreInside.bgType" value="8" />
+        <val key="dialogChoixOffreInside.margin" value="100.0,0.0,0.0,100.0" />
         <val key="difficulte0.fgColor" value="66cc" />
         <val key="difficulte1.fgColor" value="ff00" />
         <val key="difficulte2.fgColor" value="cccc00" />
@@ -73,6 +116,12 @@
         <val key="imageSociete.sel#bgType" value="8" />
         <border key="imageSociete.sel#border" type="line" millimeters="false" thickness="1.0" color="13421772" />
         <val key="imageSociete.sel#margin" value="0.0,0.0,30.0,30.0" />
+        <font key="links.font" type="system" face="0" style="0" size="16" />
+        <val key="links.padding" value="80.0,80.0,80.0,80.0" />
+        <font key="links.press#font" type="system" face="0" style="0" size="16" />
+        <val key="links.press#padding" value="80.0,80.0,80.0,80.0" />
+        <font key="links.sel#font" type="system" face="0" style="0" size="16" />
+        <val key="links.sel#padding" value="80.0,80.0,80.0,80.0" />
         <val key="newButton.align" value="4" />
         <border key="newButton.border" type="line" millimeters="false" thickness="1.0" color="36301" />
         <val key="newButton.fgColor" value="1a80c8" />
@@ -99,10 +148,15 @@
         <border key="screenshot.border" type="bevelLowered" thickness="2.0" color="0" colorB="0" colorC="0" colorD="0" />
         <val key="screenshot.margin" value="50.0,50.0,50.0,50.0" />
         <val key="shareContainer.align" value="4" />
+        <val key="singleTab.align" value="4" />
+        <val key="singleTab.margin" value="0.0,0.0,0.0,0.0" />
+        <val key="singleTab.padding" value="0.0,0.0,0.0,0.0" />
         <val key="societeContainer.align" value="4" />
-        <border key="societeContainer.border" type="roundRect" strokeColor="6710886" strokeOpacity="255" strokeThickness="1.0" strokeMM="false" shadowSpread="10.0" shadowOpacity="0" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" topOnlyMode="false" bottomOnlyMode="false" cornerRadius="2.0" bezierCorners="false" />
+        <gradient key="societeContainer.bgGradient" color1="16777215" color2="16777215" posX="0.5" posY="0.5" radius="1.0" />
+        <val key="societeContainer.bgType" value="8" />
+        <border key="societeContainer.border" type="rounded" thickness="0.0" arcW="100" arcH="100" color="13421772" />
         <val key="societeContainer.margin" value="30.0,30.0,30.0,30.0" />
-        <val key="societeContainer.padding" value="100.0,0.0,0.0,0.0" />
+        <val key="societeContainer.padding" value="60.0,0.0,0.0,0.0" />
         <val key="societeContainer.press#align" value="4" />
         <border key="societeContainer.press#border" type="roundRect" strokeColor="6710886" strokeOpacity="255" strokeThickness="1.0" strokeMM="false" shadowSpread="10.0" shadowOpacity="0" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" topOnlyMode="false" bottomOnlyMode="false" cornerRadius="2.0" bezierCorners="false" />
         <val key="societeContainer.press#margin" value="30.0,30.0,30.0,30.0" />
@@ -113,6 +167,7 @@
         <val key="societeContainer.sel#padding" value="100.0,0.0,0.0,0.0" />
         <val key="starButton.margin" value="0.0,0.0,0.0,0.0" />
         <val key="starButton.padding" value="0.0,0.0,0.0,0.0" />
+        <val key="userContainer.padding" value="0.0,0.0,40.0,40.0" />
     </theme>
     <image name="Wall - 011.jpg"  />
 </resource>

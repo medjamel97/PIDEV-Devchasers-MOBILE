@@ -6,9 +6,9 @@
 package com.devchasers.khedemti.gui.front_end.revue;
 
 import com.codename1.components.ImageViewer;
+import com.codename1.components.InteractionDialog;
 import com.codename1.ui.Button;
 import com.codename1.ui.Command;
-import com.codename1.ui.Component;
 import com.codename1.ui.Container;
 import com.codename1.ui.Dialog;
 import com.codename1.ui.Display;
@@ -34,13 +34,13 @@ import java.util.Map;
  *
  * @author Grim
  */
-public class ChoixSocieteRevue extends Form {
+public class ChoixOffreRevue extends Form {
 
     Container societesContainer;
     Resources theme = UIManager.initFirstTheme("/theme");
 
-    public ChoixSocieteRevue(Form previous) {
-        super("Choisir une societe");
+    public ChoixOffreRevue(Form previous) {
+        super("Choisir une offre");
         addGUIs();
 
         getToolbar().addMaterialCommandToLeftBar("  ", FontImage.MATERIAL_ARROW_BACK, e -> previous.showBack());
@@ -102,24 +102,33 @@ public class ChoixSocieteRevue extends Form {
     }
 
     private void creerOffre(List<Map<String, Object>> listOffres, String nomSociete) {
-        Form choixOffre = new Form("Choisir une offre", new BoxLayout(BoxLayout.Y_AXIS));
-        choixOffre.getToolbar().addMaterialCommandToLeftBar("  ", FontImage.MATERIAL_ARROW_BACK, e -> this.showBack());
+        InteractionDialog dlg = new InteractionDialog("Choisir une offre");
+        dlg.setUIID("dialogChoixOffre");
+        dlg.setLayout(new BorderLayout());
+        Container offresContainer = new Container(new BoxLayout(BoxLayout.Y_AXIS));
         for (Map<String, Object> offre : listOffres) {
             Button btnOffre = new Button((String) offre.get("nomOffre"));
             btnOffre.addActionListener(actionConf -> {
                 CandidatureOffre candidatureOffre = CandidatureOffreService.getInstance().recupererCandidatureOffreParOffreCandidat(
-                        (int) (Float.parseFloat(offre.get("idOffre").toString())),
+                        (int) (Float.parseFloat(offre.get("id").toString())),
                         MainApp.getSession().getCandidatId()
                 );
                 AfficherToutRevue.revueActuelle = null;
                 AfficherToutRevue.candidatureOffreActuelle = candidatureOffre;
                 AfficherToutRevue.nomOffreActuelle = (String) offre.get("nomOffre");
                 AfficherToutRevue.nomSocieteActuelle = nomSociete;
+                dlg.dispose();
                 new AfficherToutRevue(this).show();
             });
             btnOffre.setUIID("offreButton");
-            choixOffre.add(btnOffre);
+            offresContainer.add(btnOffre);
         }
-        choixOffre.show();
+        dlg.addComponent(BorderLayout.CENTER, offresContainer);
+        Button btnClose = new Button("Annuler");
+        btnClose.setUIID("dangerButton");
+        btnClose.addActionListener((ee) -> dlg.dispose());
+        dlg.addComponent(BorderLayout.SOUTH, btnClose);
+        dlg.setDialogUIID("dialogChoixOffreInside");
+        dlg.show(0, 0, 0, 0);
     }
 }

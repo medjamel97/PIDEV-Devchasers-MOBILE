@@ -17,6 +17,7 @@ import com.codename1.ui.EncodedImage;
 import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
 import com.codename1.ui.Label;
+import com.codename1.ui.Tabs;
 import com.codename1.ui.URLImage;
 import com.codename1.ui.geom.Dimension;
 import com.codename1.ui.layouts.BorderLayout;
@@ -37,8 +38,9 @@ public class AfficherToutRevue extends Form {
 
     public static Revue revueActuelle = null;
     public static CandidatureOffre candidatureOffreActuelle = null;
-    public static 
-    Resources theme = UIManager.initFirstTheme("/theme");
+    public static Resources theme = UIManager.initFirstTheme("/theme");
+
+    public static String nomOffreActuelle, nomSocieteActuelle;
 
     Container nbEtoilesContainer, revueModel, userContainer, btnsContainer;
     Label nomPrenomCandidat, labelObjet, labelDateCreation;
@@ -47,23 +49,28 @@ public class AfficherToutRevue extends Form {
     Button btnRetour, btnAjouter, btnModifier, btnSupprimer;
 
     public AfficherToutRevue(Form previous) {
-        super("Revues", new BoxLayout(BoxLayout.Y_AXIS));
+        super("Revues sur " + nomOffreActuelle + " de la societe " + nomSocieteActuelle, new BoxLayout(BoxLayout.Y_AXIS));
         addGUIs();
         addActions();
 
-        getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e -> previous.showBack());
+        getToolbar().addMaterialCommandToLeftBar("  ", FontImage.MATERIAL_ARROW_BACK, e -> previous.showBack());
     }
-    
+
     private void addGUIs() {
         btnAjouter = new Button("Nouvelle revue");
         btnAjouter.setUIID("newButton");
 
         this.add(btnAjouter);
 
+        Tabs tabs = new Tabs();
+
         ArrayList<Revue> listRevues = RevueService.getInstance().recupererRevues();
         for (int i = 0; i < listRevues.size(); i++) {
-            this.add(creerRevue(listRevues.get(i)));
+            tabs.addTab("Tab", new Label("hahha" + i));
+            //tabs.getTab(BorderLayout.NORTH, creerRevue(listRevues.get(i)));
         }
+
+        this.add(tabs);
     }
 
     private void addActions() {
@@ -72,7 +79,7 @@ public class AfficherToutRevue extends Form {
                 revueActuelle = null;
                 new ManipulerRevue(this).show();
             } else {
-                Dialog.show("Erreur", "Vous devez candidater pour cette offre pour ajouter une revue", new Command("Ok"));
+                Dialog.show("Erreur", "Vous devez avoir candidaté à cette offre pour pouvoir ajouter une revue", new Command("Ok"));
             }
         });
     }

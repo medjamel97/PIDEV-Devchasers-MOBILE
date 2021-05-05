@@ -28,7 +28,7 @@ public class MainForm extends Form {
         super(title, new BoxLayout(BoxLayout.Y_AXIS));
         addGUIs();
 
-        getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e -> previous.showBack());
+        getToolbar().addMaterialCommandToLeftBar("  ", FontImage.MATERIAL_ARROW_BACK, e -> previous.showBack());
     }
 
     Label label;

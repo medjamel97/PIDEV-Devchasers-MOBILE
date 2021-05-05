@@ -52,7 +52,7 @@ public class AfficherToutInterview extends Form {
         super("Interviews", new BoxLayout(BoxLayout.Y_AXIS));
         //addGUIs();
 
-        getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e -> previous.showBack());
+        getToolbar().addMaterialCommandToLeftBar("  ", FontImage.MATERIAL_ARROW_BACK, e -> previous.showBack());
     }
 
     /*private void addGUIs() {

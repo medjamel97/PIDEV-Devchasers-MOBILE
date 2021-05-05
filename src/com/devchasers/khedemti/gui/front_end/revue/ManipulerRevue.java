@@ -47,7 +47,7 @@ public class ManipulerRevue extends Form {
         addGUIs();
         addActions();
 
-        getToolbar().addMaterialCommandToLeftBar("", FontImage.MATERIAL_ARROW_BACK, e -> previous.showBack());
+        getToolbar().addMaterialCommandToLeftBar("  ", FontImage.MATERIAL_ARROW_BACK, e -> previous.showBack());
     }
 
     private void addGUIs() {

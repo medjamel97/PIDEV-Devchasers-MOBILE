@@ -60,5 +60,4 @@ public class CandidatureOffre {
     public void setEtat(String etat) {
         this.etat = etat;
     }
-
 }
