@@ -16,6 +16,18 @@
     <image name="star.png" type="multi"  />
     <theme name="Theme">
         <val key="@includeNativeBool" value="true" />
+        <val key="actionButton.align" value="4" />
+        <border key="actionButton.border" type="roundRect" strokeColor="3355443" strokeOpacity="255" strokeThickness="1.0" strokeMM="false" shadowSpread="10.0" shadowOpacity="0" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" topOnlyMode="false" bottomOnlyMode="false" cornerRadius="2.0" bezierCorners="false" />
+        <val key="actionButton.margin" value="25.0,25.0,25.0,25.0" />
+        <val key="actionButton.padding" value="0.0,0.0,0.0,0.0" />
+        <val key="actionButton.press#align" value="4" />
+        <border key="actionButton.press#border" type="roundRect" strokeColor="3355443" strokeOpacity="255" strokeThickness="1.0" strokeMM="false" shadowSpread="10.0" shadowOpacity="0" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" topOnlyMode="false" bottomOnlyMode="false" cornerRadius="2.0" bezierCorners="false" />
+        <val key="actionButton.press#margin" value="25.0,25.0,25.0,25.0" />
+        <val key="actionButton.press#padding" value="0.0,0.0,0.0,0.0" />
+        <val key="actionButton.sel#align" value="4" />
+        <border key="actionButton.sel#border" type="roundRect" strokeColor="3355443" strokeOpacity="255" strokeThickness="1.0" strokeMM="false" shadowSpread="10.0" shadowOpacity="0" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" topOnlyMode="false" bottomOnlyMode="false" cornerRadius="2.0" bezierCorners="false" />
+        <val key="actionButton.sel#margin" value="25.0,25.0,25.0,25.0" />
+        <val key="actionButton.sel#padding" value="0.0,0.0,0.0,0.0" />
         <val key="buttonSuccess.align" value="4" />
         <border key="buttonSuccess.border" type="image" i1="buttonSuccess.borderTop_1.png" i2="buttonSuccess.borderBottom_1.png" i3="buttonSuccess.borderLeft_1.png" i4="buttonSuccess.borderRight_1.png" i5="buttonSuccess.borderTopL_1.png" i6="buttonSuccess.borderTopR_1.png" i7="buttonSuccess.borderBottomL_1.png" i8="buttonSuccess.borderBottomR_1.png" i9="buttonSuccess.borderCenter_1.png" />
         <val key="buttonSuccess.fgColor" value="ffffff" />
@@ -34,10 +46,13 @@
         <val key="buttonSuccess.sel#marUnit" value="0,1,0,1" />
         <val key="buttonSuccess.sel#margin" value="25.0,25.0,30.0,30.0" />
         <val key="buttonSuccess.sel#padding" value="25.0,25.0,25.0,25.0" />
-        <val key="buttonsContainer.margin" value="0.0,0.0,0.0,0.0" />
-        <val key="buttonsContainer.padding" value="0.0,0.0,0.0,0.0" />
+        <val key="buttonsContainer.align" value="4" />
+        <val key="buttonsContainer.margin" value="25.0,25.0,25.0,25.0" />
         <border key="candidatImage.border" type="line" millimeters="false" thickness="1.0" color="10066329" />
         <val key="candidatImage.margin" value="30.0,30.0,30.0,50.0" />
+        <val key="centerLabel.align" value="4" />
+        <val key="centerLabel.press#align" value="4" />
+        <val key="centerLabel.sel#align" value="4" />
         <val key="dateLabel.align" value="3" />
         <font key="defaultLabel.font" type="system" face="0" style="1" size="0" />
         <val key="description.fgColor" value="666666" />
@@ -46,6 +61,18 @@
         <val key="difficulte2.fgColor" value="cccc00" />
         <val key="difficulte3.fgColor" value="ff9900" />
         <val key="difficulte4.fgColor" value="ff0000" />
+        <gradient key="imageSociete.bgGradient" color1="16777215" color2="16777215" posX="0.5" posY="0.5" radius="1.0" />
+        <val key="imageSociete.bgType" value="8" />
+        <border key="imageSociete.border" type="line" millimeters="false" thickness="1.0" color="13421772" />
+        <val key="imageSociete.margin" value="0.0,0.0,30.0,30.0" />
+        <gradient key="imageSociete.press#bgGradient" color1="16777215" color2="16777215" posX="0.5" posY="0.5" radius="1.0" />
+        <val key="imageSociete.press#bgType" value="8" />
+        <border key="imageSociete.press#border" type="line" millimeters="false" thickness="1.0" color="13421772" />
+        <val key="imageSociete.press#margin" value="0.0,0.0,30.0,30.0" />
+        <gradient key="imageSociete.sel#bgGradient" color1="16777215" color2="16777215" posX="0.5" posY="0.5" radius="1.0" />
+        <val key="imageSociete.sel#bgType" value="8" />
+        <border key="imageSociete.sel#border" type="line" millimeters="false" thickness="1.0" color="13421772" />
+        <val key="imageSociete.sel#margin" value="0.0,0.0,30.0,30.0" />
         <val key="newButton.align" value="4" />
         <border key="newButton.border" type="line" millimeters="false" thickness="1.0" color="36301" />
         <val key="newButton.fgColor" value="1a80c8" />
@@ -61,6 +88,8 @@
         <val key="newButton.sel#fgColor" value="1a80c8" />
         <val key="newButton.sel#margin" value="50.0,50.0,50.0,50.0" />
         <val key="newButton.sel#padding" value="50.0,50.0,50.0,50.0" />
+        <val key="revueButton.align" value="4" />
+        <border key="revueButton.border" type="roundRect" strokeColor="13421772" strokeOpacity="255" strokeThickness="1.0" strokeMM="false" shadowSpread="10.0" shadowOpacity="0" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" topOnlyMode="false" bottomOnlyMode="false" cornerRadius="4.0" bezierCorners="false" />
         <border key="revueContainer.border" type="roundRect" strokeColor="10066329" strokeOpacity="255" strokeThickness="1.5" strokeMM="false" shadowSpread="10.0" shadowOpacity="0" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" topOnlyMode="false" bottomOnlyMode="false" cornerRadius="2.0" bezierCorners="false" />
         <val key="revueContainer.marUnit" value="1,1,1,1" />
         <val key="revueContainer.margin" value="2.0,2.0,2.0,2.0" />
@@ -70,6 +99,18 @@
         <border key="screenshot.border" type="bevelLowered" thickness="2.0" color="0" colorB="0" colorC="0" colorD="0" />
         <val key="screenshot.margin" value="50.0,50.0,50.0,50.0" />
         <val key="shareContainer.align" value="4" />
+        <val key="societeContainer.align" value="4" />
+        <border key="societeContainer.border" type="roundRect" strokeColor="6710886" strokeOpacity="255" strokeThickness="1.0" strokeMM="false" shadowSpread="10.0" shadowOpacity="0" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" topOnlyMode="false" bottomOnlyMode="false" cornerRadius="2.0" bezierCorners="false" />
+        <val key="societeContainer.margin" value="30.0,30.0,30.0,30.0" />
+        <val key="societeContainer.padding" value="100.0,0.0,0.0,0.0" />
+        <val key="societeContainer.press#align" value="4" />
+        <border key="societeContainer.press#border" type="roundRect" strokeColor="6710886" strokeOpacity="255" strokeThickness="1.0" strokeMM="false" shadowSpread="10.0" shadowOpacity="0" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" topOnlyMode="false" bottomOnlyMode="false" cornerRadius="2.0" bezierCorners="false" />
+        <val key="societeContainer.press#margin" value="30.0,30.0,30.0,30.0" />
+        <val key="societeContainer.press#padding" value="100.0,0.0,0.0,0.0" />
+        <val key="societeContainer.sel#align" value="4" />
+        <border key="societeContainer.sel#border" type="roundRect" strokeColor="6710886" strokeOpacity="255" strokeThickness="1.0" strokeMM="false" shadowSpread="10.0" shadowOpacity="0" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" topOnlyMode="false" bottomOnlyMode="false" cornerRadius="2.0" bezierCorners="false" />
+        <val key="societeContainer.sel#margin" value="30.0,30.0,30.0,30.0" />
+        <val key="societeContainer.sel#padding" value="100.0,0.0,0.0,0.0" />
         <val key="starButton.margin" value="0.0,0.0,0.0,0.0" />
         <val key="starButton.padding" value="0.0,0.0,0.0,0.0" />
     </theme>
