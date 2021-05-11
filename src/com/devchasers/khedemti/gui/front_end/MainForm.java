@@ -12,7 +12,6 @@ import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
 import com.codename1.ui.Label;
 import com.codename1.ui.Tabs;
-import com.codename1.ui.geom.Dimension;
 import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.plaf.UIManager;
@@ -52,7 +51,7 @@ public class MainForm extends Form {
         Tabs tabs = new Tabs();
         tabs.addTab("Accueil", FontImage.MATERIAL_HOME, 5, new AfficherToutPublication());
         tabs.addTab("Societes", FontImage.MATERIAL_APARTMENT, 5, new AfficherToutSociete());
-        tabs.addTab("Offres", FontImage.MATERIAL_WORK, 5, new AfficherToutOffreDeTravail());
+        tabs.addTab("Offres", FontImage.MATERIAL_WORK, 5, new AfficherToutOffreDeTravail(this));
         tabs.addTab("Profil", FontImage.MATERIAL_ACCOUNT_BOX, 5, new AfficherProfil());
         tabs.addTab("Plus", FontImage.MATERIAL_MENU, 5, moreGUI());
         this.add(BorderLayout.CENTER, tabs);

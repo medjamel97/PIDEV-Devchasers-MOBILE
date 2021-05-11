@@ -26,12 +26,13 @@ public class CandidatureOffreService {
 
     public static CandidatureOffreService instance = null;
     public int resultCode;
-    private final ConnectionRequest cr;
+    private final ConnectionRequest cnx;
+    public ArrayList<CandidatureOffre> listeCandOffre;
     public ArrayList<CandidatureOffre> listCandidatureOffres;
     CandidatureOffre candidatureOffre = null;
 
     private CandidatureOffreService() {
-        cr = new ConnectionRequest();
+        cnx = new ConnectionRequest();
     }
 
     public static CandidatureOffreService getInstance() {
@@ -42,16 +43,16 @@ public class CandidatureOffreService {
     }
 
     public CandidatureOffre recupererCandidatureOffreParOffreCandidat(int offreDeTravailId, int candidatId) {
-        cr.setUrl(Statics.BASE_URL + "/mobile/recuperer_candidature_offre_par_offre_candidat");
-        cr.addArgument("offreDeTravailId", String.valueOf(offreDeTravailId));
-        cr.addArgument("candidatId", String.valueOf(candidatId));
-        cr.addResponseListener(new ActionListener<NetworkEvent>() {
+        cnx.setUrl(Statics.BASE_URL + "/mobile/recuperer_candidature_offre_par_offre_candidat");
+        cnx.addArgument("offreDeTravailId", String.valueOf(offreDeTravailId));
+        cnx.addArgument("candidatId", String.valueOf(candidatId));
+        cnx.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
             public void actionPerformed(NetworkEvent evt) {
                 try {
                     listCandidatureOffres = new ArrayList<>();
                     Map<String, Object> tasksListJson = new JSONParser().parseJSON(new CharArrayReader(
-                            new String(cr.getResponseData()).toCharArray()
+                            new String(cnx.getResponseData()).toCharArray()
                     ));
                     try {
                         Map<String, Object> obj = (Map<String, Object>) ((List<Map<String, Object>>) tasksListJson.get("root")).get(0);
@@ -63,17 +64,17 @@ public class CandidatureOffreService {
                                 (String) obj.get("etat")
                         );
                     } catch (NullPointerException e) {
-                        resultCode = 404;
+                        System.out.println(e.getMessage());
                     }
 
                 } catch (IOException ex) {
                     System.out.println(ex.getMessage());
                 }
 
-                cr.removeResponseListener(this);
+                cnx.removeResponseListener(this);
             }
         });
-        NetworkManager.getInstance().addToQueueAndWait(cr);
+        NetworkManager.getInstance().addToQueueAndWait(cnx);
 
         if (resultCode == 404) {
             return null;
@@ -82,4 +83,75 @@ public class CandidatureOffreService {
 
     }
 
+    public ArrayList<CandidatureOffre> recupererMesCandidatureOffre(int societeId) {
+        cnx.setUrl(Statics.BASE_URL + "/mobile/recuperer_MesCandidatureOffre");
+        cnx.addArgument("societeId", String.valueOf(societeId));
+        System.out.println("societe = " + societeId);
+        cnx.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+
+                try {
+                    listCandidatureOffres = new ArrayList<>();
+                    Map<String, Object> tasksListJson = new JSONParser().parseJSON(new CharArrayReader(
+                            new String(cnx.getResponseData()).toCharArray()
+                    ));
+                    List<Map<String, Object>> list = (List<Map<String, Object>>) tasksListJson.get("root");
+                    for (Map<String, Object> obj : list) {
+                        CandidatureOffre candidatureOffre = new CandidatureOffre(
+                                (int) Float.parseFloat(obj.get("id").toString()),
+                                (String) obj.get("etat"),
+                                (String) obj.get("nomOffre"),
+                                (String) obj.get("nomPrenomCandidat")
+                        );
+                        System.out.println(candidatureOffre);
+                        listCandidatureOffres.add(candidatureOffre);
+                    }
+
+                } catch (IOException ex) {
+                    System.out.println(ex.getMessage());
+                }
+
+                cnx.removeResponseListener(this);
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(cnx);
+        return listCandidatureOffres;
+    }
+
+    public void ajouterCandidature(CandidatureOffre cand) {
+        cnx.setUrl(Statics.BASE_URL + "/mobile/ajouter_Candidature");
+        cnx.addArgument("offreDeTravailId", String.valueOf(cand.getOffreDeTravailId()));
+        cnx.addArgument("candidatId", String.valueOf(cand.getCandidatId()));
+        cnx.addArgument("etat", cand.getEtat());
+
+        cnx.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                resultCode = cnx.getResponseCode();
+                cnx.removeResponseListener(this);
+
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(cnx);
+
+        System.out.println("ajouté avec succés");
+    }
+
+    public int modifierCandidatureOffre(CandidatureOffre cand) {
+        cnx.setUrl(Statics.BASE_URL + "/mobile/modifier_CandidatureOffre");
+        cnx.addArgument("candidatureOffreId", String.valueOf(cand.getId()));
+        cnx.addArgument("etat", cand.getEtat());
+
+        cnx.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+                resultCode = cnx.getResponseCode();
+                cnx.removeResponseListener(this);
+
+            }
+        });
+        NetworkManager.getInstance().addToQueueAndWait(cnx);
+        return resultCode;
+    }
 }

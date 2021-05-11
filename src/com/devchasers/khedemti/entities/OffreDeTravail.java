@@ -20,6 +20,15 @@ public class OffreDeTravail {
     private String nomSociete;
     private String nomCategorie;
 
+    // pour affichage
+    public OffreDeTravail(int id, String nom, String description, String nomCategorie) {
+        this.id = id;
+        this.nom = nom;
+        this.description = description;
+        this.nomCategorie = nomCategorie;
+    }
+
+    // pour modification
     public OffreDeTravail(int id, int categorieId, int societeId, String nom, String description) {
         this.id = id;
         this.categorieId = categorieId;
@@ -28,14 +37,9 @@ public class OffreDeTravail {
         this.description = description;
     }
 
+    // pour ajout
     public OffreDeTravail(int categorieId, int societeId, String nom, String description) {
         this.categorieId = categorieId;
-        this.societeId = societeId;
-        this.nom = nom;
-        this.description = description;
-    }
-
-    public OffreDeTravail(int societeId, String nom, String description) {
         this.societeId = societeId;
         this.nom = nom;
         this.description = description;

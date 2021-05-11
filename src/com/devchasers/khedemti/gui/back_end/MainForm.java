@@ -13,6 +13,7 @@ import com.codename1.ui.layouts.BoxLayout;
 import com.devchasers.khedemti.MainApp;
 import com.devchasers.khedemti.gui.back_end.candidat.AdminAfficherToutCandidat;
 import com.devchasers.khedemti.gui.back_end.candidat.AfficherMesCandidats;
+import com.devchasers.khedemti.gui.back_end.candidatureOffre.AfficherMesCandidatures;
 import com.devchasers.khedemti.gui.back_end.categorie.AdminAfficherToutCategorie;
 import com.devchasers.khedemti.gui.back_end.mission.AfficherMesMissions;
 import com.devchasers.khedemti.gui.back_end.offre_de_travail.AfficherMesOffresDeTravail;
@@ -51,6 +52,7 @@ public class MainForm extends Form {
         } else {
             addButton("Mes candidats", new AfficherMesCandidats(this));
             addButton("Mes offres de travail", new AfficherMesOffresDeTravail(this));
+            addButton("Mes candidature offres", new AfficherMesCandidatures(this));
             addButton("Mes Missions", new AfficherMesMissions(this));
         }
     }

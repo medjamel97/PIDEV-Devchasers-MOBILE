@@ -167,6 +167,8 @@
         <val key="societeContainer.sel#padding" value="100.0,0.0,0.0,0.0" />
         <val key="starButton.margin" value="0.0,0.0,0.0,0.0" />
         <val key="starButton.padding" value="0.0,0.0,0.0,0.0" />
+        <val key="titreCentre.align" value="4" />
+        <font key="titreCentre.font" type="system" face="0" style="1" size="16" />
         <val key="userContainer.padding" value="0.0,0.0,40.0,40.0" />
     </theme>
     <image name="Wall - 011.jpg"  />

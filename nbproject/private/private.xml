@@ -4,7 +4,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Projects/PIDEV-2021/PIDEV-MOBILE/src/com/devchasers/khedemti/gui/front_end/MainForm.java</file>
+            <file>file:/C:/Users/Anis/Desktop/PIDEV/PIDEV-Devchasers-MOBILE/src/com/devchasers/khedemti/entities/CandidatureOffre.java</file>
+            <file>file:/C:/Users/Anis/Desktop/PIDEV/PIDEV-Devchasers-MOBILE/src/com/devchasers/khedemti/gui/back_end/candidatureOffre/AfficherMesCandidatures.java</file>
+            <file>file:/C:/Users/Anis/Desktop/PIDEV/PIDEV-Devchasers-MOBILE/src/com/devchasers/khedemti/services/CandidatureOffreService.java</file>
         </group>
     </open-files>
 </project-private>
