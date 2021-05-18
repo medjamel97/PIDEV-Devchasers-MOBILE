@@ -114,7 +114,7 @@ public class OffreDeTravailService {
     public int ajouterOffre(OffreDeTravail offre) {
         cnx.setUrl(Statics.BASE_URL + "/mobile/ajouter_offre");
         cnx.addArgument("description", offre.getDescription());
-        cnx.addArgument("dateCreation", offre.getNom());
+        cnx.addArgument("nom", offre.getNom());
         cnx.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
             public void actionPerformed(NetworkEvent evt) {
