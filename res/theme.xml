@@ -88,6 +88,8 @@
         <val key="centerLabel.margin" value="30.0,30.0,30.0,30.0" />
         <val key="centerLabel.press#align" value="4" />
         <val key="centerLabel.sel#align" value="4" />
+        <val key="containerLevel.margin" value="30.0,30.0,0.0,0.0" />
+        <val key="containerLevel.padding" value="30.0,30.0,30.0,30.0" />
         <val key="dateLabel.align" value="3" />
         <font key="defaultLabel.font" type="system" face="0" style="1" size="0" />
         <val key="description.fgColor" value="666666" />

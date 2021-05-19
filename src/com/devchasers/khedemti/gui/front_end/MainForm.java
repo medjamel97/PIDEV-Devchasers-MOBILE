@@ -40,8 +40,11 @@ public class MainForm extends Form {
     Label label;
     Form connexion;
 
+    public static Form mainForm;
+
     public MainForm(Form previous) {
         super(new BorderLayout());
+        mainForm = this;
         connexion = previous;
         addGUIs();
 
