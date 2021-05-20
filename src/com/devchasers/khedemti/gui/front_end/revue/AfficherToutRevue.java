@@ -102,7 +102,7 @@ public class AfficherToutRevue extends Form {
             photoCandidat = new ImageViewer(
                     URLImage.createToStorage(
                             EncodedImage.createFromImage(theme.getImage("default.jpg"), false),
-                            url,
+                             url,
                             url,
                             URLImage.RESIZE_SCALE
                     )
