@@ -38,11 +38,11 @@ public class MainForm extends Form {
     Resources theme = UIManager.initFirstTheme("/theme");
     Label label;
     Form connexion;
+    
     public static Form accueilFrontForm;
             
     public MainForm(Form previous) {
         super(new BorderLayout());
-        mainForm = this;
         connexion = previous;
         accueilFrontForm = this;
         addGUIs();

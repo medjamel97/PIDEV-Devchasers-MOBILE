@@ -78,7 +78,7 @@ public class ModifierCompetence extends Form {
                 ));
 
                 ((AfficherProfil) previous).refreshProfil();
-                MainForm.mainForm.showBack();
+                MainForm.accueilFrontForm.showBack();
 
                 if (responseCode == 200) {
                     Dialog.show("Succés", "competence modifié avec succes", new Command("Ok"));

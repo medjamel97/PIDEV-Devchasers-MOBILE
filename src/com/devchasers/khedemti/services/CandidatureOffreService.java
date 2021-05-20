@@ -75,7 +75,7 @@ public class CandidatureOffreService {
             }
         });
         try {
-            NetworkManager.getInstance().addToQueueAndWait(cr);
+            NetworkManager.getInstance().addToQueueAndWait(cnx);
         } catch (Exception e) {
 
         }
