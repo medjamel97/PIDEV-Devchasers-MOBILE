@@ -23,7 +23,7 @@ import com.devchasers.khedemti.gui.front_end.categorie.AfficherToutCategorie;
 import com.devchasers.khedemti.gui.front_end.evenement.AfficherToutEvenement;
 import com.devchasers.khedemti.gui.front_end.formation.AfficherToutFormation;
 import com.devchasers.khedemti.gui.front_end.interview.AfficherToutInterview;
-import com.devchasers.khedemti.gui.front_end.messagerie.AfficherMessagerie;
+import com.devchasers.khedemti.gui.front_end.messagerie.AfficherConversations;
 import com.devchasers.khedemti.gui.front_end.mission.AfficherToutMission;
 import com.devchasers.khedemti.gui.front_end.offre_de_travail.AfficherToutOffreDeTravail;
 import com.devchasers.khedemti.gui.front_end.publication.AfficherToutPublication;
@@ -39,10 +39,12 @@ public class MainForm extends Form {
     Resources theme = UIManager.initFirstTheme("/theme");
     Label label;
     Form connexion;
-
+    public static Form accueilFrontForm;
+            
     public MainForm(Form previous) {
         super(new BorderLayout());
         connexion = previous;
+        accueilFrontForm = this;
         addGUIs();
 
         getToolbar().hideToolbar();
@@ -81,10 +83,9 @@ public class MainForm extends Form {
         userContainer.addAll(userImage, label, btnDeconnexion);
 
         Container menuContainer = new Container(new BoxLayout(BoxLayout.Y_AXIS));
-        menuContainer.addAll(
-                topLabel,
+        menuContainer.addAll(topLabel,
                 userContainer,
-                makeButton("    Messagerie", FontImage.MATERIAL_CHAT, new AfficherMessagerie(this)),
+                makeButton("    Messagerie", FontImage.MATERIAL_CHAT, new AfficherConversations(this)),
                 makeButton("    Categories d'offres", FontImage.MATERIAL_CATEGORY, new AfficherToutCategorie(this)),
                 makeButton("    Missions", FontImage.MATERIAL_TRACK_CHANGES, new AfficherToutMission(this)),
                 makeButton("    Evenements", FontImage.MATERIAL_EVENT, new AfficherToutEvenement(this)),

@@ -63,7 +63,7 @@ public class CandidatureOffreService {
                                 (String) obj.get("etat")
                         );
                     } catch (NullPointerException e) {
-                        resultCode = 404;
+                        System.out.println("Aucune candidature pour offre" + offreDeTravailId + " candidat " + candidatId);
                     }
 
                 } catch (IOException ex) {
@@ -73,11 +73,12 @@ public class CandidatureOffreService {
                 cr.removeResponseListener(this);
             }
         });
-        NetworkManager.getInstance().addToQueueAndWait(cr);
+        try {
+            NetworkManager.getInstance().addToQueueAndWait(cr);
+        } catch (Exception e) {
 
-        if (resultCode == 404) {
-            return null;
         }
+
         return candidatureOffre;
 
     }

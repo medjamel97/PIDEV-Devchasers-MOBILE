@@ -27,6 +27,7 @@ import com.codename1.ui.util.Resources;
 import com.devchasers.khedemti.MainApp;
 import com.devchasers.khedemti.entities.CandidatureOffre;
 import com.devchasers.khedemti.entities.Revue;
+import com.devchasers.khedemti.services.CandidatureOffreService;
 import com.devchasers.khedemti.services.RevueService;
 import java.util.ArrayList;
 
@@ -56,6 +57,13 @@ public class AfficherToutRevue extends Form {
         getToolbar().addMaterialCommandToLeftBar("  ", FontImage.MATERIAL_ARROW_BACK, e -> previous.showBack());
     }
 
+    public void refresh() {
+        this.removeAll();
+        addGUIs();
+        addActions();
+        this.refreshTheme();
+    }
+
     private void addGUIs() {
         btnAjouter = new Button("Nouvelle revue");
         btnAjouter.setUIID("newButton");
@@ -66,8 +74,7 @@ public class AfficherToutRevue extends Form {
 
         ArrayList<Revue> listRevues = RevueService.getInstance().recupererRevues();
         for (int i = 0; i < listRevues.size(); i++) {
-            tabs.addTab("Tab", new Label("hahha" + i));
-            //tabs.getTab(BorderLayout.NORTH, creerRevue(listRevues.get(i)));
+            this.add(creerRevue(listRevues.get(i)));
         }
 
         this.add(tabs);
@@ -144,10 +151,12 @@ public class AfficherToutRevue extends Form {
             btnClose.addActionListener((ee) -> dlg.dispose());
             Button btnConfirm = new Button("Confirmer");
             btnConfirm.addActionListener(actionConf -> {
-                RevueService.getInstance().supprimerRevue(revue);
+                RevueService.getInstance().supprimerRevue(revue.getId());
                 revueActuelle = null;
                 dlg.dispose();
-                addGUIs();
+                
+                revueModel.remove();
+                this.refreshTheme();
             });
             Container btnContainer = new Container(new BoxLayout(BoxLayout.X_AXIS));
             btnContainer.addAll(btnClose, btnConfirm);
@@ -158,7 +167,7 @@ public class AfficherToutRevue extends Form {
 
         });
 
-        if (revue.getIdCandidatureOffre() == MainApp.getSession().getId()) {
+        if (revue.getIdCandidat() == MainApp.getSession().getCandidatId()) {
             btnsContainer.addAll(btnModifier, btnSupprimer);
         }
         revueModel.addAll(labelDateCreation, userContainer, nbEtoilesContainer, labelObjet, spanLabelDescription, btnsContainer);

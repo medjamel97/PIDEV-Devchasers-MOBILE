@@ -11,12 +11,13 @@ package com.devchasers.khedemti.entities;
  */
 public class Revue {
 
-    private int id, idCandidatureOffre, nbEtoiles;
+    private int id, idCandidat, idCandidatureOffre, nbEtoiles;
     private String nomCandidat, prenomCandidat, idPhotoCandidat, nomSociete, objet, description;
     private String dateCreation;
 
     // pour affichage
-    public Revue(int idCandidatureOffre, int nbEtoiles, String nomCandidat, String prenomCandidat, String idPhotoCandidat, String nomSociete, String objet, String description, String dateCreation) {
+    public Revue(int id, int idCandidatureOffre, int nbEtoiles, String nomCandidat, String prenomCandidat, String idPhotoCandidat, String nomSociete, String objet, String description, String dateCreation) {
+        this.id = id;
         this.idCandidatureOffre = idCandidatureOffre;
         this.nbEtoiles = nbEtoiles;
         this.nomCandidat = nomCandidat;
@@ -27,7 +28,6 @@ public class Revue {
         this.description = description;
         this.dateCreation = dateCreation;
     }
-    
 
     // pour ajout
     public Revue(int idCandidatureOffre, int nbEtoiles, String objet, String description, String dateCreation) {
@@ -126,6 +126,14 @@ public class Revue {
 
     public void setDateCreation(String dateCreation) {
         this.dateCreation = dateCreation;
+    }
+
+    public int getIdCandidat() {
+        return idCandidat;
+    }
+
+    public void setIdCandidat(int idCandidat) {
+        this.idCandidat = idCandidat;
     }
 
 }

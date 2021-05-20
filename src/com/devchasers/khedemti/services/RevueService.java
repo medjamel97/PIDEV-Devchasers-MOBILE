@@ -58,6 +58,7 @@ public class RevueService {
                         Revue revue = new Revue(
                                 (int) Float.parseFloat(obj.get("id").toString()),
                                 (int) Float.parseFloat(obj.get("idCandidatureOffre").toString()),
+                                (int) Float.parseFloat(obj.get("nbEtoiles").toString()),
                                 (String) obj.get("nomCandidat"),
                                 (String) obj.get("prenomCandidat"),
                                 (String) obj.get("idPhotoCandidat"),
@@ -66,6 +67,8 @@ public class RevueService {
                                 (String) obj.get("description"),
                                 (String) obj.get("dateCreation")
                         );
+
+                        revue.setIdCandidat((int) Float.parseFloat(obj.get("idCandidat").toString()));
 
                         listRevues.add(revue);
                     }
@@ -77,7 +80,11 @@ public class RevueService {
                 cr.removeResponseListener(this);
             }
         });
-        NetworkManager.getInstance().addToQueueAndWait(cr);
+        try {
+            NetworkManager.getInstance().addToQueueAndWait(cr);
+        } catch (Exception e) {
+
+        }
         return listRevues;
     }
 
@@ -105,12 +112,17 @@ public class RevueService {
                 cr.removeResponseListener(this);
             }
         });
-        NetworkManager.getInstance().addToQueueAndWait(cr);
+        try {
+            NetworkManager.getInstance().addToQueueAndWait(cr);
+        } catch (Exception e) {
+
+        }
         return listSocieteOffre;
     }
 
     public int ajouterRevue(Revue revue) {
-        cr.setUrl(Statics.BASE_URL + "/mobile/manipuler_interview");
+        cr.setUrl(Statics.BASE_URL + "/mobile/manipuler_revue");
+        cr.addArgument("idCandidatureOffre", String.valueOf(revue.getIdCandidatureOffre()));
         cr.addArgument("nbEtoiles", String.valueOf(revue.getNbEtoiles()));
         cr.addArgument("objet", revue.getObjet());
         cr.addArgument("description", revue.getDescription());
@@ -119,16 +131,20 @@ public class RevueService {
             @Override
             public void actionPerformed(NetworkEvent evt) {
                 resultCode = cr.getResponseCode();
-                cr.removeResponseListener(this);
 
+                cr.removeResponseListener(this);
             }
         });
-        NetworkManager.getInstance().addToQueueAndWait(cr);
+        try {
+            NetworkManager.getInstance().addToQueueAndWait(cr);
+        } catch (Exception e) {
+
+        }
         return resultCode;
     }
 
     public int modifierRevue(Revue revue) {
-        cr.setUrl(Statics.BASE_URL + "/mobile/manipuler_interview");
+        cr.setUrl(Statics.BASE_URL + "/mobile/manipuler_revue");
         cr.addArgument("id", String.valueOf(revue.getId()));
         cr.addArgument("nbEtoiles", String.valueOf(revue.getNbEtoiles()));
         cr.addArgument("objet", revue.getObjet());
@@ -142,22 +158,21 @@ public class RevueService {
 
             }
         });
-        NetworkManager.getInstance().addToQueueAndWait(cr);
+        try {
+            NetworkManager.getInstance().addToQueueAndWait(cr);
+        } catch (Exception e) {
+
+        }
         return resultCode;
     }
 
-    public int supprimerRevue(Revue revue) {
+    public void supprimerRevue(int revueId) {
         cr.setUrl(Statics.BASE_URL + "/mobile/supprimer_revue");
-        cr.addArgument("id", String.valueOf(revue.getId()));
-        cr.addResponseListener(new ActionListener<NetworkEvent>() {
-            @Override
-            public void actionPerformed(NetworkEvent evt) {
-                resultCode = cr.getResponseCode();
-                cr.removeResponseListener(this);
+        cr.addArgument("id", String.valueOf(revueId));
+        try {
+            NetworkManager.getInstance().addToQueueAndWait(cr);
+        } catch (Exception e) {
 
-            }
-        });
-        NetworkManager.getInstance().addToQueueAndWait(cr);
-        return resultCode;
+        }
     }
 }

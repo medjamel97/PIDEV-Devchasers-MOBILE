@@ -19,6 +19,7 @@ import com.codename1.ui.plaf.UIManager;
 import com.codename1.ui.util.Resources;
 import com.devchasers.khedemti.MainApp;
 import com.devchasers.khedemti.entities.Revue;
+import static com.devchasers.khedemti.gui.front_end.revue.AfficherToutRevue.revueActuelle;
 import com.devchasers.khedemti.services.RevueService;
 
 /**
@@ -38,12 +39,15 @@ public class ManipulerRevue extends Form {
     Button[] stars = {new Button(), new Button(), new Button(), new Button(), new Button()};
     Button btnManipuler;
 
-    public ManipulerRevue(Form previous) {
+    Form previous;
 
+    public ManipulerRevue(Form previous) {
         super(
                 AfficherToutRevue.revueActuelle == null ? "Nouvelle revue" : "Modifier ma revue",
                 new BoxLayout(BoxLayout.Y_AXIS)
         );
+        this.previous = previous;
+
         addGUIs();
         addActions();
 
@@ -99,7 +103,7 @@ public class ManipulerRevue extends Form {
                 if (controleDeSaisie()) {
                     int responseCode = RevueService.getInstance().ajouterRevue(
                             new Revue(
-                                    MainApp.getSession().getCandidatId(),
+                                    AfficherToutRevue.candidatureOffreActuelle.getId(),
                                     nbEtoiles,
                                     tfObjet.getText(),
                                     tfDescription.getText(),
@@ -111,19 +115,30 @@ public class ManipulerRevue extends Form {
                     } else {
                         Dialog.show("Erreur", "Erreur d'ajout de revue. Code d'erreur : " + responseCode, new Command("Ok"));
                     }
+
+                    ((AfficherToutRevue) previous).refresh();
+                    previous.showBack();
                 }
             });
         } else {
             btnManipuler.addActionListener(action -> {
-                RevueService.getInstance().modifierRevue(
-                        new Revue(
-                                AfficherToutRevue.candidatureOffreActuelle.getId(),
-                                nbEtoiles,
-                                tfObjet.getText(),
-                                tfDescription.getText(),
-                                null
-                        )
-                );
+                if (controleDeSaisie()) {
+                    RevueService.getInstance().modifierRevue(
+                            new Revue(
+                                    revueActuelle.getId(),
+                                    AfficherToutRevue.candidatureOffreActuelle.getId(),
+                                    nbEtoiles,
+                                    tfObjet.getText(),
+                                    tfDescription.getText(),
+                                    null
+                            )
+                    );
+
+                    Dialog.show("Succés", "Revue modifié avec succes", new Command("Ok"));
+
+                    ((AfficherToutRevue) previous).refresh();
+                    previous.showBack();
+                }
             });
         }
     }
