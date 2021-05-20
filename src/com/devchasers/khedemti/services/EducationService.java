@@ -71,7 +71,7 @@ public class EducationService {
                     }
 
                 } catch (IOException ex) {
-                    System.out.println(ex.getMessage());
+                     System.out.println("Education vide");
                 }
 
                 cr.removeResponseListener(this);

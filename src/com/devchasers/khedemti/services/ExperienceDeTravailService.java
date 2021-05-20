@@ -70,7 +70,7 @@ public class ExperienceDeTravailService {
                     }
 
                 } catch (IOException ex) {
-                    System.out.println(ex.getMessage());
+                    System.out.println("ExperienceDeTravail vide");
                 }
 
                 cr.removeResponseListener(this);

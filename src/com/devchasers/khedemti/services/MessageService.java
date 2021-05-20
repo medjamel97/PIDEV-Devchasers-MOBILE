@@ -72,7 +72,7 @@ public class MessageService {
                         }
                     }
                 } catch (IOException ex) {
-                    System.out.println(ex.getMessage());
+                    System.out.println("Message vide");
                 }
 
                 cr.removeResponseListener(this);
@@ -96,7 +96,6 @@ public class MessageService {
             public void actionPerformed(NetworkEvent evt) {
                 resultCode = cr.getResponseCode();
                 cr.removeResponseListener(this);
-
             }
         });
         try {

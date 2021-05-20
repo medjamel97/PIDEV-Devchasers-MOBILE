@@ -56,6 +56,9 @@ public class CommentaireService {
                     ));
                     List<Map<String, Object>> list = (List<Map<String, Object>>) tasksListJson.get("root");
 
+                    System.out.println("debug");
+                    System.out.println(list);
+
                     for (Map<String, Object> obj : list) {
                         Commentaire commentaire = new Commentaire(
                                 (int) Float.parseFloat(obj.get("id").toString()),
@@ -66,9 +69,8 @@ public class CommentaireService {
 
                         listCommentaires.add(commentaire);
                     }
-
                 } catch (IOException ex) {
-                    System.out.println(ex.getMessage());
+                    System.out.println("Commentaire vide");
                 }
 
                 cr.removeResponseListener(this);
@@ -81,14 +83,13 @@ public class CommentaireService {
         }
         return listCommentaires;
     }
-    
 
     public int ajouterCommentaire(Commentaire commentaire) {
         cr.setUrl(Statics.BASE_URL + "/mobile/ajouter_commentaire");
-       cr.addArgument("idUser", String.valueOf(MainApp.getSession().getId()));
-           cr.addArgument("idPub", String.valueOf(commentaire.getPublicationId()));
+        cr.addArgument("idUser", String.valueOf(MainApp.getSession().getId()));
+        cr.addArgument("idPub", String.valueOf(commentaire.getPublicationId()));
         cr.addArgument("description", commentaire.getDescription());
-      
+
         cr.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
             public void actionPerformed(NetworkEvent evt) {
@@ -106,12 +107,12 @@ public class CommentaireService {
     }
 
     public int modifierCommentaire(Commentaire commentaire) {
-     cr.setUrl(Statics.BASE_URL + "/mobile/manipuler_commentaire");
-       cr.addArgument("idUser", String.valueOf(MainApp.getSession().getId()));
-           cr.addArgument("idPub", String.valueOf(commentaire.getPublicationId()));
-               cr.addArgument("id", String.valueOf(commentaire.getId()));
+        cr.setUrl(Statics.BASE_URL + "/mobile/manipuler_commentaire");
+        cr.addArgument("idUser", String.valueOf(MainApp.getSession().getId()));
+        cr.addArgument("idPub", String.valueOf(commentaire.getPublicationId()));
+        cr.addArgument("id", String.valueOf(commentaire.getId()));
         cr.addArgument("description", commentaire.getDescription());
-      
+
         cr.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
             public void actionPerformed(NetworkEvent evt) {

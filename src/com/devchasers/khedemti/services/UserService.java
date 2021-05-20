@@ -61,7 +61,7 @@ public class UserService {
                     }
 
                 } catch (IOException ex) {
-                    System.out.println(ex.getMessage());
+                    System.out.println("User vide");
                 }
 
                 cr.removeResponseListener(this);
@@ -102,7 +102,7 @@ public class UserService {
                     }
 
                 } catch (IOException ex) {
-                    System.out.println(ex.getMessage());
+                    System.out.println("User vide");
                 }
 
                 cr.removeResponseListener(this);
@@ -133,7 +133,7 @@ public class UserService {
                     userVerif = Boolean.valueOf((String) tasksListJson.get("isValid"));;
 
                 } catch (IOException ex) {
-                    System.out.println(ex.getMessage());
+                    System.out.println("User vide");
                 }
 
                 cr.removeResponseListener(this);

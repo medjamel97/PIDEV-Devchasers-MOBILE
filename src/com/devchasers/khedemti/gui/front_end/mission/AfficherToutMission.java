@@ -17,12 +17,11 @@ import com.codename1.ui.plaf.UIManager;
 import com.codename1.ui.util.Resources;
 import com.devchasers.khedemti.entities.Mission;
 import com.devchasers.khedemti.services.MissionService;
-import com.devchasers.khedemti.services.RevueService;
 import java.util.ArrayList;
-import java.util.Map;
 
 public class AfficherToutMission extends Form {
-   Container missionsContainer;
+
+    Container missionsContainer;
     Resources theme = UIManager.initFirstTheme("/theme");
 
     Button button;
@@ -36,44 +35,44 @@ public class AfficherToutMission extends Form {
     }
 
     private void addGUIs() {
-   ArrayList<Mission> listMission = MissionService.getInstance().recupererMissions();
-        missionsContainer = new Container(new GridLayout(3));
+        ArrayList<Mission> listMission = MissionService.getInstance().recupererMissions();
+        missionsContainer = new Container(new GridLayout(6, 3));
         for (Mission societeOffreMap : listMission) {
             missionsContainer.add(creerMission(societeOffreMap));
         }
         this.add(missionsContainer);
     }
-    
-      private Container creerMission(Mission missionMap) {
+
+    private Container creerMission(Mission missionMap) {
 //        Map<String, Object> mission = (Map<String, Object>) missionMap;
         Container societeContainer = new Container(new BoxLayout(BoxLayout.Y_AXIS));
         Label labelNom = new Label((String) missionMap.getNom());
         labelNom.setUIID("centerLabel");
 
         ImageViewer image;
-        
-            String url = "http://localhost/" + missionMap.getNom();
-            image = new ImageViewer(
-                    URLImage.createToStorage(
-                            EncodedImage.createFromImage(theme.getImage("default.jpg"), false),
-                            url,
-                            url,
-                            URLImage.RESIZE_SCALE
-                    )
-            );
-       
+
+        String url = "http://localhost/" + missionMap.getNom();
+        image = new ImageViewer(
+                URLImage.createToStorage(
+                        EncodedImage.createFromImage(theme.getImage("default.jpg"), false),
+                        url,
+                        url,
+                        URLImage.RESIZE_SCALE
+                )
+        );
+
         image.setUIID("imageSociete");
         image.setFocusable(false);
         image.setPreferredH(360);
         image.setPreferredW(360);
 
-        Label labelTel = new Label(((String) missionMap.getDescription()).replace('T', Character.MIN_VALUE));
+        Label labelTel = new Label((String) missionMap.getDescription());
         labelTel.setUIID("centerLabel");
 
         societeContainer.setUIID("societeContainer");
         int dw = Display.getInstance().getDisplayWidth();
         societeContainer.setPreferredW(dw / 3);
-        societeContainer.setPreferredH(dw + dw / 10);
+        societeContainer.setPreferredH(dw / 2);
         societeContainer.addAll(labelNom, image, labelTel);
 
         Button societeBtn = new Button();
@@ -83,15 +82,12 @@ public class AfficherToutMission extends Form {
 //            } else {
 //                Dialog.show("Information", "Aucune offre de travail pour cette societe", new Command("Ok"));
 //            }
- Dialog.show("Information", "Aucune offre de travail pour cette societe", new Command("Ok"));
+            Dialog.show("Information", "Aucune offre de travail pour cette societe", new Command("Ok"));
         });
         societeContainer.setLeadComponent(societeBtn);
         return societeContainer;
     }
 
     private void addActions() {
-        button.addActionListener(l -> {
-            new AjoutForm(this).show();
-        });
     }
 }

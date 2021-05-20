@@ -66,13 +66,13 @@ public class OffreDeTravailService {
                     }
 
                 } catch (IOException ex) {
-                    System.out.println(ex.getMessage());
+                    System.out.println("OffreDeTravail vide");
                 }
 
                 cr.removeResponseListener(this);
             }
         });
-        
+
         try {
             NetworkManager.getInstance().addToQueueAndWait(cr);
         } catch (Exception e) {
@@ -106,7 +106,7 @@ public class OffreDeTravailService {
                     }
 
                 } catch (IOException ex) {
-                    System.out.println(ex.getMessage());
+                    System.out.println("OffreDeTravail vide");
                 }
 
                 cr.removeResponseListener(this);
@@ -180,6 +180,5 @@ public class OffreDeTravailService {
         }
         return resultCode;
     }
-    
-    
+
 }

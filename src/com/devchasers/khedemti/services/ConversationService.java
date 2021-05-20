@@ -52,7 +52,6 @@ public class ConversationService {
 
                 try {
                     resultCode = cr.getResponseCode();
-                    System.out.println(resultCode);
 
                     if (resultCode != 500) {
                         listConversations = new ArrayList<>();
@@ -77,9 +76,8 @@ public class ConversationService {
                     }
 
                 } catch (IOException ex) {
-                    System.out.println(ex.getMessage());
+                    System.out.println("Conversation vide");
                 }
-
                 cr.removeResponseListener(this);
             }
         });
@@ -125,7 +123,7 @@ public class ConversationService {
                     }
 
                 } catch (IOException ex) {
-                    System.out.println(ex.getMessage());
+                    System.out.println("Conversation vide");
                 }
 
                 cr.removeResponseListener(this);

@@ -24,30 +24,30 @@ import java.util.Map;
  * @author Faten
  */
 public class CompetenceService {
-    
+
     public static CompetenceService instance = null;
     public int resultCode;
     private final ConnectionRequest cr;
     private ArrayList<Competence> listCompetences;
-    
+
     private CompetenceService() {
         cr = new ConnectionRequest();
     }
-    
+
     public static CompetenceService getInstance() {
         if (instance == null) {
             instance = new CompetenceService();
         }
         return instance;
     }
-    
+
     public ArrayList<Competence> recupererCompetence() {
         cr.setUrl(Statics.BASE_URL + "/mobile/recuperer_competence");
         cr.addArgument("candidatId", String.valueOf(MainApp.getSession().getCandidatId()));
         cr.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
             public void actionPerformed(NetworkEvent evt) {
-                
+
                 try {
                     listCompetences = new ArrayList<>();
                     Map<String, Object> tasksListJson = new JSONParser().parseJSON(new CharArrayReader(
@@ -62,14 +62,14 @@ public class CompetenceService {
                                 (String) obj.get("name"),
                                 (int) Float.parseFloat(obj.get("level").toString())
                         );
-                        
+
                         listCompetences.add(competence);
                     }
-                    
+
                 } catch (IOException ex) {
-                    System.out.println(ex.getMessage());
+                      System.out.println("Competence vide");
                 }
-                
+
                 cr.removeResponseListener(this);
             }
         });
@@ -80,19 +80,19 @@ public class CompetenceService {
         }
         return listCompetences;
     }
-    
+
     public int ajouterCompetence(Competence competence) {
         cr.setUrl(Statics.BASE_URL + "/mobile/ajouter_competence");
         cr.addArgument("candidatId", String.valueOf(MainApp.getSession().getCandidatId()));
         cr.addArgument("level", String.valueOf(competence.getLevel()));
         cr.addArgument("name", competence.getName());
-        
+
         cr.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
             public void actionPerformed(NetworkEvent evt) {
                 resultCode = cr.getResponseCode();
                 cr.removeResponseListener(this);
-                
+
             }
         });
         try {
@@ -102,7 +102,7 @@ public class CompetenceService {
         }
         return resultCode;
     }
-    
+
     public int modifierCompetence(Competence competence) {
         cr.setUrl(Statics.BASE_URL + "/mobile/modifier_competence");
         cr.addArgument("id", String.valueOf(competence.getId()));
@@ -113,7 +113,7 @@ public class CompetenceService {
             public void actionPerformed(NetworkEvent evt) {
                 resultCode = cr.getResponseCode();
                 cr.removeResponseListener(this);
-                
+
             }
         });
         try {
@@ -123,7 +123,7 @@ public class CompetenceService {
         }
         return resultCode;
     }
-    
+
     public int supprimerCompetence(Competence competence) {
         cr.setUrl(Statics.BASE_URL + "/mobile/supprimer_competence");
         cr.addArgument("id", String.valueOf(competence.getId()));
@@ -132,7 +132,7 @@ public class CompetenceService {
             public void actionPerformed(NetworkEvent evt) {
                 resultCode = cr.getResponseCode();
                 cr.removeResponseListener(this);
-                
+
             }
         });
         try {
@@ -142,5 +142,5 @@ public class CompetenceService {
         }
         return resultCode;
     }
-    
+
 }

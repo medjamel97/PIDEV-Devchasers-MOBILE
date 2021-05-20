@@ -72,7 +72,7 @@ public class PublicationService {
                     }
 
                 } catch (IOException ex) {
-                    System.out.println(ex.getMessage());
+                    System.out.println("Publication vide");
                 }
 
                 cr.removeResponseListener(this);
@@ -104,7 +104,7 @@ public class PublicationService {
                     }
 
                 } catch (IOException ex) {
-                    System.out.println(ex.getMessage());
+                    System.out.println("Publication vide");
                 }
 
                 cr.removeResponseListener(this);

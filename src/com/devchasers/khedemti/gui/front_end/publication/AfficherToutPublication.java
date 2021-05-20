@@ -144,7 +144,8 @@ Display.getInstance().sendMessage(new String[] {"m3hr3li@gmail.com"}, "Veillez s
         });
 
         commentaireContainer = new Container(new BoxLayout(BoxLayout.Y_AXIS));
-        ArrayList<Commentaire> listCommentaires = CommentaireService.getInstance().recupererCommentaires(publication.getId());
+        System.out.println(publication.getId());
+        ArrayList<Commentaire> listCommentaires = CommentaireService.getInstance().recupererCommentaires(1);
         for (int i = 0; i < listCommentaires.size(); i++) {
             commentaireContainer.add(creerCommentaire(listCommentaires.get(i)));
         }

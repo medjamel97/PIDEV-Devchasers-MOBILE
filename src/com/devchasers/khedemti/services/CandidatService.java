@@ -71,7 +71,7 @@ public class CandidatService {
                     }
 
                 } catch (IOException ex) {
-                    System.out.println(ex.getMessage());
+                    System.out.println("Candidat vide");
                 }
 
                 cr.removeResponseListener(this);
@@ -113,7 +113,7 @@ public class CandidatService {
                     }
 
                 } catch (IOException ex) {
-                    System.out.println(ex.getMessage());
+                    System.out.println("Candidat vide");
                 }
 
                 cr.removeResponseListener(this);
@@ -130,8 +130,7 @@ public class CandidatService {
     public void supprimerCandidat(int candidatId) {
         cr.setUrl(Statics.BASE_URL + "/mobile/supprimer_candidat");
         cr.addArgument("candidatId", String.valueOf(candidatId));
-       
-            
+
         try {
             NetworkManager.getInstance().addToQueueAndWait(cr);
         } catch (Exception e) {

@@ -68,7 +68,7 @@ public class CandidatureOffreService {
                     }
 
                 } catch (IOException ex) {
-                    System.out.println(ex.getMessage());
+                    System.out.println("Candidature offre vide");
                 }
 
                 cr.removeResponseListener(this);
@@ -109,7 +109,7 @@ public class CandidatureOffreService {
                     }
 
                 } catch (IOException ex) {
-                    System.out.println(ex.getMessage());
+                    System.out.println("Candidature offre vide");
                 }
 
                 cr.removeResponseListener(this);

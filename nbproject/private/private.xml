@@ -4,7 +4,20 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Projects/PIDEV-2021/PIDEV-MOBILE/src/com/devchasers/khedemti/gui/front_end/publication/sms.java</file>
+            <file>file:/D:/Projects/PIDEV-2021/PIDEV-MOBILE/src/com/devchasers/khedemti/services/CommentaireService.java</file>
+            <file>file:/D:/Projects/PIDEV-2021/PIDEV-MOBILE/src/com/devchasers/khedemti/services/ContactsService.java</file>
+            <file>file:/D:/Projects/PIDEV-2021/PIDEV-MOBILE/src/com/devchasers/khedemti/services/ConversationService.java</file>
+            <file>file:/D:/Projects/PIDEV-2021/PIDEV-MOBILE/src/com/devchasers/khedemti/services/UserService.java</file>
+            <file>file:/D:/Projects/PIDEV-2021/PIDEV-MOBILE/src/com/devchasers/khedemti/services/MessageService.java</file>
+            <file>file:/D:/Projects/PIDEV-2021/PIDEV-MOBILE/src/com/devchasers/khedemti/services/ExperienceDeTravailService.java</file>
+            <file>file:/D:/Projects/PIDEV-2021/PIDEV-MOBILE/src/com/devchasers/khedemti/services/CandidatService.java</file>
+            <file>file:/D:/Projects/PIDEV-2021/PIDEV-MOBILE/src/com/devchasers/khedemti/services/PublicationService.java</file>
+            <file>file:/D:/Projects/PIDEV-2021/PIDEV-MOBILE/src/com/devchasers/khedemti/services/OffreDeTravailService.java</file>
+            <file>file:/D:/Projects/PIDEV-2021/PIDEV-MOBILE/src/com/devchasers/khedemti/services/EducationService.java</file>
+            <file>file:/D:/Projects/PIDEV-2021/PIDEV-MOBILE/src/com/devchasers/khedemti/services/RevueService.java</file>
+            <file>file:/D:/Projects/PIDEV-2021/PIDEV-MOBILE/src/com/devchasers/khedemti/services/CandidatureOffreService.java</file>
+            <file>file:/D:/Projects/PIDEV-2021/PIDEV-MOBILE/src/com/devchasers/khedemti/gui/front_end/mission/AfficherToutMission.java</file>
+            <file>file:/D:/Projects/PIDEV-2021/PIDEV-MOBILE/src/com/devchasers/khedemti/services/CompetenceService.java</file>
         </group>
     </open-files>
 </project-private>

@@ -29,7 +29,7 @@ import javafx.stage.Stage;
 
 public class AfficherMesMissions extends Form {
 
-    public static Mission currentMission=null;
+    public static Mission currentMission = null;
     Container missionsContainer;
     Resources theme = UIManager.initFirstTheme("/theme");
     Form current;
@@ -90,7 +90,7 @@ public class AfficherMesMissions extends Form {
         image.setPreferredH(360);
         image.setPreferredW(360);
 
-        Label labelTel = new Label(((String) missionMap.getDescription()).replace('T', Character.MIN_VALUE));
+        Label labelTel = new Label((String) missionMap.getDescription());
         labelTel.setUIID("centerLabel");
         Button btnModifier = new Button("Modifier");
         btnModifier.setUIID("actionButton");
@@ -126,14 +126,14 @@ public class AfficherMesMissions extends Form {
         });
         missionContainer.setUIID("missionContainer");
         int dw = Display.getInstance().getDisplayWidth();
-        missionContainer.setPreferredW(dw );
-        missionContainer.setPreferredH((dw*3) / 4);
+        missionContainer.setPreferredW(dw);
+        missionContainer.setPreferredH((dw * 3) / 4);
         missionContainer.setHeight(dw);
-        Container btn1Container = new Container(new GridLayout(1,2));
-         Container imageContainer = new Container();
-         imageContainer.add(image);
+        Container btn1Container = new Container(new GridLayout(1, 2));
+        Container imageContainer = new Container();
+        imageContainer.add(image);
         btn1Container.addAll(btnModifier, btnSupprimer);
-        missionContainer.addAll(labelNom, imageContainer, labelTel,btn1Container);
+        missionContainer.addAll(labelNom, imageContainer, labelTel, btn1Container);
 
         Button missionBtn = new Button();
         missionBtn.addActionListener(l -> {
@@ -142,7 +142,7 @@ public class AfficherMesMissions extends Form {
 //            } else {
 //                Dialog.show("Information", "Aucune offre de travail pour cette mission", new Command("Ok"));
 //            }
-              currentMission=missionMap;
+            currentMission = missionMap;
 //            Dialog.show("Information", "Aucune offre de travail pour cette mission", new Command("Ok"));
             Form hi = new Form("Browser", new BorderLayout());
             BrowserComponent browser = new BrowserComponent();

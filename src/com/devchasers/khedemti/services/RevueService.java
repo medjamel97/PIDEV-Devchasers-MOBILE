@@ -74,7 +74,7 @@ public class RevueService {
                     }
 
                 } catch (IOException ex) {
-                    System.out.println(ex.getMessage());
+                    System.out.println("Revue vide");
                 }
 
                 cr.removeResponseListener(this);
@@ -106,7 +106,7 @@ public class RevueService {
                     }
 
                 } catch (IOException ex) {
-                    System.out.println(ex.getMessage());
+                    System.out.println("Revue vide");
                 }
 
                 cr.removeResponseListener(this);
