@@ -4,6 +4,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< Updated upstream
             <file>file:/D:/Projects/PIDEV-2021/PIDEV-MOBILE/src/com/devchasers/khedemti/services/CommentaireService.java</file>
             <file>file:/D:/Projects/PIDEV-2021/PIDEV-MOBILE/src/com/devchasers/khedemti/services/ContactsService.java</file>
             <file>file:/D:/Projects/PIDEV-2021/PIDEV-MOBILE/src/com/devchasers/khedemti/services/ConversationService.java</file>
@@ -18,6 +19,18 @@
             <file>file:/D:/Projects/PIDEV-2021/PIDEV-MOBILE/src/com/devchasers/khedemti/services/CandidatureOffreService.java</file>
             <file>file:/D:/Projects/PIDEV-2021/PIDEV-MOBILE/src/com/devchasers/khedemti/gui/front_end/mission/AfficherToutMission.java</file>
             <file>file:/D:/Projects/PIDEV-2021/PIDEV-MOBILE/src/com/devchasers/khedemti/services/CompetenceService.java</file>
+=======
+            <file>file:/C:/Users/Meriem/Documents/NetBeansProjects/LouayCodenamone/PIDEV-Devchasers-MOBILE/src/com/devchasers/khedemti/services/UserService.java</file>
+            <file>file:/C:/Users/Meriem/Documents/NetBeansProjects/LouayCodenamone/PIDEV-Devchasers-MOBILE/src/com/devchasers/khedemti/services/RevueService.java</file>
+            <file>file:/C:/Users/Meriem/Documents/NetBeansProjects/LouayCodenamone/PIDEV-Devchasers-MOBILE/src/com/devchasers/khedemti/services/CandidatureOffreService.java</file>
+            <file>file:/C:/Users/Meriem/Documents/NetBeansProjects/LouayCodenamone/PIDEV-Devchasers-MOBILE/src/com/devchasers/khedemti/entities/OffreDeTravail.java</file>
+            <file>file:/C:/Users/Meriem/Documents/NetBeansProjects/LouayCodenamone/PIDEV-Devchasers-MOBILE/src/com/devchasers/khedemti/entities/Event.java</file>
+            <file>file:/C:/Users/Meriem/Documents/NetBeansProjects/LouayCodenamone/PIDEV-Devchasers-MOBILE/src/com/devchasers/khedemti/services/ServiceEvent.java</file>
+            <file>file:/C:/Users/Meriem/Documents/NetBeansProjects/LouayCodenamone/PIDEV-Devchasers-MOBILE/src/com/devchasers/khedemti/gui/front_end/evenement/DetailEventForm.java</file>
+            <file>file:/C:/Users/Meriem/Documents/NetBeansProjects/LouayCodenamone/PIDEV-Devchasers-MOBILE/src/com/devchasers/khedemti/entities/Interview.java</file>
+            <file>file:/C:/Users/Meriem/Documents/NetBeansProjects/LouayCodenamone/PIDEV-Devchasers-MOBILE/src/com/devchasers/khedemti/entities/Formation.java</file>
+            <file>file:/C:/Users/Meriem/Documents/NetBeansProjects/LouayCodenamone/PIDEV-Devchasers-MOBILE/src/com/devchasers/khedemti/gui/front_end/evenement/AfficherToutEvenement.java</file>
+>>>>>>> Stashed changes
         </group>
     </open-files>
 </project-private>
