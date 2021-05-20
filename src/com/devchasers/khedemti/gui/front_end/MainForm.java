@@ -42,6 +42,7 @@ public class MainForm extends Form {
             
     public MainForm(Form previous) {
         super(new BorderLayout());
+        mainForm = this;
         connexion = previous;
         accueilFrontForm = this;
         addGUIs();

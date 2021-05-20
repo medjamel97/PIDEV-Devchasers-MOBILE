@@ -116,6 +116,8 @@
         <border key="conversationContainer.sel#border" type="line" millimeters="false" thickness="1.0" color="13421772" />
         <val key="conversationContainer.sel#margin" value="10.0,10.0,10.0,10.0" />
         <val key="conversationContainer.sel#padding" value="50.0,50.0,50.0,50.0" />
+        <val key="containerLevel.margin" value="30.0,30.0,0.0,0.0" />
+        <val key="containerLevel.padding" value="30.0,30.0,30.0,30.0" />
         <val key="dateLabel.align" value="3" />
         <font key="defaultLabel.font" type="system" face="0" style="1" size="0" />
         <val key="description.fgColor" value="666666" />
