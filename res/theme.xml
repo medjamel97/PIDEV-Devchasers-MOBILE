@@ -11,6 +11,7 @@
     <image name="buttonSuccess.borderTopL_1.png" type="multi"  />
     <image name="buttonSuccess.borderTopR_1.png" type="multi"  />
     <image name="default.jpg"  />
+    <image name="done.png"  />
     <image name="share.png"  />
     <image name="star-outline.png" type="multi"  />
     <image name="star.png" type="multi"  />
@@ -137,6 +138,17 @@
         <val key="newButton.sel#fgColor" value="1a80c8" />
         <val key="newButton.sel#margin" value="50.0,50.0,50.0,50.0" />
         <val key="newButton.sel#padding" value="50.0,50.0,50.0,50.0" />
+        <val key="publicationButton.align" value="4" />
+        <border key="publicationButton.border" type="roundRect" strokeColor="13421772" strokeOpacity="255" strokeThickness="1.0" strokeMM="false" shadowSpread="10.0" shadowOpacity="0" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" topOnlyMode="false" bottomOnlyMode="false" cornerRadius="4.0" bezierCorners="false" />
+        <val key="publicationButton.press#align" value="4" />
+        <border key="publicationButton.press#border" type="roundRect" strokeColor="13421772" strokeOpacity="255" strokeThickness="1.0" strokeMM="false" shadowSpread="10.0" shadowOpacity="0" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" topOnlyMode="false" bottomOnlyMode="false" cornerRadius="4.0" bezierCorners="false" />
+        <val key="publicationButton.sel#align" value="4" />
+        <border key="publicationButton.sel#border" type="roundRect" strokeColor="13421772" strokeOpacity="255" strokeThickness="1.0" strokeMM="false" shadowSpread="10.0" shadowOpacity="0" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" topOnlyMode="false" bottomOnlyMode="false" cornerRadius="4.0" bezierCorners="false" />
+        <border key="publicationContainer.border" type="roundRect" strokeColor="10066329" strokeOpacity="255" strokeThickness="1.5" strokeMM="false" shadowSpread="10.0" shadowOpacity="0" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" topOnlyMode="false" bottomOnlyMode="false" cornerRadius="2.0" bezierCorners="false" />
+        <val key="publicationContainer.marUnit" value="1,1,1,1" />
+        <val key="publicationContainer.margin" value="2.0,2.0,2.0,2.0" />
+        <val key="publicationContainer.padUnit" value="1,1,1,1" />
+        <val key="publicationContainer.padding" value="2.0,2.0,2.0,2.0" />
         <val key="revueButton.align" value="4" />
         <border key="revueButton.border" type="roundRect" strokeColor="13421772" strokeOpacity="255" strokeThickness="1.0" strokeMM="false" shadowSpread="10.0" shadowOpacity="0" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" topOnlyMode="false" bottomOnlyMode="false" cornerRadius="4.0" bezierCorners="false" />
         <border key="revueContainer.border" type="roundRect" strokeColor="10066329" strokeOpacity="255" strokeThickness="1.5" strokeMM="false" shadowSpread="10.0" shadowOpacity="0" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" topOnlyMode="false" bottomOnlyMode="false" cornerRadius="2.0" bezierCorners="false" />

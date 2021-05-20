@@ -50,7 +50,7 @@ public class MainForm extends Form {
 
     private void addGUIs() {
         Tabs tabs = new Tabs();
-        tabs.addTab("Accueil", FontImage.MATERIAL_HOME, 5, new AfficherToutPublication());
+        tabs.addTab("Accueil", FontImage.MATERIAL_HOME, 5, new AfficherToutPublication(this));
         tabs.addTab("Societes", FontImage.MATERIAL_APARTMENT, 5, new AfficherToutSociete());
         tabs.addTab("Offres", FontImage.MATERIAL_WORK, 5, new AfficherToutOffreDeTravail());
         tabs.addTab("Profil", FontImage.MATERIAL_ACCOUNT_BOX, 5, new AfficherProfil());
