@@ -4,7 +4,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Projects/PIDEV-2021/PIDEV-MOBILE/src/com/devchasers/khedemti/gui/front_end/MainForm.java</file>
+            <file>file:/C:/Users/Akram/Documents/GitHub/PIDEV-Devchasers-MOBILE/src/com/devchasers/khedemti/gui/back_end/mission/AfficherMesMissions.java</file>
+            <file>file:/C:/Users/Akram/Documents/GitHub/PIDEV-Devchasers-MOBILE/src/com/devchasers/khedemti/gui/back_end/mission/AddMissionForm.java</file>
+            <file>file:/C:/Users/Akram/Documents/GitHub/PIDEV-Devchasers-MOBILE/src/com/devchasers/khedemti/gui/front_end/mission/AfficherToutMission.java</file>
+            <file>file:/C:/Users/Akram/Documents/GitHub/PIDEV-Devchasers-MOBILE/src/com/devchasers/khedemti/entities/Mission.java</file>
+            <file>file:/C:/Users/Akram/Documents/GitHub/PIDEV-Devchasers-MOBILE/src/com/devchasers/khedemti/gui/front_end/revue/AfficherToutRevue.java</file>
+            <file>file:/C:/Users/Akram/Documents/GitHub/PIDEV-Devchasers-MOBILE/src/com/devchasers/khedemti/services/RevueService.java</file>
         </group>
     </open-files>
 </project-private>

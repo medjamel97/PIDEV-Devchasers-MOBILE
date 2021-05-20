@@ -1,0 +1,194 @@
+[0520/001518.797:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 11
+[0520/001518.797:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 13
+[0520/001518.797:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 15
+[0520/001518.797:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 17
+[0520/001518.797:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 19
+[0520/001518.844:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 21
+[0520/001518.844:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 25
+[0520/001518.897:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 23
+[0520/001518.897:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 29
+[0520/001518.897:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 27
+[0520/001518.929:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 31
+[0520/001518.929:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 33
+[0520/001518.959:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 35
+[0520/001518.959:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 39
+[0520/001518.959:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 37
+[0520/001518.960:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 43
+[0520/001518.961:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 47
+[0520/001518.961:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 45
+[0520/001518.961:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 49
+[0520/001518.961:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 41
+[0520/001518.961:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 51
+[0520/001518.961:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 57
+[0520/001518.961:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 55
+[0520/001518.961:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 53
+[0520/001518.961:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 59
+[0520/001518.961:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 61
+[0520/001518.961:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 63
+[0520/001518.961:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 67
+[0520/001518.961:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 65
+[0520/001518.964:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 69
+[0520/001518.964:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 71
+[0520/001518.964:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 75
+[0520/001518.964:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 77
+[0520/001518.965:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 81
+[0520/001518.965:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 85
+[0520/001518.965:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 83
+[0520/001518.965:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 87
+[0520/001518.965:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 79
+[0520/001518.965:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 91
+[0520/001518.965:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 73
+[0520/001518.965:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 89
+[0520/001746.763:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 25
+[0520/001746.879:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 29
+[0520/001746.879:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 27
+[0520/001746.879:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 31
+[0520/001746.879:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 37
+[0520/001746.879:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 35
+[0520/001746.879:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 33
+[0520/001746.879:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 41
+[0520/001746.879:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 45
+[0520/001746.879:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 39
+[0520/001746.879:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 43
+[0520/001746.879:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 51
+[0520/001746.879:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 49
+[0520/001746.879:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 55
+[0520/001746.879:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 47
+[0520/001746.879:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 57
+[0520/001746.879:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 53
+[0520/001746.879:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 59
+[0520/001746.879:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 63
+[0520/001746.879:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 61
+[0520/001746.879:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 65
+[0520/001746.879:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 69
+[0520/001746.879:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 73
+[0520/001746.879:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 71
+[0520/001746.879:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 67
+[0520/001746.879:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 75
+[0520/001746.879:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 77
+[0520/001746.879:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 81
+[0520/001746.879:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 79
+[0520/001746.879:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 87
+[0520/001746.879:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 85
+[0520/001746.879:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 83
+[0520/001746.879:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 89
+[0520/001746.879:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 93
+[0520/001747.148:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 91
+[0520/002245.180:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 9
+[0520/002245.180:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 17
+[0520/002245.180:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 19
+[0520/002245.180:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 23
+[0520/002245.190:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 21
+[0520/002245.406:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 27
+[0520/002245.406:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 29
+[0520/002245.438:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 25
+[0520/002245.438:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 31
+[0520/002245.438:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 33
+[0520/002245.438:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 41
+[0520/002245.438:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 37
+[0520/002245.438:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 39
+[0520/002245.438:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 35
+[0520/002245.438:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 45
+[0520/002245.438:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 49
+[0520/002245.438:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 47
+[0520/002245.438:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 51
+[0520/002245.438:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 55
+[0520/002245.438:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 43
+[0520/002245.438:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 57
+[0520/002245.438:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 53
+[0520/002245.438:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 59
+[0520/002245.438:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 61
+[0520/002245.438:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 63
+[0520/002245.438:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 67
+[0520/002245.438:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 69
+[0520/002245.438:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 73
+[0520/002245.438:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 71
+[0520/002245.522:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 65
+[0520/002245.669:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 75
+[0520/002252.667:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 105
+[0520/002252.667:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 91
+[0520/002252.667:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 107
+[0520/002252.667:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 109
+[0520/002252.667:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 111
+[0520/002252.667:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 113
+[0520/002252.667:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 115
+[0520/002252.667:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 117
+[0520/002252.667:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 121
+[0520/002252.667:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 123
+[0520/002252.667:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 119
+[0520/002252.667:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 127
+[0520/002252.667:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 125
+[0520/002252.667:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 129
+[0520/002252.745:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 131
+[0520/002252.745:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 135
+[0520/002252.745:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 139
+[0520/002252.745:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 133
+[0520/002252.745:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 141
+[0520/002252.745:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 143
+[0520/002252.745:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 145
+[0520/002252.745:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 137
+[0520/002252.745:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 147
+[0520/002252.745:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 149
+[0520/002252.745:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 153
+[0520/002252.745:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 151
+[0520/002252.745:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 157
+[0520/002252.745:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 163
+[0520/002252.745:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 159
+[0520/002252.745:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 155
+[0520/002252.745:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 165
+[0520/002252.745:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 161
+[0520/002252.745:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 167
+[0520/002252.745:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 171
+[0520/002252.745:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 169
+[0520/002252.745:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 173
+[0520/002252.745:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 175
+[0520/002252.745:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 177
+[0520/002253.454:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 1
+[0520/003148.562:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 3
+[0520/003148.562:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 7
+[0520/003148.578:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 13
+[0520/003148.578:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 19
+[0520/003148.593:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 21
+[0520/003148.593:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 23
+[0520/003148.593:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 25
+[0520/003148.631:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 27
+[0520/003148.631:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 29
+[0520/003156.759:INFO:CONSOLE(2)] "JQMIGRATE: Migrate is installed, version 3.3.2", source: https://www.codenameone.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.3.2 (2)
+[0520/003156.759:INFO:CONSOLE(116)] "Uncaught ReferenceError: Paddle is not defined", source: https://www.codenameone.com/ (116)
+[0520/003156.779:INFO:CONSOLE(0)] "An <img> element was lazyloaded with loading=lazy, but had no dimensions specified. Specifying dimensions improves performance. See https://crbug.com/954323", source: https://www.codenameone.com/ (0)
+[0520/003156.869:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 1
+[0520/003156.991:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 111
+[0520/003159.398:INFO:CONSOLE(2)] "JQMIGRATE: Migrate is installed, version 3.3.2", source: https://www.codenameone.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.3.2 (2)
+[0520/003159.398:INFO:CONSOLE(116)] "Uncaught ReferenceError: Paddle is not defined", source: https://www.codenameone.com/ (116)
+[0520/003159.409:INFO:CONSOLE(0)] "An <img> element was lazyloaded with loading=lazy, but had no dimensions specified. Specifying dimensions improves performance. See https://crbug.com/954323", source: https://www.codenameone.com/ (0)
+[0520/003201.303:INFO:CONSOLE(2)] "JQMIGRATE: Migrate is installed, version 3.3.2", source: https://www.codenameone.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.3.2 (2)
+[0520/003201.314:INFO:CONSOLE(116)] "Uncaught ReferenceError: Paddle is not defined", source: https://www.codenameone.com/ (116)
+[0520/003201.324:INFO:CONSOLE(0)] "An <img> element was lazyloaded with loading=lazy, but had no dimensions specified. Specifying dimensions improves performance. See https://crbug.com/954323", source: https://www.codenameone.com/ (0)
+[0520/003202.144:INFO:CONSOLE(0)] "A cookie associated with a cross-site resource at https://facebook.com/ was set without the `SameSite` attribute. A future release of Chrome will only deliver cookies with cross-site requests if they are set with `SameSite=None` and `Secure`. You can review cookies in developer tools under Application>Storage>Cookies and see more details at https://www.chromestatus.com/feature/5088147346030592 and https://www.chromestatus.com/feature/5633521622188032.", source: https://www.codenameone.com/ (0)
+[0520/003203.432:INFO:CONSOLE(0)] "A cookie associated with a cross-site resource at https://facebook.com/ was set without the `SameSite` attribute. A future release of Chrome will only deliver cookies with cross-site requests if they are set with `SameSite=None` and `Secure`. You can review cookies in developer tools under Application>Storage>Cookies and see more details at https://www.chromestatus.com/feature/5088147346030592 and https://www.chromestatus.com/feature/5633521622188032.", source: https://www.codenameone.com/ (0)
+[0520/121927.457:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 11
+[0520/121927.457:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 21
+[0520/121927.457:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 13
+[0520/121927.457:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 33
+[0520/121927.458:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 51
+[0520/121927.458:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 25
+[0520/121927.479:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 23
+[0520/121927.479:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 49
+[0520/121927.480:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 35
+[0520/121927.480:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 31
+[0520/121927.480:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 55
+[0520/121927.480:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 39
+[0520/121927.480:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 37
+[0520/121927.482:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 57
+[0520/121927.482:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 47
+[0520/121927.482:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 45
+[0520/121927.482:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 41
+[0520/121927.482:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 53
+[0520/121927.483:WARNING:spdy_session.cc(3365)] Received HEADERS for invalid stream 43
+[0520/122101.574:INFO:CONSOLE(2)] "JQMIGRATE: Migrate is installed, version 3.3.2", source: https://www.codenameone.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.3.2 (2)
+[0520/122101.581:INFO:CONSOLE(116)] "Uncaught ReferenceError: Paddle is not defined", source: https://www.codenameone.com/ (116)
+[0520/122101.585:INFO:CONSOLE(0)] "An <img> element was lazyloaded with loading=lazy, but had no dimensions specified. Specifying dimensions improves performance. See https://crbug.com/954323", source: https://www.codenameone.com/ (0)
+[0520/122103.885:INFO:CONSOLE(0)] "A cookie associated with a cross-site resource at https://facebook.com/ was set without the `SameSite` attribute. A future release of Chrome will only deliver cookies with cross-site requests if they are set with `SameSite=None` and `Secure`. You can review cookies in developer tools under Application>Storage>Cookies and see more details at https://www.chromestatus.com/feature/5088147346030592 and https://www.chromestatus.com/feature/5633521622188032.", source: https://www.codenameone.com/ (0)
+[0520/131416.005:INFO:CONSOLE(82)] "You must enable Billing on the Google Cloud Project at https://console.cloud.google.com/project/_/billing/enable Learn more at https://developers.google.com/maps/gmp-get-started", source: https://maps.googleapis.com/maps/api/js?key=AIzaSyAvzCn1F8MUiXQbvMxgSFaiM7NOLxXdnHI&callback=initMap (82)
+[0520/165523.492:INFO:CONSOLE(82)] "You must enable Billing on the Google Cloud Project at https://console.cloud.google.com/project/_/billing/enable Learn more at https://developers.google.com/maps/gmp-get-started", source: https://maps.googleapis.com/maps/api/js?key=AIzaSyAvzCn1F8MUiXQbvMxgSFaiM7NOLxXdnHI&callback=initMap (82)
+[0520/171210.685:INFO:CONSOLE(82)] "You must enable Billing on the Google Cloud Project at https://console.cloud.google.com/project/_/billing/enable Learn more at https://developers.google.com/maps/gmp-get-started", source: https://maps.googleapis.com/maps/api/js?key=AIzaSyAvzCn1F8MUiXQbvMxgSFaiM7NOLxXdnHI&callback=initMap (82)
