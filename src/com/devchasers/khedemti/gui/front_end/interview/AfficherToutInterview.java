@@ -66,7 +66,11 @@ public class AfficherToutInterview extends Form {
 
             ConnectionRequest cr = new ConnectionRequest();
             cr.setUrl("http://127.0.0.1:8000/mobile/recuperer_interviews");
+            try {
             NetworkManager.getInstance().addToQueueAndWait(cr);
+        } catch (Exception e) {
+
+        }
             Map<String, Object> jsonRoot = new JSONParser().parseJSON(
                     new InputStreamReader(new ByteArrayInputStream(cr.getResponseData()), "UTF-8")
             );
@@ -230,7 +234,11 @@ public class AfficherToutInterview extends Form {
             ConnectionRequest cr = new ConnectionRequest();
             cr.addArgument("idInterview", String.valueOf(idInterview));
             cr.setUrl("http://127.0.0.1:8000/mobile/supprimer_interview");
+            try {
             NetworkManager.getInstance().addToQueueAndWait(cr);
+        } catch (Exception e) {
+
+        }
 
             char[] state = new char[1];
             new InputStreamReader(new ByteArrayInputStream(cr.getResponseData()), "UTF-8").read(state);

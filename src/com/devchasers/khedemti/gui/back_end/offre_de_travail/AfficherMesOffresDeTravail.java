@@ -53,7 +53,6 @@ public class AfficherMesOffresDeTravail extends Form {
     private void addActions() {
         btnAjouter.addActionListener(action -> {
             new AjouterOffre(this).show();
-
         });
     }
 
@@ -103,8 +102,8 @@ public class AfficherMesOffresDeTravail extends Form {
 
         });
 
-        if (offre.getId() == MainApp.getSession().getId()) {
-            btnsContainer.addAll(btnAjouter, btnModifier, btnSupprimer, btnRetour);
+        if (offre.getSocieteId()== MainApp.getSession().getSocieteId()) {
+            btnsContainer.addAll(btnModifier, btnSupprimer, btnRetour);
         }
         offreModel.addAll(labelNom, labelDescription, btnsContainer);
 

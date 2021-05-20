@@ -74,7 +74,11 @@ public class CommentaireService {
                 cr.removeResponseListener(this);
             }
         });
-        NetworkManager.getInstance().addToQueueAndWait(cr);
+        try {
+            NetworkManager.getInstance().addToQueueAndWait(cr);
+        } catch (Exception e) {
+
+        }
         return listCommentaires;
     }
     
@@ -93,7 +97,11 @@ public class CommentaireService {
 
             }
         });
-        NetworkManager.getInstance().addToQueueAndWait(cr);
+        try {
+            NetworkManager.getInstance().addToQueueAndWait(cr);
+        } catch (Exception e) {
+
+        }
         return resultCode;
     }
 
@@ -112,7 +120,11 @@ public class CommentaireService {
 
             }
         });
-        NetworkManager.getInstance().addToQueueAndWait(cr);
+        try {
+            NetworkManager.getInstance().addToQueueAndWait(cr);
+        } catch (Exception e) {
+
+        }
         return resultCode;
     }
 
@@ -127,7 +139,11 @@ public class CommentaireService {
 
             }
         });
-        NetworkManager.getInstance().addToQueueAndWait(cr);
+        try {
+            NetworkManager.getInstance().addToQueueAndWait(cr);
+        } catch (Exception e) {
+
+        }
         return resultCode;
     }
 }

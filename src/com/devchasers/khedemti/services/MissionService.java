@@ -76,7 +76,11 @@ public class MissionService {
                 cr.removeResponseListener(this);
             }
         });
-        NetworkManager.getInstance().addToQueueAndWait(cr);
+        try {
+            NetworkManager.getInstance().addToQueueAndWait(cr);
+        } catch (Exception e) {
+
+        }
         return listMission;
     }
         
@@ -99,7 +103,11 @@ public class MissionService {
 
             }
         });
-        NetworkManager.getInstance().addToQueueAndWait(cr);
+        try {
+            NetworkManager.getInstance().addToQueueAndWait(cr);
+        } catch (Exception e) {
+
+        }
         return resultCode;
     }
          
@@ -114,7 +122,11 @@ public class MissionService {
 
             }
         });
-        NetworkManager.getInstance().addToQueueAndWait(cr);
+        try {
+            NetworkManager.getInstance().addToQueueAndWait(cr);
+        } catch (Exception e) {
+
+        }
         return resultCode;
     }
              
@@ -138,7 +150,11 @@ public class MissionService {
 
             }
         });
-        NetworkManager.getInstance().addToQueueAndWait(cr);
+        try {
+            NetworkManager.getInstance().addToQueueAndWait(cr);
+        } catch (Exception e) {
+
+        }
         return resultCode;
     }
 }

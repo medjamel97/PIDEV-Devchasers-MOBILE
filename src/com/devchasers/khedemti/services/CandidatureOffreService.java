@@ -91,7 +91,6 @@ public class CandidatureOffreService {
         cr.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
             public void actionPerformed(NetworkEvent evt) {
-
                 try {
                     listCandidatureOffres = new ArrayList<>();
                     Map<String, Object> tasksListJson = new JSONParser().parseJSON(new CharArrayReader(

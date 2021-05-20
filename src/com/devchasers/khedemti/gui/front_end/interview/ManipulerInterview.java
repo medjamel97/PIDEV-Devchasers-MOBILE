@@ -146,7 +146,11 @@ public class ManipulerInterview extends Form {
                 cr.addArgument("objet", tfObjet.getText());
                 cr.addArgument("description", tfDescription.getText());
                 cr.setUrl("http://127.0.0.1:8000/mobile/manipuler_interview");
-                NetworkManager.getInstance().addToQueueAndWait(cr);
+                try {
+            NetworkManager.getInstance().addToQueueAndWait(cr);
+        } catch (Exception e) {
+
+        }
 
                 char[] state = new char[1];
                 new InputStreamReader(new ByteArrayInputStream(cr.getResponseData()), "UTF-8").read(state);
