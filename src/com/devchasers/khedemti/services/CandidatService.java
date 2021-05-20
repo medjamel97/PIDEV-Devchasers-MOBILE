@@ -77,7 +77,11 @@ public class CandidatService {
                 cr.removeResponseListener(this);
             }
         });
-        NetworkManager.getInstance().addToQueueAndWait(cr);
+        try {
+            NetworkManager.getInstance().addToQueueAndWait(cr);
+        } catch (Exception e) {
+
+        }
         return listCandidats;
     }
 
@@ -115,7 +119,11 @@ public class CandidatService {
                 cr.removeResponseListener(this);
             }
         });
-        NetworkManager.getInstance().addToQueueAndWait(cr);
+        try {
+            NetworkManager.getInstance().addToQueueAndWait(cr);
+        } catch (Exception e) {
+
+        }
         return listCandidats;
     }
 
@@ -124,6 +132,10 @@ public class CandidatService {
         cr.addArgument("candidatId", String.valueOf(candidatId));
        
             
-        NetworkManager.getInstance().addToQueueAndWait(cr);
+        try {
+            NetworkManager.getInstance().addToQueueAndWait(cr);
+        } catch (Exception e) {
+
+        }
     }
 }

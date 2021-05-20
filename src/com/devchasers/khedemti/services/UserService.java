@@ -5,14 +5,9 @@ import com.codename1.io.ConnectionRequest;
 import com.codename1.io.JSONParser;
 import com.codename1.io.NetworkEvent;
 import com.codename1.io.NetworkManager;
-import com.codename1.io.Util;
-import com.codename1.ui.Image;
 import com.codename1.ui.events.ActionListener;
-import com.codename1.ui.util.ImageIO;
-import com.codename1.util.Base64;
 import com.devchasers.khedemti.entities.User;
 import com.devchasers.khedemti.utils.Statics;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -113,7 +108,11 @@ public class UserService {
                 cr.removeResponseListener(this);
             }
         });
-        NetworkManager.getInstance().addToQueueAndWait(cr);
+        try {
+            NetworkManager.getInstance().addToQueueAndWait(cr);
+        } catch (Exception e) {
+
+        }
         return user;
     }
 
@@ -140,12 +139,16 @@ public class UserService {
                 cr.removeResponseListener(this);
             }
         });
-        NetworkManager.getInstance().addToQueueAndWait(cr);
+        try {
+            NetworkManager.getInstance().addToQueueAndWait(cr);
+        } catch (Exception e) {
+
+        }
         return userVerif;
     }
 
     public void inscriptionCandidat(
-        String email, String password, String day, String month, String year, String nom, String prenom, String tel, String sexe) {
+            String email, String password, String day, String month, String year, String nom, String prenom, String tel, String sexe) {
 
         cr.setUrl(Statics.BASE_URL + "/mobile/inscription_candidat");
         cr.addArgument("email", email);
@@ -158,7 +161,11 @@ public class UserService {
         cr.addArgument("tel", tel);
         cr.addArgument("sexe", sexe);
 
-        NetworkManager.getInstance().addToQueueAndWait(cr);
+        try {
+            NetworkManager.getInstance().addToQueueAndWait(cr);
+        } catch (Exception e) {
+
+        }
     }
 
 }

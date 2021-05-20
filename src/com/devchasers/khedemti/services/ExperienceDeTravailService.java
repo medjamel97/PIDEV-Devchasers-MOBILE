@@ -76,7 +76,11 @@ public class ExperienceDeTravailService {
                 cr.removeResponseListener(this);
             }
         });
-        NetworkManager.getInstance().addToQueueAndWait(cr);
+        try {
+            NetworkManager.getInstance().addToQueueAndWait(cr);
+        } catch (Exception e) {
+
+        }
         return listExperienceDeTravails;
     }
 
@@ -97,7 +101,11 @@ public class ExperienceDeTravailService {
 
             }
         });
-        NetworkManager.getInstance().addToQueueAndWait(cr);
+        try {
+            NetworkManager.getInstance().addToQueueAndWait(cr);
+        } catch (Exception e) {
+
+        }
         return resultCode;
     }
 
@@ -117,7 +125,11 @@ public class ExperienceDeTravailService {
 
             }
         });
-        NetworkManager.getInstance().addToQueueAndWait(cr);
+        try {
+            NetworkManager.getInstance().addToQueueAndWait(cr);
+        } catch (Exception e) {
+
+        }
         return resultCode;
     }
 
@@ -132,7 +144,11 @@ public class ExperienceDeTravailService {
 
             }
         });
-        NetworkManager.getInstance().addToQueueAndWait(cr);
+        try {
+            NetworkManager.getInstance().addToQueueAndWait(cr);
+        } catch (Exception e) {
+
+        }
         return resultCode;
     }
 

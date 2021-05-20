@@ -27,12 +27,12 @@ public class OffreDeTravailService {
 
     public static OffreDeTravailService instance = null;
     public int resultCode;
-    private final ConnectionRequest cnx;
+    private final ConnectionRequest cr;
     private ArrayList<OffreDeTravail> listOffres;
     private ArrayList<OffreDeTravail> listOffreParSociete;
 
     private OffreDeTravailService() {
-        cnx = new ConnectionRequest();
+        cr = new ConnectionRequest();
     }
 
     public static OffreDeTravailService getInstance() {
@@ -43,15 +43,15 @@ public class OffreDeTravailService {
     }
 
     public ArrayList<OffreDeTravail> recupererOffres() {
-        cnx.setUrl(Statics.BASE_URL + "/mobile/recuperer_offres");
-        cnx.addResponseListener(new ActionListener<NetworkEvent>() {
+        cr.setUrl(Statics.BASE_URL + "/mobile/recuperer_offres");
+        cr.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
             public void actionPerformed(NetworkEvent evt) {
 
                 try {
                     listOffres = new ArrayList<>();
                     Map<String, Object> tasksListJson = new JSONParser().parseJSON(new CharArrayReader(
-                            new String(cnx.getResponseData()).toCharArray()
+                            new String(cr.getResponseData()).toCharArray()
                     ));
                     List<Map<String, Object>> list = (List<Map<String, Object>>) tasksListJson.get("root");
 
@@ -69,25 +69,30 @@ public class OffreDeTravailService {
                     System.out.println(ex.getMessage());
                 }
 
-                cnx.removeResponseListener(this);
+                cr.removeResponseListener(this);
             }
         });
-        NetworkManager.getInstance().addToQueueAndWait(cnx);
+        
+        try {
+            NetworkManager.getInstance().addToQueueAndWait(cr);
+        } catch (Exception e) {
+
+        }
         return listOffres;
     }
 
     public ArrayList<OffreDeTravail> recupererOffreParSociete(int societeId) {
-        cnx.setUrl(Statics.BASE_URL + "/mobile/recuperer_offre_par_societe");
-        cnx.addArgument("societeId", String.valueOf(societeId));
+        cr.setUrl(Statics.BASE_URL + "/mobile/recuperer_offre_par_societe");
+        cr.addArgument("societeId", String.valueOf(societeId));
         System.out.println("societe = " + societeId);
-        cnx.addResponseListener(new ActionListener<NetworkEvent>() {
+        cr.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
             public void actionPerformed(NetworkEvent evt) {
 
                 try {
                     listOffreParSociete = new ArrayList<>();
                     Map<String, Object> tasksListJson = new JSONParser().parseJSON(new CharArrayReader(
-                            new String(cnx.getResponseData()).toCharArray()
+                            new String(cr.getResponseData()).toCharArray()
                     ));
                     List<Map<String, Object>> list = (List<Map<String, Object>>) tasksListJson.get("root");
                     for (Map<String, Object> obj : list) {
@@ -104,59 +109,75 @@ public class OffreDeTravailService {
                     System.out.println(ex.getMessage());
                 }
 
-                cnx.removeResponseListener(this);
+                cr.removeResponseListener(this);
             }
         });
-        NetworkManager.getInstance().addToQueueAndWait(cnx);
+        try {
+            NetworkManager.getInstance().addToQueueAndWait(cr);
+        } catch (Exception e) {
+
+        }
         return listOffreParSociete;
     }
 
     public int ajouterOffre(OffreDeTravail offre) {
-        cnx.setUrl(Statics.BASE_URL + "/mobile/ajouter_offre");
-        cnx.addArgument("description", offre.getDescription());
-        cnx.addArgument("nom", offre.getNom());
-        cnx.addResponseListener(new ActionListener<NetworkEvent>() {
+        cr.setUrl(Statics.BASE_URL + "/mobile/ajouter_offre");
+        cr.addArgument("description", offre.getDescription());
+        cr.addArgument("nom", offre.getNom());
+        cr.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
             public void actionPerformed(NetworkEvent evt) {
-                resultCode = cnx.getResponseCode();
-                cnx.removeResponseListener(this);
+                resultCode = cr.getResponseCode();
+                cr.removeResponseListener(this);
 
             }
         });
-        NetworkManager.getInstance().addToQueueAndWait(cnx);
+        try {
+            NetworkManager.getInstance().addToQueueAndWait(cr);
+        } catch (Exception e) {
+
+        }
         return resultCode;
     }
 
     public int modifierOffre(OffreDeTravail offre) {
-        cnx.setUrl(Statics.BASE_URL + "/mobile/modifier_offre");
-        cnx.addArgument("id", String.valueOf(offre.getId()));
-        cnx.addArgument("nom", offre.getNom());
-        cnx.addArgument("description", offre.getDescription());
+        cr.setUrl(Statics.BASE_URL + "/mobile/modifier_offre");
+        cr.addArgument("id", String.valueOf(offre.getId()));
+        cr.addArgument("nom", offre.getNom());
+        cr.addArgument("description", offre.getDescription());
 
-        cnx.addResponseListener(new ActionListener<NetworkEvent>() {
+        cr.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
             public void actionPerformed(NetworkEvent evt) {
-                resultCode = cnx.getResponseCode();
-                cnx.removeResponseListener(this);
+                resultCode = cr.getResponseCode();
+                cr.removeResponseListener(this);
 
             }
         });
-        NetworkManager.getInstance().addToQueueAndWait(cnx);
+        try {
+            NetworkManager.getInstance().addToQueueAndWait(cr);
+        } catch (Exception e) {
+
+        }
         return resultCode;
     }
 
     public int supprimerOffre(OffreDeTravail offre) {
-        cnx.setUrl(Statics.BASE_URL + "/mobile/supprimer_offre");
-        cnx.addArgument("id", String.valueOf(offre.getId()));
-        cnx.addResponseListener(new ActionListener<NetworkEvent>() {
+        cr.setUrl(Statics.BASE_URL + "/mobile/supprimer_offre");
+        cr.addArgument("id", String.valueOf(offre.getId()));
+        cr.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
             public void actionPerformed(NetworkEvent evt) {
-                resultCode = cnx.getResponseCode();
-                cnx.removeResponseListener(this);
+                resultCode = cr.getResponseCode();
+                cr.removeResponseListener(this);
 
             }
         });
-        NetworkManager.getInstance().addToQueueAndWait(cnx);
+        try {
+            NetworkManager.getInstance().addToQueueAndWait(cr);
+        } catch (Exception e) {
+
+        }
         return resultCode;
     }
     
