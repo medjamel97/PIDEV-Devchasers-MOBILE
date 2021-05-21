@@ -32,10 +32,8 @@ public class OffreDeTravail {
     }
 
     // pour modification
-    public OffreDeTravail(int id, int categorieId, int societeId, String nom, String description) {
+    public OffreDeTravail(int id, String nom, String description) {
         this.id = id;
-        this.categorieId = categorieId;
-        this.societeId = societeId;
         this.nom = nom;
         this.description = description;
     }
@@ -47,6 +45,12 @@ public class OffreDeTravail {
         this.nom = nom;
         this.description = description;
     }
+
+    public OffreDeTravail(int id, int i, int societeId, String text, String text0) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+
 
     public int getId() {
         return id;
