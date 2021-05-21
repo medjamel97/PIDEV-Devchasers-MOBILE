@@ -14,7 +14,7 @@ public class AfficherToutSociete extends Form {
         addGUIs();
         addActions();
 
-        getToolbar().hideToolbar();
+        super.getToolbar().hideToolbar();
     }
 
     private void addGUIs() {

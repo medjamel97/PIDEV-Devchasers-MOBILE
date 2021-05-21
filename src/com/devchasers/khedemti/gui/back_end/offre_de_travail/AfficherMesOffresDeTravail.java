@@ -23,17 +23,21 @@ public class AfficherMesOffresDeTravail extends Form {
 
     Container offreModel, btnsContainer;
     Label labelNom, labelDescription;
-    Button btnRetour, btnAjouter, btnModifier, btnSupprimer;
+    Button btnAjouter, btnModifier, btnSupprimer;
 
     public AfficherMesOffresDeTravail(Form previous) {
         super("Mes offres", new BoxLayout(BoxLayout.Y_AXIS));
         addGUIs();
         addActions();
 
-        getToolbar().addMaterialCommandToLeftBar("  ", FontImage.MATERIAL_ARROW_BACK, e -> previous.showBack());
+        super.getToolbar().addMaterialCommandToLeftBar("  ", FontImage.MATERIAL_ARROW_BACK, e -> previous.showBack());
     }
 
-    public AfficherMesOffresDeTravail() {
+    public void refresh() {
+        this.removeAll();
+        addGUIs();
+        addActions();
+        this.refreshTheme();
     }
 
     private void addGUIs() {
@@ -44,10 +48,9 @@ public class AfficherMesOffresDeTravail extends Form {
 
         ArrayList<OffreDeTravail> listeOffre = OffreDeTravailService.getInstance().recupererOffreParSociete(MainApp.getSession().getSocieteId());
         for (int i = 0; i < listeOffre.size(); i++) {
-           this.add(creerOffre(listeOffre.get(i)));
+            this.add(creerOffre(listeOffre.get(i)));
         }
 
-        
     }
 
     private void addActions() {
@@ -102,9 +105,8 @@ public class AfficherMesOffresDeTravail extends Form {
 
         });
 
-        if (offre.getSocieteId()== MainApp.getSession().getSocieteId()) {
-            btnsContainer.addAll(btnModifier, btnSupprimer, btnRetour);
-        }
+        btnsContainer.addAll(btnModifier, btnSupprimer);
+
         offreModel.addAll(labelNom, labelDescription, btnsContainer);
 
         return offreModel;

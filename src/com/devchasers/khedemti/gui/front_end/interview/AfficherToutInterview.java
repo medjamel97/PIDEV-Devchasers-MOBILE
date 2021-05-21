@@ -5,16 +5,12 @@
  */
 package com.devchasers.khedemti.gui.front_end.interview;
 
-import com.devchasers.khedemti.gui.front_end.MainForm;
 import com.codename1.components.ImageViewer;
 import com.codename1.components.InteractionDialog;
 import com.codename1.components.ShareButton;
 import com.codename1.components.SpanLabel;
-import com.codename1.io.ConnectionRequest;
 import com.codename1.io.FileSystemStorage;
-import com.codename1.io.JSONParser;
 import com.codename1.io.Log;
-import com.codename1.io.NetworkManager;
 import com.codename1.ui.Button;
 import com.codename1.ui.Command;
 import com.codename1.ui.Component;
@@ -25,6 +21,7 @@ import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
 import com.codename1.ui.Image;
 import com.codename1.ui.Label;
+import com.codename1.ui.Tabs;
 import com.codename1.ui.URLImage;
 import com.codename1.ui.geom.Dimension;
 import com.codename1.ui.layouts.BorderLayout;
@@ -32,12 +29,13 @@ import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.plaf.UIManager;
 import com.codename1.ui.util.ImageIO;
 import com.codename1.ui.util.Resources;
-import java.io.ByteArrayInputStream;
+import com.devchasers.khedemti.MainApp;
+import com.devchasers.khedemti.entities.CandidatureOffre;
+import com.devchasers.khedemti.entities.Interview;
+import com.devchasers.khedemti.services.InterviewService;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.util.ArrayList;
-import java.util.Map;
 
 /**
  *
@@ -45,62 +43,63 @@ import java.util.Map;
  */
 public class AfficherToutInterview extends Form {
 
-    public static Map<String, Object> interviewActuelleMap = null;
-    Resources theme = UIManager.initFirstTheme("/theme");
+    public static Interview interviewActuelle = null;
+    public static CandidatureOffre candidatureOffreActuelle = null;
+    public static Resources theme = UIManager.initFirstTheme("/theme");
+    public static String nomOffreActuelle, nomSocieteActuelle;
+
+    Button btnAjouter;
 
     public AfficherToutInterview(Form previous) {
-        super("Interviews", new BoxLayout(BoxLayout.Y_AXIS));
-        //addGUIs();
+        super("Interviews sur " + nomOffreActuelle + " de la societe " + nomSocieteActuelle, new BoxLayout(BoxLayout.Y_AXIS));
+        addGUIs();
+        addActions();
 
-        getToolbar().addMaterialCommandToLeftBar("  ", FontImage.MATERIAL_ARROW_BACK, e -> previous.showBack());
+        super.getToolbar().addMaterialCommandToLeftBar("  ", FontImage.MATERIAL_ARROW_BACK, e -> previous.showBack());
     }
 
-    /*private void addGUIs() {
-        try {
-            Container topBarContainer = new Container(new BoxLayout(BoxLayout.X_AXIS));
-            Button btnRetour = new Button("<- Accueil");
-            btnRetour.addActionListener(action -> {
-                new MainForm().show();
-            });
-            topBarContainer.add(btnRetour);
+    public void refresh() {
+        this.removeAll();
+        addGUIs();
+        addActions();
+        this.refreshTheme();
+    }
 
-            ConnectionRequest cr = new ConnectionRequest();
-            cr.setUrl("http://127.0.0.1:8000/mobile/recuperer_interviews");
-            try {
-            NetworkManager.getInstance().addToQueueAndWait(cr);
-        } catch (Exception e) {
+    private void addGUIs() {
+        btnAjouter = new Button("Nouvelle interview");
+        btnAjouter.setUIID("newButton");
 
+        this.add(btnAjouter);
+
+        Tabs tabs = new Tabs();
+
+        ArrayList<Interview> listInterviews = InterviewService.getInstance().recupererInterviews();
+        for (int i = 0; i < listInterviews.size(); i++) {
+            this.add(creerInterview(listInterviews.get(i)));
         }
-            Map<String, Object> jsonRoot = new JSONParser().parseJSON(
-                    new InputStreamReader(new ByteArrayInputStream(cr.getResponseData()), "UTF-8")
-            );
-            ArrayList interviews = (ArrayList) jsonRoot.get("root");
 
-            Button btnAjouter = new Button("Nouvelle interview");
-            btnAjouter.setUIID("newButton");
-            btnAjouter.addActionListener(action -> {
-                interviewActuelleMap = null;
-                new Manipuler().show();
-            });
+        this.add(tabs);
+    }
 
-            this.addAll(topBarContainer, btnAjouter);
-
-            for (int i = 0; i < interviews.size(); i++) {
-                this.add(creerInterview((Map<String, Object>) interviews.get(i)));
+    private void addActions() {
+        btnAjouter.addActionListener(action -> {
+            if (candidatureOffreActuelle != null) {
+                interviewActuelle = null;
+                new ManipulerInterview(this).show();
+            } else {
+                Dialog.show("Erreur", "Vous devez avoir candidaté à cette offre pour pouvoir ajouter une interview", new Command("Ok"));
             }
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
+        });
     }
 
-    private Component creerInterview(Map<String, Object> interview) {
+    private Component creerInterview(Interview interview) {
         Container interviewModel = new Container(new BoxLayout(BoxLayout.Y_AXIS));
-        interviewModel.setUIID("revueContainer");
+        interviewModel.setUIID("interviewContainer");
 
         Container userContainer = new Container(new BoxLayout(BoxLayout.X_AXIS));
         ImageViewer photoCandidat = new ImageViewer(theme.getImage("default.jpg"));
-        if (interview.get("idPhotoCandidat") != null) {
-            String url = "http://localhost/" + interview.get("idPhotoCandidat");
+        if (interview.getIdPhotoCandidat() != null) {
+            String url = "http://localhost/" + interview.getIdPhotoCandidat();
             photoCandidat = new ImageViewer(
                     URLImage.createToStorage(
                             EncodedImage.createFromImage(theme.getImage("default.jpg"), false),
@@ -113,36 +112,34 @@ public class AfficherToutInterview extends Form {
         photoCandidat.setFocusable(false);
         photoCandidat.setUIID("candidatImage");
         photoCandidat.setPreferredSize(new Dimension(200, 200));
-        Label nomPrenomCandidat = new Label(interview.get("prenomCandidat") + " " + interview.get("nomCandidat"));
+        Label nomPrenomCandidat = new Label(interview.getPrenomCandidat() + " " + interview.getNomCandidat());
         userContainer.addAll(photoCandidat, nomPrenomCandidat);
 
-        Label labelDifficulte = new Label((String) interview.get("Difficulte : "));
+        Label labelDifficulte = new Label("Difficulte");
         labelDifficulte.setUIID("defaultLabel");
-        Label difficulte = new Label();
 
-        long diff = Math.round((double) interview.get("difficulte"));
-        if (diff == 0) {
-            difficulte.setText("Trés facile");
-            difficulte.setUIID("difficulte0");
-        } else if (diff == 1) {
-            difficulte.setText("Facile");
-            difficulte.setUIID("difficulte1");
-        } else if (diff == 2) {
-            difficulte.setText("Moyenne");
-            difficulte.setUIID("difficulte2");
-        } else if (diff == 3) {
-            difficulte.setText("Difficile");
-            difficulte.setUIID("difficulte3");
-        } else if (diff == 4) {
-            difficulte.setText("Trés difficile");
-            difficulte.setUIID("difficulte4");
+        if (interview.getDifficulte() == 0) {
+            labelDifficulte.setText("Trés facile");
+            labelDifficulte.setUIID("difficulte0");
+        } else if (interview.getDifficulte() == 1) {
+            labelDifficulte.setText("Facile");
+            labelDifficulte.setUIID("difficulte1");
+        } else if (interview.getDifficulte() == 2) {
+            labelDifficulte.setText("Moyenne");
+            labelDifficulte.setUIID("difficulte2");
+        } else if (interview.getDifficulte() == 3) {
+            labelDifficulte.setText("Difficile");
+            labelDifficulte.setUIID("difficulte3");
+        } else if (interview.getDifficulte() == 4) {
+            labelDifficulte.setText("Trés difficile");
+            labelDifficulte.setUIID("difficulte4");
         }
 
-        Label labelObjet = new Label((String) interview.get("objet"));
+        Label labelObjet = new Label((String) interview.getObjet());
         labelObjet.setUIID("defaultLabel");
-        SpanLabel spanLabelDescription = new SpanLabel((String) interview.get("description"));
+        SpanLabel spanLabelDescription = new SpanLabel(interview.getDescription());
         spanLabelDescription.setTextUIID("description");
-        Label labelDateCreation = new Label((String) interview.get("dateCreation"));
+        Label labelDateCreation = new Label(interview.getDateCreation());
         labelDateCreation.setUIID("dateLabel");
 
         Container btnsContainer = new Container(new BoxLayout(BoxLayout.X_AXIS));
@@ -151,16 +148,12 @@ public class AfficherToutInterview extends Form {
 
         Button btnModifier = new Button("Modifier");
         btnModifier.setUIID("actionButton");
-        btnModifier.setPreferredH(200);
         Button btnSupprimer = new Button("Supprimer");
         btnSupprimer.setUIID("actionButton");
 
-        Button btnAfficherScreenshot = new Button();
-        btnAfficherScreenshot.setIcon(theme.getImage("share.png"));
-
         btnModifier.addActionListener(action -> {
-            interviewActuelleMap = interview;
-            new Manipuler().show();
+            interviewActuelle = interview;
+            new ManipulerInterview(this).show();
         });
         btnSupprimer.addActionListener(action -> {
 
@@ -171,27 +164,21 @@ public class AfficherToutInterview extends Form {
             btnClose.addActionListener((ee) -> dlg.dispose());
             Button btnConfirm = new Button("Confirmer");
             btnConfirm.addActionListener(actionConf -> {
-                supprimerInterview(Math.round((double) interview.get("id")));
-                interviewActuelleMap = null;
+                InterviewService.getInstance().supprimerInterview(interview.getId());
+                interviewActuelle = null;
                 dlg.dispose();
-                new InterviewAfficherTout().show();
+
+                interviewModel.remove();
+                this.refreshTheme();
             });
             Container btnContainer = new Container(new BoxLayout(BoxLayout.X_AXIS));
             btnContainer.addAll(btnClose, btnConfirm);
             dlg.addComponent(BorderLayout.SOUTH, btnContainer);
-            Dimension pre = dlg.getContentPane().getPreferredSize();
+            //Dimension pre = dlg.getContentPane().getPreferredSize();
             //dlg.show(0, 0, Display.getInstance().getDisplayWidth() - (pre.getWidth() + pre.getWidth() / 6), 0);
             dlg.show(900, 900, 150, 150);
 
         });
-
-        if ((double) interview.get("candidatureOffre") == 2.0) {
-            btnsContainer.addAll(btnModifier, btnSupprimer, btnAfficherScreenshot);
-        } else {
-            btnsContainer.addAll(btnAfficherScreenshot);
-        }
-
-        interviewModel.addAll(labelDateCreation, userContainer, labelDifficulte, difficulte, labelObjet, spanLabelDescription, btnsContainer);
 
         // API PARTAGE
         Form form = new Form();
@@ -216,48 +203,21 @@ public class AfficherToutInterview extends Form {
         btnPartager.setText("Partager ");
         btnPartager.setTextPosition(LEFT);
         btnPartager.setImageToShare(imageFile, "image/png");
-        btnPartager.setTextToShare(
-                "vien voir cette interview sur l'offre "
-                + interview.get("nomOffre") + " de la societe "
-                + interview.get("nomSociete")
-        );
+        btnPartager.setTextToShare("vien voir cette interview");
         screenShotForm.addAll(screenshotViewer, btnPartager);
+
+        Button btnAfficherScreenshot = new Button("Partager");
         btnAfficherScreenshot.addActionListener(listener -> {
             screenShotForm.show();
         });
 
+        if (interview.getIdCandidat() == MainApp.getSession().getCandidatId()) {
+            btnsContainer.addAll(btnModifier, btnSupprimer);
+        }
+        btnsContainer.add(btnAfficherScreenshot);
+
+        interviewModel.addAll(labelDateCreation, userContainer, labelDifficulte, labelObjet, spanLabelDescription, btnsContainer);
+
         return interviewModel;
     }
-
-    private void supprimerInterview(long idInterview) {
-        try {
-            ConnectionRequest cr = new ConnectionRequest();
-            cr.addArgument("idInterview", String.valueOf(idInterview));
-            cr.setUrl("http://127.0.0.1:8000/mobile/supprimer_interview");
-            try {
-            NetworkManager.getInstance().addToQueueAndWait(cr);
-        } catch (Exception e) {
-
-        }
-
-            char[] state = new char[1];
-            new InputStreamReader(new ByteArrayInputStream(cr.getResponseData()), "UTF-8").read(state);
-
-            switch (Integer.valueOf(String.valueOf(state))) {
-                case 0:
-                    Dialog.show("Interview supprimé", "", new Command("Ok"));
-                    break;
-                case -1:
-                    Dialog.show("Erreur de suppression", "", new Command("Ok"));
-                    InterviewAfficherTout.interviewActuelleMap = null;
-                    new InterviewAfficherTout().show();
-                    break;
-                default:
-                    Dialog.show("Unknown error", "", new Command("Ok"));
-                    break;
-            }
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-        }
-    }*/
 }

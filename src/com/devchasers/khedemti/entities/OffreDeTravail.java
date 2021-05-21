@@ -21,10 +21,13 @@ public class OffreDeTravail {
     private String nomCategorie;
 
     // pour affichage
-    public OffreDeTravail(int id, String nom, String description, String nomCategorie) {
+    public OffreDeTravail(int id, int categorieId, int societeId, String nom, String description, String nomSociete, String nomCategorie) {
         this.id = id;
+        this.categorieId = categorieId;
+        this.societeId = societeId;
         this.nom = nom;
         this.description = description;
+        this.nomSociete = nomSociete;
         this.nomCategorie = nomCategorie;
     }
 

@@ -27,7 +27,6 @@ import com.codename1.ui.util.Resources;
 import com.devchasers.khedemti.MainApp;
 import com.devchasers.khedemti.entities.CandidatureOffre;
 import com.devchasers.khedemti.entities.Revue;
-import com.devchasers.khedemti.services.CandidatureOffreService;
 import com.devchasers.khedemti.services.RevueService;
 import java.util.ArrayList;
 
@@ -40,7 +39,6 @@ public class AfficherToutRevue extends Form {
     public static Revue revueActuelle = null;
     public static CandidatureOffre candidatureOffreActuelle = null;
     public static Resources theme = UIManager.initFirstTheme("/theme");
-
     public static String nomOffreActuelle, nomSocieteActuelle;
 
     Container nbEtoilesContainer, revueModel, userContainer, btnsContainer;
@@ -54,7 +52,7 @@ public class AfficherToutRevue extends Form {
         addGUIs();
         addActions();
 
-        getToolbar().addMaterialCommandToLeftBar("  ", FontImage.MATERIAL_ARROW_BACK, e -> previous.showBack());
+        super.getToolbar().addMaterialCommandToLeftBar("  ", FontImage.MATERIAL_ARROW_BACK, e -> previous.showBack());
     }
 
     public void refresh() {

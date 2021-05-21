@@ -3,10 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.devchasers.khedemti.gui.front_end.revue;
+package com.devchasers.khedemti.gui.front_end.interview;
 
 import com.codename1.components.ImageViewer;
-import com.codename1.components.InteractionDialog;
 import com.codename1.ui.Button;
 import com.codename1.ui.Command;
 import com.codename1.ui.Container;
@@ -17,7 +16,6 @@ import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
 import com.codename1.ui.Label;
 import com.codename1.ui.URLImage;
-import com.codename1.ui.layouts.BorderLayout;
 import com.codename1.ui.layouts.BoxLayout;
 import com.codename1.ui.layouts.GridLayout;
 import com.codename1.ui.plaf.UIManager;
@@ -25,7 +23,7 @@ import com.codename1.ui.util.Resources;
 import com.devchasers.khedemti.MainApp;
 import com.devchasers.khedemti.entities.CandidatureOffre;
 import com.devchasers.khedemti.services.CandidatureOffreService;
-import com.devchasers.khedemti.services.RevueService;
+import com.devchasers.khedemti.services.InterviewService;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -34,21 +32,21 @@ import java.util.Map;
  *
  * @author Grim
  */
-public class ChoixOffreRevue extends Form {
+public class ChoixSocieteInterview extends Form {
 
     Container societesContainer;
     Resources theme = UIManager.initFirstTheme("/theme");
 
-    public ChoixOffreRevue(Form previous) {
-        super("Choisir une offre");
+    public ChoixSocieteInterview(Form previous) {
+        super("Choisir une societe");
         addGUIs();
 
         super.getToolbar().addMaterialCommandToLeftBar("  ", FontImage.MATERIAL_ARROW_BACK, e -> previous.showBack());
     }
 
     private void addGUIs() {
-        ArrayList<Object> listSocieteOffre = RevueService.getInstance().recupererSocieteOffrePourRevue();
-        societesContainer = new Container(new GridLayout(3));
+        ArrayList<Object> listSocieteOffre = InterviewService.getInstance().recupererSocieteOffrePourInterview();
+        societesContainer = new Container(new GridLayout(3, 3));
         for (Object societeOffreMap : listSocieteOffre) {
             societesContainer.add(creerSociete(societeOffreMap));
         }
@@ -63,7 +61,7 @@ public class ChoixOffreRevue extends Form {
 
         ImageViewer image;
         if (societeOffre.get("idPhotoSociete") != null) {
-            String url = "http://localhost/" + societeOffre.get("idPhotoSociete");
+            String url = (String) societeOffre.get("idPhotoSociete");
             image = new ImageViewer(
                     URLImage.createToStorage(
                             EncodedImage.createFromImage(theme.getImage("default.jpg"), false),
@@ -86,7 +84,7 @@ public class ChoixOffreRevue extends Form {
         societeContainer.setUIID("societeContainer");
         int dw = Display.getInstance().getDisplayWidth();
         societeContainer.setPreferredW(dw / 3);
-        societeContainer.setPreferredH(dw + dw / 10);
+        societeContainer.setPreferredH(dw / 2);
         societeContainer.addAll(labelNom, image, labelTel);
 
         Button societeBtn = new Button();
@@ -102,33 +100,32 @@ public class ChoixOffreRevue extends Form {
     }
 
     private void creerOffre(List<Map<String, Object>> listOffres, String nomSociete) {
-        InteractionDialog dlg = new InteractionDialog("Choisir une offre");
-        dlg.setUIID("dialogChoixOffre");
-        dlg.setLayout(new BorderLayout());
-        Container offresContainer = new Container(new BoxLayout(BoxLayout.Y_AXIS));
+        Form choixOffre = new Form("Choisir une offre", new BoxLayout(BoxLayout.Y_AXIS));
+        choixOffre.getToolbar().addMaterialCommandToLeftBar("  ", FontImage.MATERIAL_ARROW_BACK, e -> this.showBack());
         for (Map<String, Object> offre : listOffres) {
             Button btnOffre = new Button((String) offre.get("nomOffre"));
             btnOffre.addActionListener(actionConf -> {
                 CandidatureOffre candidatureOffre = CandidatureOffreService.getInstance().recupererCandidatureOffreParOffreCandidat(
-                        (int) (Float.parseFloat(offre.get("id").toString())),
+                        (int) (Float.parseFloat(offre.get("idOffre").toString())),
                         MainApp.getSession().getCandidatId()
                 );
-                AfficherToutRevue.revueActuelle = null;
-                AfficherToutRevue.candidatureOffreActuelle = candidatureOffre;
-                AfficherToutRevue.nomOffreActuelle = (String) offre.get("nomOffre");
-                AfficherToutRevue.nomSocieteActuelle = nomSociete;
-                dlg.dispose();
-                new AfficherToutRevue(this).show();
+
+                AfficherToutInterview.interviewActuelle = null;
+                AfficherToutInterview.candidatureOffreActuelle = candidatureOffre;
+                AfficherToutInterview.nomOffreActuelle = (String) offre.get("nomOffre");
+                AfficherToutInterview.nomSocieteActuelle = nomSociete;
+
+                try {
+                    System.out.println("Etat candidature pour " + AfficherToutInterview.nomOffreActuelle + candidatureOffre.getEtat());
+                } catch (NullPointerException e) {
+                    System.out.println("Pas de candidature");
+                }
+
+                new AfficherToutInterview(this).show();
             });
             btnOffre.setUIID("offreButton");
-            offresContainer.add(btnOffre);
+            choixOffre.add(btnOffre);
         }
-        dlg.addComponent(BorderLayout.CENTER, offresContainer);
-        Button btnClose = new Button("Annuler");
-        btnClose.setUIID("dangerButton");
-        btnClose.addActionListener((ee) -> dlg.dispose());
-        dlg.addComponent(BorderLayout.SOUTH, btnClose);
-        dlg.setDialogUIID("dialogChoixOffreInside");
-        dlg.show(0, 0, 0, 0);
+        choixOffre.show();
     }
 }

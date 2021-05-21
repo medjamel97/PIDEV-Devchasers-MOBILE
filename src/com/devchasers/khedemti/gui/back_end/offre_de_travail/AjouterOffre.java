@@ -30,8 +30,13 @@ public class AjouterOffre extends Form {
     TextArea tfDescription;
     Button btnAjouter;
 
+    Form previous;
+
     public AjouterOffre(Form previous) {
         super(new BoxLayout(BoxLayout.Y_AXIS));
+
+        this.previous = previous;
+
         addGUIs();
         addActions();
         getToolbar().addMaterialCommandToLeftBar("  ", FontImage.MATERIAL_ARROW_BACK, e -> previous.show());
@@ -64,18 +69,16 @@ public class AjouterOffre extends Form {
 
         btnAjouter.addActionListener((action) -> {
             if (controleDeSaisie()) {
-                int responseCode = OffreDeTravailService.getInstance().ajouterOffre(new OffreDeTravail(
+                OffreDeTravailService.getInstance().ajouterOffre(new OffreDeTravail(
                         1,//categorie
                         MainApp.getSession().getSocieteId(),
                         tfNom.getText(),
                         tfDescription.getText()
-                )
-                );
-                if (responseCode == 200) {
-                    Dialog.show("Succés", "offre ajouté avec succes", new Command("Ok"));
-                } else {
-                    Dialog.show("Erreur", "Erreur d'ajout de offre. Code d'erreur : " + responseCode, new Command("Ok"));
-                }
+                ));
+                Dialog.show("Succés", "offre ajouté avec succes", new Command("Ok"));
+                ((AfficherMesOffresDeTravail) previous).refresh();
+
+                previous.showBack();
             }
         });
     }

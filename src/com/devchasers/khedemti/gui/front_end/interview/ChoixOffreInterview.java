@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.devchasers.khedemti.gui.front_end.revue;
+package com.devchasers.khedemti.gui.front_end.interview;
 
 import com.codename1.components.ImageViewer;
 import com.codename1.components.InteractionDialog;
@@ -25,7 +25,7 @@ import com.codename1.ui.util.Resources;
 import com.devchasers.khedemti.MainApp;
 import com.devchasers.khedemti.entities.CandidatureOffre;
 import com.devchasers.khedemti.services.CandidatureOffreService;
-import com.devchasers.khedemti.services.RevueService;
+import com.devchasers.khedemti.services.InterviewService;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -34,12 +34,12 @@ import java.util.Map;
  *
  * @author Grim
  */
-public class ChoixOffreRevue extends Form {
+public class ChoixOffreInterview extends Form {
 
     Container societesContainer;
     Resources theme = UIManager.initFirstTheme("/theme");
 
-    public ChoixOffreRevue(Form previous) {
+    public ChoixOffreInterview(Form previous) {
         super("Choisir une offre");
         addGUIs();
 
@@ -47,7 +47,7 @@ public class ChoixOffreRevue extends Form {
     }
 
     private void addGUIs() {
-        ArrayList<Object> listSocieteOffre = RevueService.getInstance().recupererSocieteOffrePourRevue();
+        ArrayList<Object> listSocieteOffre = InterviewService.getInstance().recupererSocieteOffrePourInterview();
         societesContainer = new Container(new GridLayout(3));
         for (Object societeOffreMap : listSocieteOffre) {
             societesContainer.add(creerSociete(societeOffreMap));
@@ -113,12 +113,12 @@ public class ChoixOffreRevue extends Form {
                         (int) (Float.parseFloat(offre.get("id").toString())),
                         MainApp.getSession().getCandidatId()
                 );
-                AfficherToutRevue.revueActuelle = null;
-                AfficherToutRevue.candidatureOffreActuelle = candidatureOffre;
-                AfficherToutRevue.nomOffreActuelle = (String) offre.get("nomOffre");
-                AfficherToutRevue.nomSocieteActuelle = nomSociete;
+                AfficherToutInterview.interviewActuelle = null;
+                AfficherToutInterview.candidatureOffreActuelle = candidatureOffre;
+                AfficherToutInterview.nomOffreActuelle = (String) offre.get("nomOffre");
+                AfficherToutInterview.nomSocieteActuelle = nomSociete;
                 dlg.dispose();
-                new AfficherToutRevue(this).show();
+                new AfficherToutInterview(this).show();
             });
             btnOffre.setUIID("offreButton");
             offresContainer.add(btnOffre);
