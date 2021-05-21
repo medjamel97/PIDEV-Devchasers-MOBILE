@@ -6,16 +6,18 @@
 package com.devchasers.khedemti.gui.back_end.offre_de_travail;
 
 import com.codename1.ui.Button;
+import com.codename1.ui.Command;
 import com.codename1.ui.Container;
+import com.codename1.ui.Dialog;
 import com.codename1.ui.FontImage;
 import com.codename1.ui.Form;
 import com.codename1.ui.Label;
 import com.codename1.ui.TextArea;
 import com.codename1.ui.TextField;
+import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.layouts.BoxLayout;
 import com.devchasers.khedemti.MainApp;
 import com.devchasers.khedemti.entities.OffreDeTravail;
-import com.devchasers.khedemti.gui.front_end.offre_de_travail.AfficherToutOffreDeTravail;
 import com.devchasers.khedemti.services.OffreDeTravailService;
 
 /**
@@ -28,9 +30,11 @@ public class ModifierOffre extends Form {
     TextField tfNom;
     TextArea tfDescription;
     Button btnModifier;
+    Form previous;
 
     public ModifierOffre(Form previous) {
         super(new BoxLayout(BoxLayout.Y_AXIS));
+        this.previous = previous;
         addGUIs();
         addActions();
         getToolbar().addMaterialCommandToLeftBar("  ", FontImage.MATERIAL_ARROW_BACK, e -> previous.show());
@@ -61,14 +65,17 @@ public class ModifierOffre extends Form {
 
     private void addActions() {
 
-        btnModifier.addActionListener((action) -> {
-            OffreDeTravailService.getInstance().modifierOffre(new OffreDeTravail(
-                    AfficherToutOffreDeTravail.offreActuelle.getId(),
-                    1,//categorie
-                    MainApp.getSession().getSocieteId(),
+        btnModifier.addActionListener((ActionEvent action) -> {
+            OffreDeTravailService.getInstance().modifierOffre(new OffreDeTravail(AfficherMesOffresDeTravail.offreActuelle.getId(),
+                    
+                
                     tfNom.getText(),
                     tfDescription.getText()
             ));
+              Dialog.show("Succés", "offre modifié avec succes", new Command("Ok"));
+                ((AfficherMesOffresDeTravail) previous).refresh();
+
+                previous.showBack();
 
         });
     }
