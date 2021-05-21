@@ -58,7 +58,7 @@ public class PublicationService {
                     for (Map<String, Object> obj : list) {
                         Publication publication = new Publication(
                                 (int) Float.parseFloat(obj.get("id").toString()),
-                                (int) Float.parseFloat(obj.get("candidat_id").toString()),
+                                (int) Float.parseFloat(obj.get("user_id").toString()),
                                 (String) obj.get("titre"),
                                 (String) obj.get("description"),
                                 (String) obj.get("date"),
@@ -143,7 +143,7 @@ public class PublicationService {
     public int modifierPublication(Publication publication) {
         cr.setUrl(Statics.BASE_URL + "/mobile/modifierpub");
         cr.addArgument("id", String.valueOf(publication.getId()));
-        cr.addArgument("candidat_id", String.valueOf(publication.getCandidatId()));
+        cr.addArgument("user_id", String.valueOf(publication.getId()));
          cr.addArgument("titre", publication.getTitre());
         cr.addArgument("description", publication.getDescription());
          cr.addArgument("dateCreation", publication.getDate());
@@ -187,7 +187,7 @@ public class PublicationService {
     
      public int ajouterPublication(Publication publication) {
         cr.setUrl(Statics.BASE_URL + "/mobile/majouterpub");
-        cr.addArgument("candidatId", String.valueOf(MainApp.getSession().getCandidatId()));
+        cr.addArgument("userId", String.valueOf(MainApp.getSession().getId()));
         cr.addArgument("titre", publication.getTitre());
         cr.addArgument("description", publication.getDescription());
       

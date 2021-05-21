@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <resource majorVersion="1" minorVersion="11" useXmlUI="false">
+    <image name="award.png"  />
     <image name="buttonSuccess.borderBottom_1.png" type="multi"  />
     <image name="buttonSuccess.borderBottomL_1.png" type="multi"  />
     <image name="buttonSuccess.borderBottomR_1.png" type="multi"  />
@@ -15,6 +16,7 @@
     <image name="share.png"  />
     <image name="star-outline.png" type="multi"  />
     <image name="star.png" type="multi"  />
+    <image name="suitcase.png"  />
     <theme name="Theme">
         <val key="@includeNativeBool" value="true" />
         <val key="Container.align" value="4" />
@@ -101,7 +103,11 @@
         <val key="centerLabel.margin" value="30.0,30.0,30.0,30.0" />
         <val key="centerLabel.press#align" value="4" />
         <val key="centerLabel.sel#align" value="4" />
+        <border key="commentaireContainer.border" type="rounded" thickness="0.0" arcW="1" arcH="1" color="13421772" />
         <val key="contactsContainer.padding" value="25.0,25.0,25.0,25.0" />
+        <border key="containerLevel.border" type="rounded" thickness="0.0" arcW="50" arcH="50" color="13421772" />
+        <val key="containerLevel.margin" value="30.0,30.0,30.0,30.0" />
+        <val key="containerLevel.padding" value="30.0,30.0,30.0,30.0" />
         <gradient key="conversationContainer.bgGradient" color1="16777215" color2="16777215" posX="0.5" posY="0.5" radius="1.0" />
         <val key="conversationContainer.bgType" value="7" />
         <border key="conversationContainer.border" type="line" millimeters="false" thickness="1.0" color="13421772" />
@@ -117,8 +123,6 @@
         <border key="conversationContainer.sel#border" type="line" millimeters="false" thickness="1.0" color="13421772" />
         <val key="conversationContainer.sel#margin" value="10.0,10.0,10.0,10.0" />
         <val key="conversationContainer.sel#padding" value="50.0,50.0,50.0,50.0" />
-        <val key="containerLevel.margin" value="30.0,30.0,0.0,0.0" />
-        <val key="containerLevel.padding" value="30.0,30.0,30.0,30.0" />
         <val key="dateLabel.align" value="3" />
         <font key="defaultLabel.font" type="system" face="0" style="1" size="0" />
         <val key="description.fgColor" value="666666" />
@@ -135,6 +139,8 @@
         <val key="difficulte2.fgColor" value="cccc00" />
         <val key="difficulte3.fgColor" value="ff9900" />
         <val key="difficulte4.fgColor" value="ff0000" />
+        <val key="imageCenter.align" value="4" />
+        <val key="imageContainerCandidat.align" value="4" />
         <gradient key="imageSociete.bgGradient" color1="16777215" color2="16777215" posX="0.5" posY="0.5" radius="1.0" />
         <val key="imageSociete.bgType" value="8" />
         <border key="imageSociete.border" type="line" millimeters="false" thickness="1.0" color="13421772" />
@@ -219,7 +225,7 @@
         <border key="publicationButton.press#border" type="roundRect" strokeColor="13421772" strokeOpacity="255" strokeThickness="1.0" strokeMM="false" shadowSpread="10.0" shadowOpacity="0" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" topOnlyMode="false" bottomOnlyMode="false" cornerRadius="4.0" bezierCorners="false" />
         <val key="publicationButton.sel#align" value="4" />
         <border key="publicationButton.sel#border" type="roundRect" strokeColor="13421772" strokeOpacity="255" strokeThickness="1.0" strokeMM="false" shadowSpread="10.0" shadowOpacity="0" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" topOnlyMode="false" bottomOnlyMode="false" cornerRadius="4.0" bezierCorners="false" />
-        <border key="publicationContainer.border" type="roundRect" strokeColor="10066329" strokeOpacity="255" strokeThickness="1.5" strokeMM="false" shadowSpread="10.0" shadowOpacity="0" shadowX="0.5" shadowY="0.5" shadowBlur="10.0" topOnlyMode="false" bottomOnlyMode="false" cornerRadius="2.0" bezierCorners="false" />
+        <border key="publicationContainer.border" type="rounded" thickness="0.0" arcW="50" arcH="50" color="10066329" />
         <val key="publicationContainer.marUnit" value="1,1,1,1" />
         <val key="publicationContainer.margin" value="2.0,2.0,2.0,2.0" />
         <val key="publicationContainer.padUnit" value="1,1,1,1" />

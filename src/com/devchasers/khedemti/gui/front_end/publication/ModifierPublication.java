@@ -17,23 +17,35 @@ import com.codename1.ui.TextField;
 import com.codename1.ui.layouts.BoxLayout;
 import com.devchasers.khedemti.MainApp;
 import com.devchasers.khedemti.entities.Publication;
+import com.devchasers.khedemti.gui.front_end.MainForm;
 import static com.devchasers.khedemti.gui.front_end.publication.AfficherToutPublication.publicationActuelle;
 import com.devchasers.khedemti.services.PublicationService;
-import java.util.ArrayList;
 
 /**
  *
  * @author Maher
  */
-public class ModifierPublication extends Form  {
-    
-      Label labelTitre, labelDescription;
+public class ModifierPublication extends Form {
+
+    Label labelTitre, labelDescription;
     TextField tfTitre;
     TextArea tfDescription;
     Button btnModifier;
-    
-    
-  private void addGUIs() {
+
+    Form previous;
+
+    public ModifierPublication(Form previous) {
+        super(new BoxLayout(BoxLayout.Y_AXIS));
+
+        this.previous = previous;
+
+        addGUIs();
+        addActions();
+        getToolbar().addMaterialCommandToLeftBar("  ", FontImage.MATERIAL_ARROW_BACK, e -> MainForm.accueilFrontForm.showBack());
+
+    }
+
+    private void addGUIs() {
 
         labelTitre = new Label("Titre de la publication");
         labelTitre.setUIID("defaultLabel");
@@ -48,14 +60,14 @@ public class ModifierPublication extends Form  {
         btnModifier.setUIID("buttonSuccess");
 
         Container container = new Container(new BoxLayout(BoxLayout.Y_AXIS));
-    
-  container.setUIID("PublicationContainer");
+
+        container.setUIID("PublicationContainer");
         container.addAll(labelTitre, tfTitre, labelDescription, tfDescription, btnModifier);
 
         this.addAll(container);
-  }
-  
-   private boolean controleDeSaisie() {
+    }
+
+    private boolean controleDeSaisie() {
         if (tfTitre.getText().equals("")) {
             Dialog.show("Objet vide", "", new Command("Ok"));
             return false;
@@ -67,45 +79,31 @@ public class ModifierPublication extends Form  {
 
         return true;
     }
-  
-  
-  
- private void addActions () {
-     
- 
-  btnModifier.addActionListener((action) -> {
+
+    private void addActions() {
+
+        btnModifier.addActionListener((action) -> {
             if (controleDeSaisie()) {
-                   System.out.println("11");
-        Publication publication = new Publication (
-                publicationActuelle.getId(),
-                MainApp.getSession().getCandidatId(),
-                tfTitre.getText(),
-                tfDescription.getText(),
-                null,
-                0); 
+                System.out.println("11");
+                Publication publication = new Publication(
+                        publicationActuelle.getId(),
+                        MainApp.getSession().getCandidatId(),
+                        tfTitre.getText(),
+                        tfDescription.getText(),
+                        null,
+                        0);
                 int responseCode = PublicationService.getInstance().modifierPublication(publication);
-                   System.out.println("22");
+                System.out.println("22");
                 if (responseCode == 200) {
-           
- Dialog.show("Succés", "Publication modifieré avec succes", new Command("Ok"));
+                    Dialog.show("Succés", "Publication modifieré avec succes", new Command("Ok"));
                 } else {
                     Dialog.show("Erreur", "Erreur d'modifier de Publication. Code d'erreur : " + responseCode, new Command("Ok"));
                 }
+
+                ((AfficherToutPublication) previous).refresh();
+                MainForm.accueilFrontForm.showBack();
             }
         });
-  
-  }
-    
-    public ModifierPublication(Form previous) {
-        super(new BoxLayout(BoxLayout.Y_AXIS));
-        addGUIs();
-        addActions();
-        getToolbar().addMaterialCommandToLeftBar("  ", FontImage.MATERIAL_ARROW_BACK, e -> previous.show());
 
     }
-    
-    
-    
-    
-    
 }

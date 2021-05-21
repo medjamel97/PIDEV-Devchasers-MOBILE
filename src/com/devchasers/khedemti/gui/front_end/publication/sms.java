@@ -16,7 +16,7 @@ public class sms {
     public static final String ACCOUNT_SID =
             "AC0ccb5056af6624a63e7ce3f142589fcb";
     public static final String AUTH_TOKEN =
-            "0d7fe38aabdd41d8075c3321b18f0547";
+            "b775791522cdd749961d20b6b0988e46";
 
 
     public void send(String s,String x){

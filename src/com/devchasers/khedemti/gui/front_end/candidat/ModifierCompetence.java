@@ -29,6 +29,7 @@ public class ModifierCompetence extends Form {
     TextField tfName;
     TextField tfLevel;
     Button btnModifier;
+
     Form previous;
 
     public ModifierCompetence(Form previous) {
@@ -38,7 +39,7 @@ public class ModifierCompetence extends Form {
 
         addGUIs();
         addActions();
-        getToolbar().addMaterialCommandToLeftBar("  ", FontImage.MATERIAL_ARROW_BACK, e -> previous.showBack());
+        getToolbar().addMaterialCommandToLeftBar("  ", FontImage.MATERIAL_ARROW_BACK, e -> MainForm.accueilFrontForm.showBack());
 
     }
 
@@ -70,21 +71,17 @@ public class ModifierCompetence extends Form {
 
         btnModifier.addActionListener((action) -> {
             if (controleDeSaisie()) {
-                int responseCode = CompetenceService.getInstance().modifierCompetence(new Competence(
+                CompetenceService.getInstance().modifierCompetence(new Competence(
                         AfficherProfil.competenceActuelle.getId(),
                         MainApp.getSession().getCandidatId(),
                         tfName.getText(),
                         Integer.parseInt(tfLevel.getText())
                 ));
 
+                Dialog.show("Succés", "competence modifié avec succes", new Command("Ok"));
+
                 ((AfficherProfil) previous).refreshProfil();
                 MainForm.accueilFrontForm.showBack();
-
-                if (responseCode == 200) {
-                    Dialog.show("Succés", "competence modifié avec succes", new Command("Ok"));
-                } else {
-                    Dialog.show("Erreur", "Erreur de modification competence. Code d'erreur : " + responseCode, new Command("Ok"));
-                }
             }
         });
     }

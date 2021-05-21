@@ -24,22 +24,23 @@ import com.devchasers.khedemti.services.ExperienceDeTravailService;
  *
  * @author Faten
  */
-public class AjouterExperienceDeTravail extends Form {
+public class ModifierExperienceDeTravail extends Form {
 
     Label labelDescription, labeltitreEmploi, labelnomEntreprise, labelVille, labelDuree;
     TextField tfVille, tfDuree, tftitreEmploi, tfnomEntreprise;
     TextArea tfDescription;
-    Button btnAjouter;
+    Button btnModifier;
 
     Form previous;
 
-    public AjouterExperienceDeTravail(Form previous) {
+    public ModifierExperienceDeTravail(Form previous) {
         super(new BoxLayout(BoxLayout.Y_AXIS));
 
         this.previous = previous;
 
         addGUIs();
         addActions();
+
         getToolbar().addMaterialCommandToLeftBar("  ", FontImage.MATERIAL_ARROW_BACK, e -> MainForm.accueilFrontForm.showBack());
 
     }
@@ -49,7 +50,7 @@ public class AjouterExperienceDeTravail extends Form {
         labelDescription = new Label("Description : ");
         labelDescription.setUIID("defaultLabel");
         tfDescription = new TextArea();
-        
+
         labeltitreEmploi = new Label("Titre Emploi:");
         labeltitreEmploi.setUIID("defaultLabel");
         tftitreEmploi = new TextField();
@@ -66,30 +67,35 @@ public class AjouterExperienceDeTravail extends Form {
         labelDuree.setUIID("defaultLabel");
         tfDuree = new TextField();
 
+        btnModifier = new Button("Modifier");
+        btnModifier.setUIID("buttonSuccess");
 
-        btnAjouter = new Button("Ajouter");
-        btnAjouter.setUIID("buttonSuccess");
+        tfDescription.setText(AfficherProfil.experienceDeTravailActuelle.getDescription());
+        tftitreEmploi.setText(AfficherProfil.experienceDeTravailActuelle.getTitreEmploi());
+        tfnomEntreprise.setText(AfficherProfil.experienceDeTravailActuelle.getNomEntreprise());
+        tfVille.setText(AfficherProfil.experienceDeTravailActuelle.getVille());
+        tfDuree.setText(AfficherProfil.experienceDeTravailActuelle.getDuree());
 
         Container container = new Container(new BoxLayout(BoxLayout.Y_AXIS));
         container.setUIID("ExperienceDeTravailContainer");
         container.addAll(
                 labelDescription, tfDescription,
-                labeltitreEmploi, tftitreEmploi, 
-                labelnomEntreprise, tfnomEntreprise, 
-                labelVille, tfVille, 
+                labeltitreEmploi, tftitreEmploi,
+                labelnomEntreprise, tfnomEntreprise,
+                labelVille, tfVille,
                 labelDuree, tfDuree,
-                btnAjouter
+                btnModifier
         );
 
         this.addAll(container);
-
     }
 
     private void addActions() {
 
-        btnAjouter.addActionListener((action) -> {
+        btnModifier.addActionListener((action) -> {
             if (controleDeSaisie()) {
-                ExperienceDeTravailService.getInstance().ajouterExperienceDeTravail(new ExperienceDeTravail(
+                ExperienceDeTravailService.getInstance().modifierExperienceDeTravail(new ExperienceDeTravail(
+                        AfficherProfil.experienceDeTravailActuelle.getId(),
                         MainApp.getSession().getCandidatId(),
                         tfDescription.getText(),
                         tftitreEmploi.getText(),
@@ -97,7 +103,8 @@ public class AjouterExperienceDeTravail extends Form {
                         tfVille.getText(),
                         tfDuree.getText()
                 ));
-                Dialog.show("Succés", "education ajouté avec succes", new Command("Ok"));
+
+                Dialog.show("Succés", "experienceDeTravail modifié avec succes", new Command("Ok"));
 
                 ((AfficherProfil) previous).refreshProfil();
                 MainForm.accueilFrontForm.showBack();
@@ -130,5 +137,4 @@ public class AjouterExperienceDeTravail extends Form {
 
         return true;
     }
-
 }

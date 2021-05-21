@@ -17,6 +17,7 @@ import com.codename1.ui.TextField;
 import com.codename1.ui.layouts.BoxLayout;
 import com.devchasers.khedemti.MainApp;
 import com.devchasers.khedemti.entities.OffreDeTravail;
+import com.devchasers.khedemti.gui.front_end.MainForm;
 import com.devchasers.khedemti.services.OffreDeTravailService;
 
 /**
@@ -39,7 +40,7 @@ public class AjouterOffre extends Form {
 
         addGUIs();
         addActions();
-        getToolbar().addMaterialCommandToLeftBar("  ", FontImage.MATERIAL_ARROW_BACK, e -> previous.show());
+        getToolbar().addMaterialCommandToLeftBar("  ", FontImage.MATERIAL_ARROW_BACK, e -> MainForm.accueilFrontForm.showBack());
 
     }
 

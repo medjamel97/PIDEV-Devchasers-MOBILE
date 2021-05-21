@@ -17,22 +17,34 @@ import com.codename1.ui.TextField;
 import com.codename1.ui.layouts.BoxLayout;
 import com.devchasers.khedemti.MainApp;
 import com.devchasers.khedemti.entities.Publication;
+import com.devchasers.khedemti.gui.front_end.MainForm;
 import com.devchasers.khedemti.services.PublicationService;
-import java.util.ArrayList;
 
 /**
  *
  * @author Maher
  */
-public class AjouterPublication extends Form  {
-    
-      Label labelTitre, labelDescription;
+public class AjouterPublication extends Form {
+
+    Label labelTitre, labelDescription;
     TextField tfTitre;
     TextArea tfDescription;
     Button btnAjouter;
+
+    Form previous;
     
-    
-  private void addGUIs() {
+    public AjouterPublication(Form previous) {
+        super(new BoxLayout(BoxLayout.Y_AXIS));
+        
+        this.previous = previous;
+        
+        addGUIs();
+        addActions();
+      
+        super.getToolbar().addMaterialCommandToLeftBar("  ", FontImage.MATERIAL_ARROW_BACK, e -> MainForm.accueilFrontForm.showBack());
+    }
+
+    private void addGUIs() {
 
         labelTitre = new Label("Titre de la publication");
         labelTitre.setUIID("defaultLabel");
@@ -47,14 +59,14 @@ public class AjouterPublication extends Form  {
         btnAjouter.setUIID("buttonSuccess");
 
         Container container = new Container(new BoxLayout(BoxLayout.Y_AXIS));
-    
-  container.setUIID("PublicationContainer");
+
+        container.setUIID("PublicationContainer");
         container.addAll(labelTitre, tfTitre, labelDescription, tfDescription, btnAjouter);
 
         this.addAll(container);
-  }
-  
-   private boolean controleDeSaisie() {
+    }
+
+    private boolean controleDeSaisie() {
         if (tfTitre.getText().equals("")) {
             Dialog.show("Objet vide", "", new Command("Ok"));
             return false;
@@ -66,44 +78,28 @@ public class AjouterPublication extends Form  {
 
         return true;
     }
-  
-  
-  
- private void addActions () {
-     
- 
-  btnAjouter.addActionListener((action) -> {
+
+    private void addActions() {
+
+        btnAjouter.addActionListener((action) -> {
             if (controleDeSaisie()) {
-                   System.out.println("11");
-        
-                int responseCode = PublicationService.getInstance().ajouterPublication(new Publication
-        (  MainApp.getSession().getCandidatId(), tfTitre.getText(), tfDescription.getText()  ));
-                   System.out.println("22");
-                    String numTelephone ="+21623292574";
-              sms s = new sms();
-              s.send("Un commentaire a ètè ajouté",numTelephone);
+                System.out.println("11");
+
+                int responseCode = PublicationService.getInstance().ajouterPublication(new Publication(MainApp.getSession().getCandidatId(), tfTitre.getText(), tfDescription.getText()));
+                System.out.println("22");
+                String numTelephone = "+21623292574";
+                sms s = new sms();
+                //  s.send("votre publication a ètè ajouté", numTelephone);
                 if (responseCode == 200) {
-           
- Dialog.show("Succés", "Publication ajouté avec succes", new Command("Ok"));
+                    Dialog.show("Succés", "Publication ajouté avec succes", new Command("Ok"));
                 } else {
                     Dialog.show("Erreur", "Erreur d'ajout de Publication. Code d'erreur : " + responseCode, new Command("Ok"));
                 }
+                
+                ((AfficherToutPublication) previous).refresh();
+                MainForm.accueilFrontForm.showBack();
             }
         });
-  
-  }
-    
-    public AjouterPublication(Form previous) {
-        super(new BoxLayout(BoxLayout.Y_AXIS));
-        addGUIs();
-        addActions();
-        getToolbar().addMaterialCommandToLeftBar("  ", FontImage.MATERIAL_ARROW_BACK, e -> previous.show());
-        
 
     }
-    
-    
-    
-    
-    
 }

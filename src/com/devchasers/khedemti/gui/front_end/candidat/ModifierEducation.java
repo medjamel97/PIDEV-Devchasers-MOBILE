@@ -16,24 +16,24 @@ import com.codename1.ui.TextArea;
 import com.codename1.ui.TextField;
 import com.codename1.ui.layouts.BoxLayout;
 import com.devchasers.khedemti.MainApp;
-import com.devchasers.khedemti.entities.ExperienceDeTravail;
+import com.devchasers.khedemti.entities.Education;
 import com.devchasers.khedemti.gui.front_end.MainForm;
-import com.devchasers.khedemti.services.ExperienceDeTravailService;
+import com.devchasers.khedemti.services.EducationService;
 
 /**
  *
  * @author Faten
  */
-public class AjouterExperienceDeTravail extends Form {
+public class ModifierEducation extends Form {
 
-    Label labelDescription, labeltitreEmploi, labelnomEntreprise, labelVille, labelDuree;
-    TextField tfVille, tfDuree, tftitreEmploi, tfnomEntreprise;
+    Label labelDescription, labelniveauEducation, labelEtablissement, labelFiliere, labelVille, labelDuree;
+    TextField tfniveauEducation, tfEtablissement, tfFiliere, tfVille, tfDuree;
     TextArea tfDescription;
-    Button btnAjouter;
+    Button btnModifier;
 
     Form previous;
 
-    public AjouterExperienceDeTravail(Form previous) {
+    public ModifierEducation(Form previous) {
         super(new BoxLayout(BoxLayout.Y_AXIS));
 
         this.previous = previous;
@@ -49,14 +49,18 @@ public class AjouterExperienceDeTravail extends Form {
         labelDescription = new Label("Description : ");
         labelDescription.setUIID("defaultLabel");
         tfDescription = new TextArea();
-        
-        labeltitreEmploi = new Label("Titre Emploi:");
-        labeltitreEmploi.setUIID("defaultLabel");
-        tftitreEmploi = new TextField();
 
-        labelnomEntreprise = new Label("Nom Entreprise");
-        labelnomEntreprise.setUIID("defaultLabel");
-        tfnomEntreprise = new TextField();
+        labelniveauEducation = new Label("niveau d'Education:");
+        labelniveauEducation.setUIID("defaultLabel");
+        tfniveauEducation = new TextField();
+
+        labelFiliere = new Label("Filiere:");
+        labelFiliere.setUIID("defaultLabel");
+        tfFiliere = new TextField();
+
+        labelEtablissement = new Label("Etablissement:");
+        labelEtablissement.setUIID("defaultLabel");
+        tfEtablissement = new TextField();
 
         labelVille = new Label("Ville:");
         labelVille.setUIID("defaultLabel");
@@ -66,38 +70,47 @@ public class AjouterExperienceDeTravail extends Form {
         labelDuree.setUIID("defaultLabel");
         tfDuree = new TextField();
 
+        btnModifier = new Button("Modifier");
+        btnModifier.setUIID("buttonSuccess");
 
-        btnAjouter = new Button("Ajouter");
-        btnAjouter.setUIID("buttonSuccess");
+        tfDescription.setText((String) AfficherProfil.educationActuelle.getDescription());
+        tfniveauEducation.setText((String) AfficherProfil.educationActuelle.getNiveauEducation());
+        tfFiliere.setText((String) AfficherProfil.educationActuelle.getFiliere());
+        tfEtablissement.setText((String) AfficherProfil.educationActuelle.getEtablissement());
+        tfVille.setText((String) AfficherProfil.educationActuelle.getVille());
+        tfDuree.setText((String) AfficherProfil.educationActuelle.getDuree());
 
         Container container = new Container(new BoxLayout(BoxLayout.Y_AXIS));
-        container.setUIID("ExperienceDeTravailContainer");
+        container.setUIID("EducationContainer");
         container.addAll(
                 labelDescription, tfDescription,
-                labeltitreEmploi, tftitreEmploi, 
-                labelnomEntreprise, tfnomEntreprise, 
-                labelVille, tfVille, 
+                labelniveauEducation, tfniveauEducation,
+                labelFiliere, tfFiliere,
+                labelEtablissement, tfEtablissement,
+                labelVille, tfVille,
                 labelDuree, tfDuree,
-                btnAjouter
+                btnModifier
         );
 
         this.addAll(container);
-
     }
 
     private void addActions() {
 
-        btnAjouter.addActionListener((action) -> {
+        btnModifier.addActionListener((action) -> {
             if (controleDeSaisie()) {
-                ExperienceDeTravailService.getInstance().ajouterExperienceDeTravail(new ExperienceDeTravail(
+                EducationService.getInstance().modifierEducation(new Education(
+                        AfficherProfil.educationActuelle.getId(),
                         MainApp.getSession().getCandidatId(),
                         tfDescription.getText(),
-                        tftitreEmploi.getText(),
-                        tfnomEntreprise.getText(),
+                        tfniveauEducation.getText(),
+                        tfFiliere.getText(),
+                        tfEtablissement.getText(),
                         tfVille.getText(),
                         tfDuree.getText()
                 ));
-                Dialog.show("Succés", "education ajouté avec succes", new Command("Ok"));
+
+                Dialog.show("Succés", "education modifié avec succes", new Command("Ok"));
 
                 ((AfficherProfil) previous).refreshProfil();
                 MainForm.accueilFrontForm.showBack();
@@ -106,15 +119,18 @@ public class AjouterExperienceDeTravail extends Form {
     }
 
     private boolean controleDeSaisie() {
-        if (tfnomEntreprise.getText().equals("")) {
-            Dialog.show("niveau Nom Entreprise est vide", "", new Command("Ok"));
+        if (tfniveauEducation.getText().equals("")) {
+            Dialog.show("niveau education est vide", "", new Command("Ok"));
             return false;
         }
-        if (tftitreEmploi.getText().equals("")) {
-            Dialog.show("le champ Titre emploi est vide", "", new Command("Ok"));
+        if (tfFiliere.getText().equals("")) {
+            Dialog.show("le champ Filiere est vide", "", new Command("Ok"));
             return false;
         }
-
+        if (tfEtablissement.getText().equals("")) {
+            Dialog.show("le champ Etablissement est vide", "", new Command("Ok"));
+            return false;
+        }
         if (tfVille.getText().equals("")) {
             Dialog.show("le champ ville est vide", "", new Command("Ok"));
             return false;
@@ -130,5 +146,4 @@ public class AjouterExperienceDeTravail extends Form {
 
         return true;
     }
-
 }

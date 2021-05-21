@@ -16,6 +16,7 @@ import com.codename1.ui.TextField;
 import com.codename1.ui.layouts.BoxLayout;
 import com.devchasers.khedemti.MainApp;
 import com.devchasers.khedemti.entities.Competence;
+import com.devchasers.khedemti.gui.front_end.MainForm;
 import com.devchasers.khedemti.services.CompetenceService;
 
 /**
@@ -29,11 +30,16 @@ public class AjouterCompetenceForm extends Form {
     TextField tfLevel;
     Button btnAjouter;
 
+    Form previous;
+
     public AjouterCompetenceForm(Form previous) {
         super(new BoxLayout(BoxLayout.Y_AXIS));
+
+        this.previous = previous;
+
         addGUIs();
         addActions();
-        getToolbar().addMaterialCommandToLeftBar("  ", FontImage.MATERIAL_ARROW_BACK, e -> previous.show());
+        getToolbar().addMaterialCommandToLeftBar("  ", FontImage.MATERIAL_ARROW_BACK, e -> MainForm.accueilFrontForm.showBack());
 
     }
 
@@ -63,17 +69,16 @@ public class AjouterCompetenceForm extends Form {
 
         btnAjouter.addActionListener((action) -> {
             if (controleDeSaisie()) {
-                int responseCode = CompetenceService.getInstance().modifierCompetence(new Competence(
+                CompetenceService.getInstance().ajouterCompetence(new Competence(
                         MainApp.getSession().getCandidatId(),
                         tfName.getText(),
                         Integer.parseInt(tfLevel.getText())
-                )
-                );
-                if (responseCode == 200) {
-                    Dialog.show("Succés", "competence ajouté avec succes", new Command("Ok"));
-                } else {
-                    Dialog.show("Erreur", "Erreur d'ajout de competence. Code d'erreur : " + responseCode, new Command("Ok"));
-                }
+                ));
+
+                Dialog.show("Succés", "competence ajouté avec succes", new Command("Ok"));
+                        
+                ((AfficherProfil) previous).refreshProfil();
+                MainForm.accueilFrontForm.showBack();
             }
         });
     }

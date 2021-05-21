@@ -10,6 +10,7 @@ package com.devchasers.khedemti.entities;
  * @author Faten
  */
 public class Competence {
+
     private int id;
     private int candidatId;
     private String name;
@@ -60,5 +61,4 @@ public class Competence {
         this.level = level;
     }
 
-    
 }

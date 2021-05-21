@@ -5,13 +5,10 @@
  */
 package com.devchasers.khedemti.gui.front_end.publication;
 
-import com.codename1.ads.AdsService;
 import com.codename1.components.InteractionDialog;
 import com.codename1.components.SpanLabel;
 import com.codename1.components.ToastBar;
 import com.codename1.messaging.Message;
-import com.codename1.notifications.LocalNotification;
-
 import com.codename1.ui.Button;
 import com.codename1.ui.Command;
 import com.codename1.ui.Component;
@@ -33,9 +30,8 @@ import com.devchasers.khedemti.entities.Commentaire;
 import com.devchasers.khedemti.entities.Publication;
 import com.devchasers.khedemti.services.CommentaireService;
 import com.devchasers.khedemti.services.PublicationService;
-import java.io.IOException;
+import com.devchasers.khedemti.services.UserService;
 import java.util.ArrayList;
-
 
 /**
  *
@@ -49,16 +45,20 @@ public class AfficherToutPublication extends Form {
 
     public static String nomOffreActuelle, nomSocieteActuelle;
 
-    Container publicationModel, btnsContainer, commentaireModel, commentaireContainer;
-    Label labelTitre, labelDateCreation;
-    SpanLabel spanLabelDescription;
-    Button btnAjouter, btnModifier, btnSupprimer;
+    Button btnAjouter;
 
     public AfficherToutPublication(Form previous) {
         super("Publications sur " + nomOffreActuelle + " de la societe " + nomSocieteActuelle, new BoxLayout(BoxLayout.Y_AXIS));
         addGUIs();
         addActions();
         getToolbar().hideToolbar();
+    }
+
+    public void refresh() {
+        this.removeAll();
+        addGUIs();
+        addActions();
+        this.refreshTheme();
     }
 
     private void addGUIs() {
@@ -80,34 +80,33 @@ public class AfficherToutPublication extends Form {
     }
 
     private Component creerPublication(Publication publication) {
-        publicationModel = new Container(new BoxLayout(BoxLayout.Y_AXIS));
+        Container publicationModel = new Container(new BoxLayout(BoxLayout.Y_AXIS));
         publicationModel.setUIID("publicationContainer");
 
-        labelTitre = new Label((String) publication.getTitre());
+        Label labelTitre = new Label((String) publication.getTitre());
         labelTitre.setUIID("defaultLabel");
-        spanLabelDescription = new SpanLabel(publication.getDescription());
+        SpanLabel spanLabelDescription = new SpanLabel(publication.getDescription());
         spanLabelDescription.setTextUIID("description");
-        labelDateCreation = new Label(publication.getDate());
+        Label labelDateCreation = new Label(publication.getDate());
         labelDateCreation.setUIID("dateLabel");
 
-        btnsContainer = new Container(new BoxLayout(BoxLayout.X_AXIS));
+        Container btnsContainer = new Container(new BoxLayout(BoxLayout.X_AXIS));
         btnsContainer.setUIID("buttonsContainer");
         btnsContainer.setPreferredH(200);
 
-        btnModifier = new Button("Modifier");
+        Button btnModifier = new Button("Modifier");
         btnModifier.setUIID("actionButton");
-        btnSupprimer = new Button("Supprimer");
+        Button btnSupprimer = new Button("Supprimer");
         btnSupprimer.setUIID("actionButton");
-          Button btnEmail = new Button("Saraha");
+        Button btnEmail = new Button("Envoyer mail");
         btnEmail.setUIID("actionButton");
-        
-      
+
         btnEmail.addActionListener(email -> {
             Message m = new Message("Body of message");
-m.getAttachments().put("Veillez saisir le Mail ", "text/plain");
-//m.getAttachments().put(imageAttachmentUri, "image/png");
-Display.getInstance().sendMessage(new String[] {"m3hr3li@gmail.com"}, "Veillez saisir le Mail", m);
-            
+            m.getAttachments().put("API mail", "text/plain");
+            Display.getInstance().sendMessage(new String[]{
+                UserService.getInstance().recupererUserParId(publication.getUserId()).getEmail()
+            }, "Veillez saisir le Mail", m);
         });
 
         btnModifier.addActionListener(action -> {
@@ -143,9 +142,9 @@ Display.getInstance().sendMessage(new String[] {"m3hr3li@gmail.com"}, "Veillez s
 
         });
 
-        commentaireContainer = new Container(new BoxLayout(BoxLayout.Y_AXIS));
+        Container commentaireContainer = new Container(new BoxLayout(BoxLayout.Y_AXIS));
         System.out.println(publication.getId());
-        ArrayList<Commentaire> listCommentaires = CommentaireService.getInstance().recupererCommentaires(1);
+        ArrayList<Commentaire> listCommentaires = CommentaireService.getInstance().recupererCommentaires(publication.getId());
         for (int i = 0; i < listCommentaires.size(); i++) {
             commentaireContainer.add(creerCommentaire(listCommentaires.get(i)));
         }
@@ -158,47 +157,39 @@ Display.getInstance().sendMessage(new String[] {"m3hr3li@gmail.com"}, "Veillez s
         tfcomment.setTooltip("ajouter Commentaire");
         tfcomment.setPreferredW(600);
         Button btnEnvoyer = new Button("Ajouter");
-        
-      
-        
-        
+
         btnEnvoyer.addActionListener(ajoutcomm -> {
-    if (tfcomment.getText().equals("")) {
-            Dialog.show("Commentaire vide", "", new Command("Ok"));
-            
-        }else {
-        
-    
-            System.out.println("11");
-            int responseCode = CommentaireService.getInstance().ajouterCommentaire(new Commentaire(
-                    publication.getId(),
-                    MainApp.getSession().getCandidatId(),
-                    tfcomment.getText()
-            ));
-            
-            //    int responseCode = PublicationService.getInstance().ajouterPublication(new Publication
-            // (  MainApp.getSession().getCandidatId(), tfTitre.getText(), tfDescription.getText()  ));
-            System.out.println("22");
-            
+            if (tfcomment.getText().equals("")) {
+                Dialog.show("Commentaire vide", "", new Command("Ok"));
 
-            
+            } else {
 
-            commentaireContainer.add(creerCommentaire(new Commentaire (publication.getId()
-                    , MainApp.getSession().getId(), tfcomment.getText())));
-             ToastBar.getInstance().setPosition(BOTTOM);
-                      ToastBar.Status status = ToastBar.getInstance().createStatus();
- status.setShowProgressIndicator(true);
-   //status.setIcon(res.getImage("done.png").scaledSmallerRatio(Display.getInstance().getDisplayWidth()/10, Display.getInstance().getDisplayWidth()/15));
-                            status.setMessage("  Commentaire ajouté avec succès");
-                                                  status.setExpires(10000);  
-                      status.show();
-                    
-                    refreshTheme();
-            
-tfcomment.setText("");
+                System.out.println("11");
+                int responseCode = CommentaireService.getInstance().ajouterCommentaire(new Commentaire(
+                        publication.getId(),
+                        MainApp.getSession().getCandidatId(),
+                        tfcomment.getText()
+                ));
 
+                //    int responseCode = PublicationService.getInstance().ajouterPublication(new Publication
+                // (  MainApp.getSession().getCandidatId(), tfTitre.getText(), tfDescription.getText()  ));
+                System.out.println("22");
 
-            this.refreshTheme();
+                commentaireContainer.add(creerCommentaire(new Commentaire(publication.getId(),
+                        MainApp.getSession().getId(), tfcomment.getText())));
+                ToastBar.getInstance().setPosition(BOTTOM);
+                ToastBar.Status status = ToastBar.getInstance().createStatus();
+                status.setShowProgressIndicator(true);
+                //status.setIcon(res.getImage("done.png").scaledSmallerRatio(Display.getInstance().getDisplayWidth()/10, Display.getInstance().getDisplayWidth()/15));
+                status.setMessage("  Commentaire ajouté avec succès");
+                status.setExpires(10000);
+                status.show();
+
+                refreshTheme();
+
+                tfcomment.setText("");
+
+                this.refreshTheme();
 //             LocalNotification n = new LocalNotification();
 //        n.setId("notif");
 //        n.setAlertBody("Commentaire ajoutè avec succés");
@@ -213,17 +204,10 @@ tfcomment.setText("");
 //           
 //        );
 
-            
-          //  Display.getInstance().scheduleLocalNotification(n, 10, 10);
-            System.out.println(System.currentTimeMillis());
-        
-            
-            if (responseCode == 200) {
+                //  Display.getInstance().scheduleLocalNotification(n, 10, 10);
+                System.out.println(System.currentTimeMillis());
 
-            } else {
-                Dialog.show("Erreur", "Erreur d'ajout de Commentaire. Code d'erreur : " + responseCode, new Command("Ok"));
             }
-        }
         });
 
         ajoutContainer.addAll(tfcomment, btnEnvoyer);
@@ -232,11 +216,11 @@ tfcomment.setText("");
                 ajoutContainer);
 
         return publicationModel;
-        
+
     }
 
     private Component creerCommentaire(Commentaire commentaire) {
-        commentaireModel = new Container(new BoxLayout(BoxLayout.Y_AXIS));
+        Container commentaireModel = new Container(new BoxLayout(BoxLayout.Y_AXIS));
         commentaireModel.setUIID("commentaireContainer");
 
         SpanLabel spanLabelDescriptionCom = new SpanLabel(commentaire.getDescription());
@@ -247,11 +231,10 @@ tfcomment.setText("");
 
         Button btnModifierCom = new Button("Modifier");
         btnModifierCom.setUIID("actionButton");
-        btnModifierCom.setPreferredSize(new Dimension(100, 100));
+        btnModifierCom.setPreferredSize(new Dimension(400, 100));
         Button btnSupprimerCom = new Button("Supprimer");
         btnSupprimerCom.setUIID("actionButton");
-        btnSupprimerCom.setPreferredSize(new Dimension(100, 100));
-       
+        btnSupprimerCom.setPreferredSize(new Dimension(400, 100));
 
         btnModifierCom.addActionListener(action -> {
             System.out.println("msgggggggg");
@@ -259,24 +242,24 @@ tfcomment.setText("");
             Button modifier = new Button("Modifier commentaire");
             modifier.addActionListener(acceptmodif
                     -> {
-                   if (descrip.getText().equals("")) {
-            Dialog.show("Commentaire vide", "", new Command("Ok"));
-            
-        } else if (descrip.getText() == commentaire.getDescription()) {
-            Dialog.show("Votre commentaire a restè le même", "", new Command("Ok"));
-           descrip.remove();
-                modifier.remove();
-                this.refreshTheme();
-        } else {
-               
-                
-                commentaire.setDescription(descrip.getText());
-                CommentaireService.getInstance().modifierCommentaire(commentaire);
-                spanLabelDescriptionCom.setText(descrip.getText());
-                descrip.remove();
-                modifier.remove();
-                this.refreshTheme();
-            }}
+                if (descrip.getText().equals("")) {
+                    Dialog.show("Commentaire vide", "", new Command("Ok"));
+
+                } else if (descrip.getText().equals(commentaire.getDescription())) {
+                    Dialog.show("Votre commentaire a restè le même", "", new Command("Ok"));
+                    descrip.remove();
+                    modifier.remove();
+                    this.refreshTheme();
+                } else {
+
+                    commentaire.setDescription(descrip.getText());
+                    CommentaireService.getInstance().modifierCommentaire(commentaire);
+                    spanLabelDescriptionCom.setText(descrip.getText());
+                    descrip.remove();
+                    modifier.remove();
+                    this.refreshTheme();
+                }
+            }
             );
             commentaireModel.addAll(descrip, modifier);
 
@@ -295,7 +278,7 @@ tfcomment.setText("");
                 dlg.dispose();
                 spanLabelDescriptionCom.remove();
                 btnsContainerCom.remove();
-                
+
                 this.refreshTheme();
             });
             Container btnContainer = new Container(new BoxLayout(BoxLayout.X_AXIS));

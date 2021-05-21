@@ -13,38 +13,38 @@ package com.devchasers.khedemti.entities;
 public class Publication {
 
     private int id;
-    private int candidatId;
+    private int userId;
     private String titre;
     private String description;
     private String date;
     private float pourcentageLike;
 
-    public Publication(int id, int candidatId, String titre, String description, String date, float pourcentageLike) {
+    public Publication(int id, int userId, String titre, String description, String date, float pourcentageLike) {
         this.id = id;
-        this.candidatId = candidatId;
+        this.userId = userId;
         this.titre = titre;
         this.description = description;
         this.date = date;
         this.pourcentageLike = pourcentageLike;
     }
 
-    public Publication(int candidatId, String titre, String description, String date, float pourcentageLike) {
-        this.candidatId = candidatId;
+    public Publication(int userId, String titre, String description, String date, float pourcentageLike) {
+        this.userId = userId;
         this.titre = titre;
         this.description = description;
         this.date = date;
         this.pourcentageLike = pourcentageLike;
     }
-      public Publication(int candidatId, String titre, String description, float pourcentageLike) {
-        this.candidatId = candidatId;
+      public Publication(int userId, String titre, String description, float pourcentageLike) {
+        this.userId = userId;
         this.titre = titre;
         this.description = description;
   
         this.pourcentageLike = pourcentageLike;
     }
 
-         public Publication(int candidatId, String titre, String description) {
-        this.candidatId = candidatId;
+         public Publication(int userId, String titre, String description) {
+        this.userId = userId;
         this.titre = titre;
         this.description = description;
   
@@ -60,12 +60,12 @@ public class Publication {
         this.id = id;
     }
 
-    public int getCandidatId() {
-        return candidatId;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setCandidatId(int candidatId) {
-        this.candidatId = candidatId;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     public String getTitre() {
@@ -102,7 +102,7 @@ public class Publication {
 
     @Override
     public String toString() {
-        return "Publication{" + "id=" + id + ", candidatId=" + candidatId + ", titre=" + titre + ", description=" + description + ", date=" + date + ", pourcentageLike=" + pourcentageLike + '}';
+        return "Publication{" + "id=" + id + ", userId=" + userId + ", titre=" + titre + ", description=" + description + ", date=" + date + ", pourcentageLike=" + pourcentageLike + '}';
     }
 
     

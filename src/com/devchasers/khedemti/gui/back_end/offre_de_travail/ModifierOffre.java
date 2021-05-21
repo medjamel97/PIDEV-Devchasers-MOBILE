@@ -18,6 +18,11 @@ import com.codename1.ui.events.ActionEvent;
 import com.codename1.ui.layouts.BoxLayout;
 import com.devchasers.khedemti.MainApp;
 import com.devchasers.khedemti.entities.OffreDeTravail;
+<<<<<<< Updated upstream
+=======
+import com.devchasers.khedemti.gui.front_end.MainForm;
+import com.devchasers.khedemti.gui.front_end.offre_de_travail.AfficherToutOffreDeTravail;
+>>>>>>> Stashed changes
 import com.devchasers.khedemti.services.OffreDeTravailService;
 
 /**
@@ -37,7 +42,7 @@ public class ModifierOffre extends Form {
         this.previous = previous;
         addGUIs();
         addActions();
-        getToolbar().addMaterialCommandToLeftBar("  ", FontImage.MATERIAL_ARROW_BACK, e -> previous.show());
+        getToolbar().addMaterialCommandToLeftBar("  ", FontImage.MATERIAL_ARROW_BACK, e -> MainForm.accueilFrontForm.showBack());
 
     }
 

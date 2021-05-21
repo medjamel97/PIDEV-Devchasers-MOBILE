@@ -47,7 +47,7 @@ public class MainForm extends Form {
         accueilFrontForm = this;
         addGUIs();
 
-        getToolbar().hideToolbar();
+        super.getToolbar().hideToolbar();
     }
 
     private void addGUIs() {

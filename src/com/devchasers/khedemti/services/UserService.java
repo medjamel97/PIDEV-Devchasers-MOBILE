@@ -116,6 +116,47 @@ public class UserService {
         return user;
     }
 
+    public User recupererUserParId(int userId) {
+        cr.setUrl(Statics.BASE_URL + "/mobile/recuperer_user_par_id");
+        cr.addArgument("userId", String.valueOf(userId));
+        cr.addResponseListener(new ActionListener<NetworkEvent>() {
+            @Override
+            public void actionPerformed(NetworkEvent evt) {
+
+                try {
+                    Map<String, Object> tasksListJson = new JSONParser().parseJSON(new CharArrayReader(
+                            new String(cr.getResponseData()).toCharArray()
+                    ));
+                    List<Map<String, Object>> list = (List<Map<String, Object>>) tasksListJson.get("root");
+
+                    for (Map<String, Object> obj : list) {
+                        user = new User(
+                                (int) Float.parseFloat(obj.get("id").toString()),
+                                (int) Float.parseFloat(obj.get("candidatId").toString()),
+                                (int) Float.parseFloat(obj.get("societeId").toString()),
+                                (String) obj.get("email"),
+                                (List<String>) obj.get("roles"),
+                                (String) obj.get("password"),
+                                true,
+                                true
+                        );
+                    }
+
+                } catch (IOException ex) {
+                    System.out.println("User vide");
+                }
+
+                cr.removeResponseListener(this);
+            }
+        });
+        try {
+            NetworkManager.getInstance().addToQueueAndWait(cr);
+        } catch (Exception e) {
+
+        }
+        return user;
+    }
+
     public boolean verifierMotDePasse(String email, String password) {
         userVerif = false;
         cr.setUrl(Statics.BASE_URL + "/mobile/verication_mot_de_passe");
@@ -158,6 +199,23 @@ public class UserService {
         cr.addArgument("year", year);
         cr.addArgument("nom", nom);
         cr.addArgument("prenom", prenom);
+        cr.addArgument("tel", tel);
+        cr.addArgument("sexe", sexe);
+
+        try {
+            NetworkManager.getInstance().addToQueueAndWait(cr);
+        } catch (Exception e) {
+
+        }
+    }
+
+    public void inscriptionSociete(
+            String email, String password, String nom, String prenom, String tel, String sexe) {
+
+        cr.setUrl(Statics.BASE_URL + "/mobile/inscription_societe");
+        cr.addArgument("email", email);
+        cr.addArgument("password", password);
+        cr.addArgument("nom", nom);
         cr.addArgument("tel", tel);
         cr.addArgument("sexe", sexe);
 

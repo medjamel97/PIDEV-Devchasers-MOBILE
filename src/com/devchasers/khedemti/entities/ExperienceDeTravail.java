@@ -10,7 +10,8 @@ package com.devchasers.khedemti.entities;
  * @author Faten
  */
 public class ExperienceDeTravail {
-     private int id;
+
+    private int id;
     private int candidatId;
     private String description;
     private String titreEmploi;

@@ -43,7 +43,7 @@ public class ExperienceDeTravailService {
 
     public ArrayList<ExperienceDeTravail> recupererExperienceDeTravail() {
         cr.setUrl(Statics.BASE_URL + "/mobile/recuperer_experience_de_travail");
-        cr.addArgument("candidatId", String.valueOf(MainApp.getSession().getCandidatId()));
+        cr.addArgument("idCandidat", String.valueOf(MainApp.getSession().getCandidatId()));
         cr.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
             public void actionPerformed(NetworkEvent evt) {
@@ -56,7 +56,7 @@ public class ExperienceDeTravailService {
                     List<Map<String, Object>> list = (List<Map<String, Object>>) tasksListJson.get("root");
 
                     for (Map<String, Object> obj : list) {
-                        ExperienceDeTravail experience_de_travail = new ExperienceDeTravail(
+                        ExperienceDeTravail experienceDeTravail = new ExperienceDeTravail(
                                 (int) Float.parseFloat(obj.get("id").toString()),
                                 (int) Float.parseFloat(obj.get("idCandidat").toString()),
                                 (String) obj.get("description"),
@@ -66,7 +66,7 @@ public class ExperienceDeTravailService {
                                 (String) obj.get("duree")
                         );
 
-                        listExperienceDeTravails.add(experience_de_travail);
+                        listExperienceDeTravails.add(experienceDeTravail);
                     }
 
                 } catch (IOException ex) {
@@ -84,14 +84,14 @@ public class ExperienceDeTravailService {
         return listExperienceDeTravails;
     }
 
-    public int ajouterExperienceDeTravail(ExperienceDeTravail experience_de_travail) {
+    public int ajouterExperienceDeTravail(ExperienceDeTravail experienceDeTravail) {
         cr.setUrl(Statics.BASE_URL + "/mobile/ajouter_experience_de_travail");
-        cr.addArgument("candidatId", String.valueOf(MainApp.getSession().getCandidatId()));
-        cr.addArgument("description", experience_de_travail.getDescription());
-        cr.addArgument("titreEmploi", experience_de_travail.getTitreEmploi());
-        cr.addArgument("nomEntreprise", experience_de_travail.getNomEntreprise());
-        cr.addArgument("ville", experience_de_travail.getVille());
-        cr.addArgument("duree", experience_de_travail.getDuree());
+        cr.addArgument("idCandidat", String.valueOf(MainApp.getSession().getCandidatId()));
+        cr.addArgument("description", experienceDeTravail.getDescription());
+        cr.addArgument("titreEmploi", experienceDeTravail.getTitreEmploi());
+        cr.addArgument("nomEntreprise", experienceDeTravail.getNomEntreprise());
+        cr.addArgument("ville", experienceDeTravail.getVille());
+        cr.addArgument("duree", experienceDeTravail.getDuree());
 
         cr.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
@@ -109,14 +109,14 @@ public class ExperienceDeTravailService {
         return resultCode;
     }
 
-    public int modifierExperienceDeTravail(ExperienceDeTravail experience_de_travail) {
+    public int modifierExperienceDeTravail(ExperienceDeTravail experienceDeTravail) {
         cr.setUrl(Statics.BASE_URL + "/mobile/modifier_experience_de_travail");
-        cr.addArgument("id", String.valueOf(experience_de_travail.getId()));
-        cr.addArgument("description", experience_de_travail.getDescription());
-        cr.addArgument("titreEmploi", experience_de_travail.getTitreEmploi());
-        cr.addArgument("nomEntreprise", experience_de_travail.getNomEntreprise());
-        cr.addArgument("ville", experience_de_travail.getVille());
-        cr.addArgument("duree", experience_de_travail.getDuree());
+        cr.addArgument("id", String.valueOf(experienceDeTravail.getId()));
+        cr.addArgument("description", experienceDeTravail.getDescription());
+        cr.addArgument("titreEmploi", experienceDeTravail.getTitreEmploi());
+        cr.addArgument("nomEntreprise", experienceDeTravail.getNomEntreprise());
+        cr.addArgument("ville", experienceDeTravail.getVille());
+        cr.addArgument("duree", experienceDeTravail.getDuree());
         cr.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
             public void actionPerformed(NetworkEvent evt) {
@@ -133,9 +133,9 @@ public class ExperienceDeTravailService {
         return resultCode;
     }
 
-    public int supprimerExperienceDeTravail(ExperienceDeTravail experience_de_travail) {
+    public int supprimerExperienceDeTravail(ExperienceDeTravail experienceDeTravail) {
         cr.setUrl(Statics.BASE_URL + "/mobile/supprimer_experience_de_travail");
-        cr.addArgument("id", String.valueOf(experience_de_travail.getId()));
+        cr.addArgument("id", String.valueOf(experienceDeTravail.getId()));
         cr.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
             public void actionPerformed(NetworkEvent evt) {

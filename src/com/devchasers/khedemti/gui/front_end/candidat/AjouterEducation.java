@@ -17,6 +17,7 @@ import com.codename1.ui.TextField;
 import com.codename1.ui.layouts.BoxLayout;
 import com.devchasers.khedemti.MainApp;
 import com.devchasers.khedemti.entities.Education;
+import com.devchasers.khedemti.gui.front_end.MainForm;
 import com.devchasers.khedemti.services.EducationService;
 
 /**
@@ -24,54 +25,66 @@ import com.devchasers.khedemti.services.EducationService;
  * @author Faten
  */
 public class AjouterEducation extends Form {
-    Label labelDescription, labelniveauEducation, labelEtablissement, labelFiliere, labelVille, labelDuree  ;
+
+    Label labelDescription, labelniveauEducation, labelEtablissement, labelFiliere, labelVille, labelDuree;
     TextField tfniveauEducation, tfEtablissement, tfFiliere, tfVille, tfDuree;
     TextArea tfDescription;
     Button btnAjouter;
-    
+
+    Form previous;
+
     public AjouterEducation(Form previous) {
         super(new BoxLayout(BoxLayout.Y_AXIS));
+
+        this.previous = previous;
+
         addGUIs();
         addActions();
-        getToolbar().addMaterialCommandToLeftBar("  ", FontImage.MATERIAL_ARROW_BACK, e -> previous.show());
+
+        getToolbar().addMaterialCommandToLeftBar("  ", FontImage.MATERIAL_ARROW_BACK, e -> MainForm.accueilFrontForm.showBack());
 
     }
+
     private void addGUIs() {
+
+        labelDescription = new Label("Description : ");
+        labelDescription.setUIID("defaultLabel");
+        tfDescription = new TextArea();
 
         labelniveauEducation = new Label("niveau d'Education:");
         labelniveauEducation.setUIID("defaultLabel");
-        tfniveauEducation= new TextField();
+        tfniveauEducation = new TextField();
+
+        labelFiliere = new Label("Filiere:");
+        labelFiliere.setUIID("defaultLabel");
+        tfFiliere = new TextField();
 
         labelEtablissement = new Label("Etablissement:");
         labelEtablissement.setUIID("defaultLabel");
         tfEtablissement = new TextField();
-                
-        labelFiliere = new Label("Filiere:");
-        labelFiliere.setUIID("defaultLabel");
-        tfFiliere = new TextField();
-        
+
         labelVille = new Label("Ville:");
         labelVille.setUIID("defaultLabel");
         tfVille = new TextField();
-                
+
         labelDuree = new Label("Duree:");
         labelDuree.setUIID("defaultLabel");
         tfDuree = new TextField();
-        
-        labelDescription = new Label("Description : ");
-        labelDescription.setUIID("defaultLabel");
-        tfDescription = new TextArea();
-                
-        
-        
-        btnAjouter = new Button("Ajouter");
 
+        btnAjouter = new Button("Ajouter");
         btnAjouter.setUIID("buttonSuccess");
 
         Container container = new Container(new BoxLayout(BoxLayout.Y_AXIS));
         container.setUIID("EducationContainer");
-        container.addAll(labelniveauEducation ,tfniveauEducation, labelEtablissement, tfEtablissement,
-                labelFiliere, tfFiliere, labelVille, tfVille, labelDuree, tfDuree, labelDescription, tfDescription, btnAjouter);
+        container.addAll(
+                labelDescription, tfDescription,
+                labelniveauEducation, tfniveauEducation,
+                labelFiliere, tfFiliere,
+                labelEtablissement, tfEtablissement,
+                labelVille, tfVille,
+                labelDuree, tfDuree,
+                btnAjouter
+        );
 
         this.addAll(container);
 
@@ -81,22 +94,19 @@ public class AjouterEducation extends Form {
 
         btnAjouter.addActionListener((action) -> {
             if (controleDeSaisie()) {
-                int responseCode = EducationService.getInstance().ajouterEducation(new Education(
+                EducationService.getInstance().ajouterEducation(new Education(
                         MainApp.getSession().getCandidatId(),
+                        tfDescription.getText(),
                         tfniveauEducation.getText(),
-                        tfEtablissement.getText(),
                         tfFiliere.getText(),
+                        tfEtablissement.getText(),
                         tfVille.getText(),
-                        tfDuree.getText(),
-                        tfDescription.getText()
-                        
-                )
-                );
-                if (responseCode == 200) {
-                    Dialog.show("Succés", "education ajouté avec succes", new Command("Ok"));
-                } else {
-                    Dialog.show("Erreur", "Erreur d'ajout de education. Code d'erreur : " + responseCode, new Command("Ok"));
-                }
+                        tfDuree.getText()
+                ));
+                Dialog.show("Succés", "education ajouté avec succes", new Command("Ok"));
+
+                ((AfficherProfil) previous).refreshProfil();
+                MainForm.accueilFrontForm.showBack();
             }
         });
     }
@@ -106,7 +116,7 @@ public class AjouterEducation extends Form {
             Dialog.show("niveau education est vide", "", new Command("Ok"));
             return false;
         }
-        if ( tfFiliere.getText().equals("")) {
+        if (tfFiliere.getText().equals("")) {
             Dialog.show("le champ Filiere est vide", "", new Command("Ok"));
             return false;
         }
@@ -126,7 +136,6 @@ public class AjouterEducation extends Form {
             Dialog.show("le champ description est vide", "", new Command("Ok"));
             return false;
         }
-       
 
         return true;
     }

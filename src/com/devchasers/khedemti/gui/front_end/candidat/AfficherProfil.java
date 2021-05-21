@@ -37,10 +37,9 @@ public class AfficherProfil extends Form {
     Button btnRetour, btnAjouter, btnModifier, btnSupprimer;
     public static Competence competenceActuelle = null;
     public static Education educationActuelle = null;
-    public static ExperienceDeTravail experience_de_travailActuelle = null;
+    public static ExperienceDeTravail experienceDeTravailActuelle = null;
 
     Container imageContainer;
-    Form current;
 
     Button btnAjouterImage;
     CheckBox multiSelect;
@@ -74,7 +73,7 @@ public class AfficherProfil extends Form {
 
         setLayout(BoxLayout.y());
         Button btnAddEducation = new Button("Ajouter une education ");
-        btnAddEducation.addActionListener(e -> new AjouterEducation(current).show());
+        btnAddEducation.addActionListener(e -> new AjouterEducation(this).show());
 
         this.add(btnAddEducation);
 
@@ -86,7 +85,7 @@ public class AfficherProfil extends Form {
 
         setLayout(BoxLayout.y());
         Button btnAddExperienceDeTravail = new Button("Ajouter une experience de travail ");
-        btnAddExperienceDeTravail.addActionListener(e -> new AjouterExperienceDeTravail(current).show());
+        btnAddExperienceDeTravail.addActionListener(e -> new AjouterExperienceDeTravail(this).show());
 
         this.add(btnAddExperienceDeTravail);
 
@@ -98,7 +97,7 @@ public class AfficherProfil extends Form {
 
         setLayout(BoxLayout.y());
         Button btnAddCompetence = new Button("Ajouter une competence ");
-        btnAddCompetence.addActionListener(e -> new AjouterCompetenceForm(current).show());
+        btnAddCompetence.addActionListener(e -> new AjouterCompetenceForm(this).show());
 
         this.add(btnAddCompetence);
 
@@ -114,15 +113,17 @@ public class AfficherProfil extends Form {
     private Container creerCompetence(Competence competence) {
         Container container = new Container(new BoxLayout(BoxLayout.Y_AXIS));
         container.setUIID("containerLevel");
-        Label labelName = new Label(competence.getName());
+        Label labelName = new Label("Nom : " + competence.getName());
         Slider sliderLevel = new Slider();
         sliderLevel.setProgress(competence.getLevel());
+
         btnsContainer = new Container(new BoxLayout(BoxLayout.X_AXIS));
         btnsContainer.setUIID("buttonsContainer");
         btnsContainer.setPreferredH(200);
 
         btnModifier = new Button("Modifier");
         btnModifier.setUIID("actionButton");
+
         btnSupprimer = new Button("Supprimer");
         btnSupprimer.setUIID("actionButton");
 
@@ -150,8 +151,8 @@ public class AfficherProfil extends Form {
             Container btnContainer = new Container(new BoxLayout(BoxLayout.X_AXIS));
             btnContainer.addAll(btnClose, btnConfirm);
             dlg.addComponent(BorderLayout.SOUTH, btnContainer);
-            //Dimension pre = dlg.getContentPane().getPreferredSize();
-            //dlg.show(0, 0, Display.getInstance().getDisplayWidth() - (pre.getWidth() + pre.getWidth() / 6), 0);
+            // Dimension pre = dlg.getContentPane().getPreferredSize();
+            // dlg.show(0, 0, Display.getInstance().getDisplayWidth() - (pre.getWidth() + pre.getWidth() / 6), 0);
             dlg.show(900, 900, 150, 150);
 
         });
@@ -164,11 +165,14 @@ public class AfficherProfil extends Form {
     private Container creerExperienceDeTravail(ExperienceDeTravail experience_de_travail) {
         Container container = new Container(new BoxLayout(BoxLayout.Y_AXIS));
         container.setUIID("containerLevel");
-        Label labelDescription = new Label(experience_de_travail.getDescription());
-        Label labeltitreEmploi = new Label(experience_de_travail.getTitreEmploi());
-        Label labelnomEntreprise = new Label(experience_de_travail.getNomEntreprise());
-        Label labelVille = new Label(experience_de_travail.getVille());
-        Label labelDuree = new Label(experience_de_travail.getDuree());
+
+        ImageViewer imageExperience = new ImageViewer(theme.getImage("suitcase.png"));
+        Label labelDescription = new Label("Description : " + experience_de_travail.getDescription());
+        Label labeltitreEmploi = new Label("Titre emploi : " + experience_de_travail.getTitreEmploi());
+        Label labelnomEntreprise = new Label("Nom entreprise : " + experience_de_travail.getNomEntreprise());
+        Label labelVille = new Label("Ville : " + experience_de_travail.getVille());
+        Label labelDuree = new Label("Duree : " + experience_de_travail.getDuree());
+
         btnsContainer = new Container(new BoxLayout(BoxLayout.X_AXIS));
         btnsContainer.setUIID("buttonsContainer");
         btnsContainer.setPreferredH(200);
@@ -179,8 +183,8 @@ public class AfficherProfil extends Form {
         btnSupprimer.setUIID("actionButton");
 
         btnModifier.addActionListener(action -> {
-            experience_de_travailActuelle = experience_de_travail;
-//            new ManipulerExperienceDeTravail(this).show();
+            experienceDeTravailActuelle = experience_de_travail;
+            new ModifierExperienceDeTravail(this).show();
         });
         btnSupprimer.addActionListener(action -> {
 
@@ -192,7 +196,7 @@ public class AfficherProfil extends Form {
             Button btnConfirm = new Button("Confirmer");
             btnConfirm.addActionListener(actionConf -> {
                 ExperienceDeTravailService.getInstance().supprimerExperienceDeTravail(experience_de_travail);
-                experience_de_travailActuelle = null;
+                experienceDeTravailActuelle = null;
                 dlg.dispose();
 
                 container.remove();
@@ -208,19 +212,22 @@ public class AfficherProfil extends Form {
 
         });
         btnsContainer.addAll(btnModifier, btnSupprimer);
-        container.addAll(labeltitreEmploi, labelnomEntreprise, labelVille, labelDuree, labelDescription, btnsContainer);
+        container.addAll(imageExperience, labeltitreEmploi, labelnomEntreprise, labelVille, labelDuree, labelDescription, btnsContainer);
         return container;
     }
 
     private Container creerEducation(Education education) {
         Container container = new Container(new BoxLayout(BoxLayout.Y_AXIS));
         container.setUIID("containerLevel");
-        Label labelDescription = new Label(education.getDescription());
-        Label labelniveauEducation = new Label(education.getNiveauEducation());
-        Label labelEtablissement = new Label(education.getEtablissement());
-        Label labelFiliere = new Label(education.getFiliere());
-        Label labelVille = new Label(education.getVille());
-        Label labelDuree = new Label(education.getDuree());
+
+        ImageViewer imageEducation = new ImageViewer(theme.getImage("award.png"));
+        Label labelDescription = new Label("Description : " + education.getDescription());
+        Label labelniveauEducation = new Label("Niveau d'education : " + education.getNiveauEducation());
+        Label labelEtablissement = new Label("Etablissement : " + education.getEtablissement());
+        Label labelFiliere = new Label("Filiere : " + education.getFiliere());
+        Label labelVille = new Label("Ville : " + education.getVille());
+        Label labelDuree = new Label("Duree : " + education.getDuree() + " Années");
+
         btnsContainer = new Container(new BoxLayout(BoxLayout.X_AXIS));
         btnsContainer.setUIID("buttonsContainer");
         btnsContainer.setPreferredH(200);
@@ -232,7 +239,7 @@ public class AfficherProfil extends Form {
 
         btnModifier.addActionListener(action -> {
             educationActuelle = education;
-//            new ManipulerEducation(this).show();
+            new ModifierEducation(this).show();
         });
         btnSupprimer.addActionListener(action -> {
 
@@ -260,7 +267,7 @@ public class AfficherProfil extends Form {
         });
         btnsContainer.addAll(btnModifier, btnSupprimer);
 
-        container.addAll(labelniveauEducation, labelEtablissement,
+        container.addAll(imageEducation, labelniveauEducation, labelEtablissement,
                 labelFiliere, labelVille, labelDuree, labelDescription, btnsContainer);
         return container;
     }
@@ -312,7 +319,10 @@ public class AfficherProfil extends Form {
                                     imageCandidat = Image.createImage(file).scaledHeight(500);
 
                                     imageContainer.removeAll();
-                                    imageContainer.add(new ImageViewer(imageCandidat));
+                                    ImageViewer imageViewer = new ImageViewer(imageCandidat);
+                                    imageViewer.setUIID("imageCenter");
+                                    imageContainer.add(imageViewer);
+
                                     String imageFile = FileSystemStorage.getInstance().getAppHomePath() + "photo.png";
 
                                     this.refreshTheme();

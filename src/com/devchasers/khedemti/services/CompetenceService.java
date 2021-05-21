@@ -43,7 +43,7 @@ public class CompetenceService {
 
     public ArrayList<Competence> recupererCompetence() {
         cr.setUrl(Statics.BASE_URL + "/mobile/recuperer_competence");
-        cr.addArgument("candidatId", String.valueOf(MainApp.getSession().getCandidatId()));
+        cr.addArgument("idCandidat", String.valueOf(MainApp.getSession().getCandidatId()));
         cr.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
             public void actionPerformed(NetworkEvent evt) {
@@ -83,7 +83,7 @@ public class CompetenceService {
 
     public int ajouterCompetence(Competence competence) {
         cr.setUrl(Statics.BASE_URL + "/mobile/ajouter_competence");
-        cr.addArgument("candidatId", String.valueOf(MainApp.getSession().getCandidatId()));
+        cr.addArgument("idCandidat", String.valueOf(MainApp.getSession().getCandidatId()));
         cr.addArgument("level", String.valueOf(competence.getLevel()));
         cr.addArgument("name", competence.getName());
 

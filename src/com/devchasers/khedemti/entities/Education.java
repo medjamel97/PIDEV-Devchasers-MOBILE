@@ -10,6 +10,7 @@ package com.devchasers.khedemti.entities;
  * @author Faten
  */
 public class Education {
+
     private int id;
     private int candidatId;
     private String description;
@@ -19,6 +20,7 @@ public class Education {
     private String ville;
     private String duree;
 
+    // affichage / modif
     public Education(int id, int candidatId, String description, String niveauEducation, String filiere, String etablissement, String ville, String duree) {
         this.id = id;
         this.candidatId = candidatId;
@@ -30,6 +32,7 @@ public class Education {
         this.duree = duree;
     }
 
+    // ajout
     public Education(int candidatId, String description, String niveauEducation, String filiere, String etablissement, String ville, String duree) {
         this.candidatId = candidatId;
         this.description = description;
@@ -39,7 +42,6 @@ public class Education {
         this.ville = ville;
         this.duree = duree;
     }
-
 
     public int getId() {
         return id;
@@ -104,5 +106,5 @@ public class Education {
     public void setDuree(String duree) {
         this.duree = duree;
     }
-    
+
 }

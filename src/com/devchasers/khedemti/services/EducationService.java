@@ -43,7 +43,7 @@ public class EducationService {
 
     public ArrayList<Education> recupererEducation() {
         cr.setUrl(Statics.BASE_URL + "/mobile/recuperer_education");
-        cr.addArgument("candidatId", String.valueOf(MainApp.getSession().getCandidatId()));
+        cr.addArgument("idCandidat", String.valueOf(MainApp.getSession().getCandidatId()));
         cr.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
             public void actionPerformed(NetworkEvent evt) {
@@ -71,7 +71,7 @@ public class EducationService {
                     }
 
                 } catch (IOException ex) {
-                     System.out.println("Education vide");
+                    System.out.println("Education vide");
                 }
 
                 cr.removeResponseListener(this);
@@ -79,21 +79,21 @@ public class EducationService {
         });
         try {
             NetworkManager.getInstance().addToQueueAndWait(cr);
-        } catch (NullPointerException e) {
-            System.out.println("Vide");
+        } catch (Exception e) {
+
         }
         return listEducations;
     }
 
     public int ajouterEducation(Education education) {
         cr.setUrl(Statics.BASE_URL + "/mobile/ajouter_education");
-        cr.addArgument("candidatId", String.valueOf(MainApp.getSession().getCandidatId()));
-        cr.addArgument("description", education.getDescription());
-        cr.addArgument("niveauEducation", education.getNiveauEducation());
-        cr.addArgument("filiere", education.getFiliere());
-        cr.addArgument("etablissement", education.getEtablissement());
-        cr.addArgument("ville", education.getVille());
-        cr.addArgument("duree", education.getDuree());
+        cr.addArgument("idCandidat", String.valueOf(MainApp.getSession().getCandidatId()));
+        cr.addArgument("description", String.valueOf(education.getDescription()));
+        cr.addArgument("niveauEducation", String.valueOf(education.getNiveauEducation()));
+        cr.addArgument("filiere", String.valueOf(education.getFiliere()));
+        cr.addArgument("etablissement", String.valueOf(education.getEtablissement()));
+        cr.addArgument("ville", String.valueOf(education.getVille()));
+        cr.addArgument("duree", String.valueOf(education.getDuree()));
 
         cr.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
@@ -114,12 +114,13 @@ public class EducationService {
     public int modifierEducation(Education education) {
         cr.setUrl(Statics.BASE_URL + "/mobile/modifier_education");
         cr.addArgument("id", String.valueOf(education.getId()));
-        cr.addArgument("description", education.getDescription());
-        cr.addArgument("niveauEducation", education.getNiveauEducation());
-        cr.addArgument("filiere", education.getFiliere());
-        cr.addArgument("etablissement", education.getEtablissement());
-        cr.addArgument("ville", education.getVille());
-        cr.addArgument("duree", education.getDuree());
+        cr.addArgument("description", String.valueOf(education.getDescription()));
+        cr.addArgument("niveauEducation", String.valueOf(education.getNiveauEducation()));
+        cr.addArgument("filiere", String.valueOf(education.getFiliere()));
+        cr.addArgument("etablissement", String.valueOf(education.getEtablissement()));
+        cr.addArgument("ville", String.valueOf(education.getVille()));
+        cr.addArgument("duree", String.valueOf(education.getDuree()));
+        
         cr.addResponseListener(new ActionListener<NetworkEvent>() {
             @Override
             public void actionPerformed(NetworkEvent evt) {

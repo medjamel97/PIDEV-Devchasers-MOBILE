@@ -44,7 +44,7 @@ public class DetailEventForm extends Form {
                 Content content = new Content("text/plain", "merci pour votre intéret");
                 Mail mail = new Mail(from, subject, to, content);
 
-                SendGrid sg = new SendGrid("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");
+                SendGrid sg = new SendGrid("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");
                 Request request = new Request();
                 try {
                     request.setMethod(Method.POST);
