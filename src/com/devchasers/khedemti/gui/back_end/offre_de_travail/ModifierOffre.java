@@ -19,7 +19,10 @@ import com.codename1.ui.layouts.BoxLayout;
 import com.devchasers.khedemti.MainApp;
 import com.devchasers.khedemti.entities.OffreDeTravail;
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 import com.devchasers.khedemti.gui.front_end.MainForm;
 import com.devchasers.khedemti.gui.front_end.offre_de_travail.AfficherToutOffreDeTravail;
 >>>>>>> Stashed changes
